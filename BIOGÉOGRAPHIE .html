@@ -1,0 +1,3035 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Biogéographie Tropicale - Cours Complet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #10b981;
+            --accent-light: #34d399;
+            --gold: #fbbf24;
+            --orange: #f97316;
+            --red: #ef4444;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at top, #1e1b4b 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, #064e3b 0%, transparent 50%),
+                var(--primary);
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 50px); }
+        }
+
+        /* Floating Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent);
+            top: 10%;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--gold);
+            top: 60%;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--orange);
+            bottom: 10%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* App Container */
+        #app {
+            max-width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 0.75rem 1.5rem;
+            background: rgba(15, 23, 42, 0.95);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Navigation Drawer */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 85%;
+            max-width: 400px;
+            height: 100%;
+            background: var(--secondary);
+            z-index: 2001;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-drawer.active {
+            transform: translateX(0);
+        }
+
+        .nav-header {
+            padding: 2rem;
+            background: var(--gradient-4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .nav-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-subtitle {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-content {
+            padding: 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            padding: 0 1rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin: 0.25rem 0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .nav-item:nth-child(1) .nav-item-icon { background: var(--gradient-1); }
+        .nav-item:nth-child(2) .nav-item-icon { background: var(--gradient-2); }
+        .nav-item:nth-child(3) .nav-item-icon { background: var(--gradient-3); }
+        .nav-item:nth-child(4) .nav-item-icon { background: var(--gradient-4); }
+        .nav-item:nth-child(5) .nav-item-icon { background: var(--gradient-1); }
+        .nav-item:nth-child(6) .nav-item-icon { background: var(--gradient-2); }
+        .nav-item:nth-child(7) .nav-item-icon { background: var(--gradient-3); }
+        .nav-item:nth-child(8) .nav-item-icon { background: var(--gradient-4); }
+
+        .nav-item-content {
+            flex: 1;
+        }
+
+        .nav-item-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 3rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--accent-light);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Chapter Cards */
+        .chapters-grid {
+            padding: 2rem 1.5rem;
+            display: grid;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .chapter-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-4);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .chapter-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .chapter-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .chapter-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter-number::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+        }
+
+        .chapter-card:nth-child(1) .chapter-number { background: var(--gradient-1); }
+        .chapter-card:nth-child(2) .chapter-number { background: var(--gradient-2); }
+        .chapter-card:nth-child(3) .chapter-number { background: var(--gradient-3); }
+        .chapter-card:nth-child(4) .chapter-number { background: var(--gradient-4); }
+        .chapter-card:nth-child(5) .chapter-number { background: var(--gradient-1); }
+        .chapter-card:nth-child(6) .chapter-number { background: var(--gradient-2); }
+        .chapter-card:nth-child(7) .chapter-number { background: var(--gradient-3); }
+        .chapter-card:nth-child(8) .chapter-number { background: var(--gradient-4); }
+
+        .chapter-meta {
+            flex: 1;
+        }
+
+        .chapter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .chapter-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .chapter-preview {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .chapter-arrow {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .chapter-card:hover .chapter-arrow {
+            opacity: 1;
+            right: 1rem;
+        }
+
+        /* Content Viewer */
+        .content-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary);
+            z-index: 3000;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .content-viewer.active {
+            transform: translateY(0);
+        }
+
+        .viewer-header {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+        }
+
+        .back-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-3px);
+        }
+
+        .viewer-title {
+            flex: 1;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .viewer-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .viewer-content {
+            padding: 2rem 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-4);
+            border-radius: 2px;
+            opacity: 0.3;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: var(--gradient-4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .content-text {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-text p {
+            margin-bottom: 1.25rem;
+        }
+
+        .highlight-box {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--accent);
+            opacity: 0.1;
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .highlight-box strong {
+            color: var(--accent-light);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-card-title {
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card-content {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .list-custom {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .list-custom li {
+            padding: 0.75rem 0 0.75rem 2rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .list-custom li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .list-custom li:last-child {
+            border-bottom: none;
+        }
+
+        .formula-box {
+            background: rgba(30, 41, 59, 0.8);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .formula-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            position: relative;
+            z-index: 1;
+        }
+
+        .formula-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(251, 191, 36, 0.2));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .image-placeholder span {
+            font-size: 3rem;
+            opacity: 0.5;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin: 0.25rem;
+        }
+
+        .tags-container {
+            margin: 1rem 0;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 3001;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .progress-container.visible {
+            opacity: 1;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-4);
+            width: 0%;
+            transition: width 0.1s;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        /* Search Modal */
+        .search-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 4000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            color: var(--text);
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .search-results {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .search-result-item {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .search-result-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .search-result-context {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Favorites */
+        .favorites-empty {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .favorites-empty-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.5rem calc(0.75rem + env(safe-area-inset-bottom));
+            display: flex;
+            justify-content: space-around;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+        }
+
+        .nav-btn.active {
+            color: var(--accent-light);
+        }
+
+        .nav-btn-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-btn.active .nav-btn-icon {
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-in {
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+            
+            .chapters-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .viewer-content {
+                padding: 3rem;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .header, .bottom-nav, .nav-overlay, .content-viewer {
+                display: none;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* Loading animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary);
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(16, 185, 129, 0.2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loader-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent-light);
+        }
+
+        /* Table styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table th {
+            background: rgba(16, 185, 129, 0.2);
+            font-weight: 600;
+            color: var(--accent-light);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Quote block */
+        .quote-block {
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 0 16px 16px 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        /* Comparison cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .comparison-card.a {
+            background: rgba(16, 185, 129, 0.2);
+            border: 2px solid var(--accent);
+        }
+
+        .comparison-card.b {
+            background: rgba(249, 115, 22, 0.2);
+            border: 2px solid var(--orange);
+        }
+
+        .comparison-label {
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-card.a .comparison-label { color: var(--accent-light); }
+        .comparison-card.b .comparison-label { color: var(--orange); }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-4);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translateX(-5px);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(30, 41, 59, 0.8);
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-card-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            display: block;
+        }
+
+        .stat-card-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Biogéographie Tropicale</div>
+        </div>
+    </div>
+
+    <!-- Background -->
+    <div class="bg-animation"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container" id="progressContainer">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- App Container -->
+    <div id="app">
+        <!-- Header -->
+        <header class="header" id="header">
+            <button class="icon-btn" onclick="toggleNav()">☰</button>
+            <div class="logo">
+                <div class="logo-icon">🌿</div>
+                <span>Biogéo</span>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn" onclick="toggleSearch()">🔍</button>
+                <button class="icon-btn" onclick="toggleFavorites()">⭐</button>
+            </div>
+        </header>
+
+        <!-- Navigation Drawer -->
+        <div class="nav-overlay" id="navOverlay" onclick="toggleNav()"></div>
+        <nav class="nav-drawer" id="navDrawer">
+            <div class="nav-header">
+                <div class="nav-title">Plan du Cours</div>
+                <div class="nav-subtitle">8 Chapitres Essentiels</div>
+            </div>
+            <div class="nav-content">
+                <div class="nav-section">
+                    <div class="nav-section-title">Navigation</div>
+                    <a class="nav-item" onclick="showChapter('intro')">
+                        <div class="nav-item-icon">I</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Introduction Générale</div>
+                            <div class="nav-item-desc">Définition de la biogéographie</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('delimitation')">
+                        <div class="nav-item-icon">II</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Délimitation et Spécificité</div>
+                            <div class="nav-item-desc">Zone tropicale et originalité</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('formations')">
+                        <div class="nav-item-icon">III</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Formations Végétales</div>
+                            <div class="nav-item-desc">Diversité des écosystèmes</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('climat')">
+                        <div class="nav-item-icon">IV</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Conditions Climatiques</div>
+                            <div class="nav-item-desc">Climats tropicaux</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('sols')">
+                        <div class="nav-item-icon">V</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Les Sols Spécifiques</div>
+                            <div class="nav-item-desc">Pédologie tropicale</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('fdhe')">
+                        <div class="nav-item-icon">VI</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Forêt Dense Humide Équatoriale</div>
+                            <div class="nav-item-desc">FDHE - Écosystème majeur</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('foret-seche')">
+                        <div class="nav-item-icon">VII</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Forêt Sèche et Savane</div>
+                            <div class="nav-item-desc">Écosystèmes contrastés</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('mangroves')">
+                        <div class="nav-item-icon">VIII</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Les Mangroves</div>
+                            <div class="nav-item-desc">Forêts amphibiens</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-badge">
+                    <span>📚</span>
+                    <span>Cours Complet</span>
+                </div>
+                <h1 class="hero-title">Biogéographie<br>des Régions Tropicales</h1>
+                <p class="hero-subtitle">Explorez la diversité exceptionnelle des écosystèmes tropicaux, de la forêt dense équatoriale aux mangroves en passant par les savanes.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">8</span>
+                        <span class="stat-label">Chapitres</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">20</span>
+                        <span class="stat-label">Pages</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Complet</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapters Grid -->
+            <div class="chapters-grid" id="chaptersGrid">
+                <!-- Generated by JS -->
+            </div>
+        </main>
+
+        <!-- Content Viewer -->
+        <div class="content-viewer" id="contentViewer">
+            <div class="viewer-header">
+                <button class="back-btn" onclick="closeViewer()">←</button>
+                <div class="viewer-title" id="viewerTitle">Titre du chapitre</div>
+                <div class="viewer-actions">
+                    <button class="icon-btn" onclick="toggleCurrentFavorite()" id="favBtn">☆</button>
+                    <button class="icon-btn" onclick="shareContent()">↗</button>
+                </div>
+            </div>
+            <div class="viewer-content" id="viewerContent">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+
+        <!-- Search Modal -->
+        <div class="search-modal" id="searchModal">
+            <div class="search-header">
+                <div class="search-input-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Rechercher dans le cours..." oninput="performSearch(this.value)">
+                </div>
+                <button class="icon-btn" onclick="toggleSearch()" style="margin-left: 1rem;">✕</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <!-- Results injected by JS -->
+            </div>
+        </div>
+
+        <!-- Favorites View -->
+        <div class="content-viewer" id="favoritesViewer">
+            <div class="viewer-header">
+                <button class="back-btn" onclick="toggleFavorites()">←</button>
+                <div class="viewer-title">Mes Favoris</div>
+            </div>
+            <div class="viewer-content" id="favoritesContent">
+                <div class="favorites-empty">
+                    <div class="favorites-empty-icon">⭐</div>
+                    <h3>Aucun favori</h3>
+                    <p>Marquez des chapitres pour les retrouver ici</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" onclick="showTab('home')">
+                <span class="nav-btn-icon">🏠</span>
+                <span>Accueil</span>
+            </button>
+            <button class="nav-btn" onclick="showTab('chapters')">
+                <span class="nav-btn-icon">📖</span>
+                <span>Chapitres</span>
+            </button>
+            <button class="nav-btn" onclick="toggleSearch()">
+                <span class="nav-btn-icon">🔍</span>
+                <span>Recherche</span>
+            </button>
+            <button class="nav-btn" onclick="toggleFavorites()">
+                <span class="nav-btn-icon">⭐</span>
+                <span>Favoris</span>
+            </button>
+        </nav>
+    </div>
+
+    <script>
+        // Course Data - Complete content from PDF
+        const courseData = {
+            intro: {
+                title: "I. Introduction Générale",
+                subtitle: "Définition de la biogéographie",
+                icon: "🎯",
+                color: "gradient-1",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">📖</div>
+                            <h2 class="section-title">Définition</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>La biogéographie étudie la <strong>distribution des organismes vivants sur la Terre</strong> et recherche à expliquer les facteurs de leur répartition spatiale et temporelle.</p>
+                            
+                            <div class="highlight-box">
+                                <strong>NB Important</strong>
+                                L'étude de la biogéographie n'est pas simplement une description des faits mais surtout elle apporte des explications, des éléments de réponse par rapport à la distribution spatiale des êtres vivants.
+                            </div>
+
+                            <p><em>Démarche scientifique</em></p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">❓</div>
+                            <h2 class="section-title">Les 2 Questions Essentielles</h2>
+                        </div>
+                        
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">1. Comment ?</div>
+                                <div class="info-card-content">
+                                    Comment les êtres vivants se répartissent-ils dans l'espace ? Fait appel à une démarche scientifique : description de la répartition spatiale / organisation spatiale de la biosphère = le Biome
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">2. Pourquoi ?</div>
+                                <div class="info-card-content">
+                                    Pourquoi un être vivant occupe un territoire particulier qu'un autre ? Apporte une explication, une analyse et donne les éléments de réponse à la question répartition spatiale des êtres
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            delimitation: {
+                title: "II. Délimitation et Spécificité de la Zone Tropicale",
+                subtitle: "Zone tropicale et originalité",
+                icon: "🌍",
+                color: "gradient-2",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🗺️</div>
+                            <h2 class="section-title">Délimitation</h2>
+                        </div>
+                        <div class="content-text">
+                            <p><strong>Zone tropicale</strong> = espace entre les 2 tropiques : Cancer au Nord et Capricorne au Sud</p>
+                            
+                            <h3 style="color: var(--gold); margin: 1.5rem 0 1rem;">Régions concernées :</h3>
+                            <ul class="list-custom">
+                                <li>Amérique latine (surtout le Brésil)</li>
+                                <li>Une grande partie de l'Afrique</li>
+                                <li>Sud-Est asiatique (Indonésie, Malaisie, Philippines)</li>
+                                <li>Partie Nord de l'Australie</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🏞️</div>
+                            <h2 class="section-title">3 Milieux de la Zone Biogéographique</h2>
+                        </div>
+                        
+                        <div class="info-grid">
+                            <div class="info-card" style="border-top: 4px solid #10b981;">
+                                <div class="info-card-title">🌿 Équatorial</div>
+                                <div class="info-card-content">Forêt dense humide, climat perhumide</div>
+                            </div>
+                            <div class="info-card" style="border-top: 4px solid #f97316;">
+                                <div class="info-card-title">☀️ Tropical</div>
+                                <div class="info-card-content">Savanes et forêts sèches, saisons contrastées</div>
+                            </div>
+                            <div class="info-card" style="border-top: 4px solid #ef4444;">
+                                <div class="info-card-title">🏜️ Désertique</div>
+                                <div class="info-card-content">Climat aride, végétation xérophile</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">✨</div>
+                            <h2 class="section-title">Originalité et Spécificité</h2>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <strong>Caractéristiques majeures</strong>
+                            Richesse et diversité végétale • Conditions climatiques originales • Sol spécifique
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Richesse Biologique</h3>
+                        <div class="content-text">
+                            <p><strong>Biodiversité</strong> = abondance et variété des espèces qui composent la forêt végétale</p>
+                            
+                            <ul class="list-custom">
+                                <li>Les forêts tropicales renferment <strong>+ de la moitié des espèces animales et végétales au monde</strong></li>
+                                <li>La richesse biologique augmente à mesure qu'on se rapproche de l'équateur</li>
+                                <li>La zone équatoriale = <strong>patrimoine fondamental des formes de vie terrestres</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-card-number">50%+</span>
+                                <div class="stat-card-label">des espèces mondiales</div>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-card-number">↓</span>
+                                <div class="stat-card-label">vers l'équateur</div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            formations: {
+                title: "III. Diversité des Formations Végétales Tropicales",
+                subtitle: "Diversité des écosystèmes",
+                icon: "🌳",
+                color: "gradient-3",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌲</div>
+                            <h2 class="section-title">7 Types de Formations Végétales</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Étagées en latitude selon la <strong>diminution des précipitations</strong> :</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-light); margin: 1.5rem 0 1rem;">3 Types Forestiers</h3>
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🌧️ Forêt ombrophile</div>
+                                <div class="info-card-content">Forêt humide, pluies abondantes toute l'année</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🌳 Forêt miombo</div>
+                                <div class="info-card-content">S'adapte aux saisons contrastées</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🍂 Forêt tropophile</div>
+                                <div class="info-card-content">S'adapte aux longues saisons sèches</div>
+                            </div>
+                        </div>
+
+                        <h3 style="color: var(--orange); margin: 2rem 0 1rem;">4 Types Savaniers</h3>
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🌳 Savane à parc</div>
+                                <div class="info-card-content">Arbres dispersés, herbes hautes</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🌾 Savane arboreée</div>
+                                <div class="info-card-content">Couvert arboré plus dense</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🌱 Savane herbeuse</div>
+                                <div class="info-card-content">Prédominance graminéenne</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🌿 Savane arbustive</div>
+                                <div class="info-card-content">Arbustes dominants</div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box" style="margin-top: 2rem;">
+                            <strong>+ Les mangroves</strong>
+                            Forêts amphibiens des zones littorales
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">📝</div>
+                            <h2 class="section-title">NB Important</h2>
+                        </div>
+                        <div class="quote-block">
+                            Ces forêts sont des forêts primaires ou originelles, elles peuvent être détruites et remplacées par des forêts secondaires comme le rônier ou la savane naturelle.
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🔄</div>
+                            <h2 class="section-title">Formation Savanière</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>En s'éloignant de l'équateur vers les tropiques, <strong>les pluies diminuent</strong> et la forêt cède la place à la savane d'origine naturelle.</p>
+                        </div>
+                    </div>
+                `
+            },
+            climat: {
+                title: "IV. Conditions Climatiques Tropicales",
+                subtitle: "Climats tropicaux",
+                icon: "🌡️",
+                color: "gradient-4",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌡️</div>
+                            <h2 class="section-title">L'Homogénéité Thermique</h2>
+                        </div>
+                        <div class="content-text">
+                            <p><strong>Caractère commun des climats tropicaux :</strong></p>
+                            <ul class="list-custom">
+                                <li>Chaleur ± forte pendant la majeure partie de l'année</li>
+                                <li>Le mois le + frais : <strong>T > 18°C</strong></li>
+                                <li>Amplitude diurne > amplitude annuelle (généralement < 10°C)</li>
+                            </ul>
+                            
+                            <div class="highlight-box">
+                                <strong>Pas d'hiver thermique</strong>
+                                → Bilan radiatif excédentaire → Zone chaude
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">💧</div>
+                            <h2 class="section-title">Pluie Utile</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Lorsque sa quantité <strong>dépasse l'évaporation et l'évapotranspiration</strong> (liquide à l'état gazeux). C'est la chaleur latente qui assure cette transformation.</p>
+                            
+                            <div class="highlight-box">
+                                <strong>Évapotranspiration</strong>
+                                Perte d'eau à la surface des feuilles sous forme de vapeur. Liée à la transpiration = réaction de la plante face à la chaleur. Proportionnelle à la température et à la saturation ambiante.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌧️</div>
+                            <h2 class="section-title">Diversité des Régimes Pluviométriques</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Présence du <strong>mois sec et mois humide</strong></p>
+                            
+                            <h3 style="color: var(--gold); margin: 1.5rem 0 1rem;">SEUIL DU MOIS SEC ET MOIS HUMIDE</h3>
+                            <p>Le seuil pour définir le mois sec et mois humide, c'est la quantité des pluies tombées qui équilibre l'évaporation :</p>
+                        </div>
+
+                        <div class="formula-box">
+                            <div class="formula">P = 2T : ÉQUILIBRE</div>
+                            <div class="formula-desc">Pluie = 2 × Température</div>
+                        </div>
+
+                        <div class="comparison-grid">
+                            <div class="comparison-card a">
+                                <div class="comparison-label">Mois Humide</div>
+                                <div style="font-size: 1.5rem; margin: 0.5rem 0;">P > 2T</div>
+                                <div style="font-size: 0.875rem;">La quantité des précipitations dépasse l'évaporation et l'évapotranspiration → il existe de l'eau dans le sol → pluie utile</div>
+                            </div>
+                            <div class="comparison-card b">
+                                <div class="comparison-label">Mois Sec</div>
+                                <div style="font-size: 1.5rem; margin: 0.5rem 0;">P < 2T</div>
+                                <div style="font-size: 0.875rem;">L'eau dans le sol est insuffisante pour que la plante effectue ses fonctions physiologiques</div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            sols: {
+                title: "V. Les Sols Spécifiques - Formation et Pédogenèse",
+                subtitle: "Pédologie tropicale",
+                icon: "🪨",
+                color: "gradient-1",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">📚</div>
+                            <h2 class="section-title">Définitions</h2>
+                        </div>
+                        
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🏔️ Formation du sol</div>
+                                <div class="info-card-content">Formation meuble développée sur la partie superficielle de l'écorce terrestre</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🔬 Pédologie</div>
+                                <div class="info-card-content">Science qui étudie le sol : sa genèse, son évolution, ses caractéristiques morphologiques, physico-chimiques et biologiques</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">⚙️</div>
+                            <h2 class="section-title">I. La Formation du Sol (Pédogenèse)</h2>
+                        </div>
+                        <div class="content-text">
+                            <p><strong>3 facteurs principaux :</strong></p>
+                            <ul class="list-custom">
+                                <li>L'altération des roches mères et leurs constituants</li>
+                                <li>Les activités biologiques et l'accumulation des matières organiques</li>
+                                <li>Le mécanisme de mise en place des horizons</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🧪</div>
+                            <h2 class="section-title">L'Altération de la Roche Mère</h2>
+                        </div>
+                        <div class="content-text">
+                            <p><strong>3 facteurs et 3 formes d'altération :</strong></p>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">💧 Eau - Hydrolyse / Dissolution</div>
+                                <div class="info-card-content">
+                                    Les ions de l'eau attaquent la structure de la roche mère. La roche perd son individualité minéralogique. Tous les constituants deviennent ± solubles.
+                                    <br><br>
+                                    <span style="color: var(--accent-light);">+ solubles : calcaires</span><br>
+                                    <span style="color: var(--red);">- solubles : Fe₂O₃, Al₂O₃</span>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🌡️ Température - Lessivage / Lixiviation</div>
+                                <div class="info-card-content">
+                                    Migration des éléments solubles sous transformation de la composition chimique. Les éléments sont entraînés par les eaux vers les nappes phréatiques et les rivières.
+                                    <br><br>
+                                    <span style="color: var(--accent-light);">+ mobiles : Na, Ca, Mg</span><br>
+                                    <span style="color: var(--red);">- mobiles : Fe, K, Si, P</span>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🌱 Activités biologiques - Désagrégation</div>
+                                <div class="info-card-content">
+                                    Variation brutale de température entraînent la fissure et l'éclatement. Les systèmes racinaires des plantes agrandissent les fissures.
+                                    <br><br>
+                                    → Roche → débris : blocs, sable, limon, argile
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">📐</div>
+                            <h2 class="section-title">Le Mécanisme de Mise en Place des Horizons</h2>
+                        </div>
+                        <div class="content-text">
+                            <p><strong>Horizon</strong> = Volume pédologique ± 1 à la surface du terrain. Les horizons se distinguent par : la couleur et la nature des constituants</p>
+                            
+                            <h3 style="color: var(--gold); margin: 1.5rem 0 1rem;">3 HORIZONS DU SOL</h3>
+                        </div>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-title">HA : Horizon de surface</div>
+                                <div style="color: var(--text-muted); font-size: 0.95rem;">Profil du sol : A0 → A → B → C</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">HB : Horizon d'accumulation</div>
+                                <div style="color: var(--text-muted); font-size: 0.95rem;">Illuvial</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">HC : Horizon de transition avec la roche mère</div>
+                                <div style="color: var(--text-muted); font-size: 0.95rem;">Roche mère</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🧬</div>
+                            <h2 class="section-title">II. La Composition du Sol</h2>
+                        </div>
+                        
+                        <div class="comparison-grid">
+                            <div class="comparison-card a">
+                                <div class="comparison-label">Éléments Minéraux</div>
+                                <div style="text-align: left; margin-top: 1rem;">
+                                    Issue de la désagrégation de la roche mère :<br><br>
+                                    • Fraction grossière (>2μ) = squelette du sol<br>
+                                    • Subit des transformations
+                                </div>
+                            </div>
+                            <div class="comparison-card b">
+                                <div class="comparison-label">Éléments Organiques</div>
+                                <div style="text-align: left; margin-top: 1rem;">
+                                    • Humification<br>
+                                    • Minéralisation<br>
+                                    <br>
+                                    Décomposition des débris végétaux et animaux
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 style="color: var(--accent-light); margin: 2rem 0 1rem;">HA - Horizon de Surface</h3>
+                        <div class="content-text">
+                            <p>S'enrichit par des matières organiques, issue de la décomposition des débris végétaux et animaux à la surface du sol</p>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">HA0 : Litière</div>
+                                <div class="info-card-content">Débris végétaux + animaux ± décomposés</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">HA1 : + Humifère (Humus)</div>
+                                <div class="info-card-content">Matière organique décomposée</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">HA2 : Horizon Alluvial</div>
+                                <div class="info-card-content">Appauvri par le phénomène de lessivage. Les eaux d'infiltration entraînent les éléments solubles du sol</div>
+                            </div>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">HB - Horizon d'Accumulation</h3>
+                        <div class="content-text">
+                            <p>Horizon sous-jacent de HA → accumulation de tous les éléments qui ont quitté HA → <strong>H illuvial</strong></p>
+                            
+                            <div class="highlight-box">
+                                <strong>Constitué de :</strong>
+                                Oxyde de fer (Fe₂O₃) • Colloïde argileux • Matière organique
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">⚖️</div>
+                            <h2 class="section-title">III. Caractéristiques Physiques</h2>
+                        </div>
+                        
+                        <h3 style="color: var(--accent-light); margin: 1rem 0;">Texture / Granulométrie</h3>
+                        <div class="content-text">
+                            <p>Composition des particules minérales :</p>
+                        </div>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Taille</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Argile</td>
+                                    <td>< 2 µ</td>
+                                </tr>
+                                <tr>
+                                    <td>Limon</td>
+                                    <td>2-50 µ</td>
+                                </tr>
+                                <tr>
+                                    <td>Sable fin</td>
+                                    <td>50-200 µ</td>
+                                </tr>
+                                <tr>
+                                    <td>Sable grossier</td>
+                                    <td>> 200 µ</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">→ Classes : argileuse, limoneuse, sableuse</p>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Structure</h3>
+                        <div class="content-text">
+                            <p><strong>Mode d'assemblage des particules :</strong></p>
+                            <ul class="list-custom">
+                                <li><strong>Structure en agrégat</strong> : Particules floculées, cohésion par colloïdes (argilohumiques)</li>
+                                <li><strong>Structure particulaire</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">⚗️</div>
+                            <h2 class="section-title">IV. Caractéristiques Chimiques</h2>
+                        </div>
+                        
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🔋 Pouvoir d'Absorption</div>
+                                <div class="info-card-content">
+                                    Dû aux colloïdes minéraux (argile) et organiques (humus) présentant des charges électriques → complexe absorbant<br><br>
+                                    Fixe les cations : H⁺, Ca⁺⁺, Mg⁺⁺, K⁺, Na⁺ (bases échangeables)
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🔄 Capacité d'Échange</div>
+                                <div class="info-card-content">
+                                    Quantité max. des cations métalliques pouvant être fixés par le complexe absorbant. + élevée si sol riche en colloïdes (argileux ou humique)
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Réaction du Sol (pH)</h3>
+                        <div class="content-text">
+                            <p>Degré d'acidité exprimé en pH, lié à la concentration des ions H⁺</p>
+                        </div>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>État</th>
+                                    <th>[H⁺]</th>
+                                    <th>pH</th>
+                                    <th>Réaction</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Saturé</td>
+                                    <td>faible</td>
+                                    <td>>7</td>
+                                    <td style="color: var(--accent-light);">Basique</td>
+                                </tr>
+                                <tr>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>7</td>
+                                    <td>Neutre</td>
+                                </tr>
+                                <tr>
+                                    <td>Désaturé</td>
+                                    <td>élevé</td>
+                                    <td><7</td>
+                                    <td style="color: var(--red);">Acide</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌱</div>
+                            <h2 class="section-title">V. Sols de la Zone Intertropicale</h2>
+                        </div>
+                        
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title" style="color: #10b981;">Sols Fersiallitiques</div>
+                                <div class="info-card-content">
+                                    Sous climat + humide et végétations forestières. Couleur rouge due aux oxydes de fer.
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title" style="color: #f97316;">Sols Ferrugineux</div>
+                                <div class="info-card-content">
+                                    Sous climat à longue saison sèche et végétation de savane.
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title" style="color: #ef4444;">Sol à Cuirasse Ferrugineuse</div>
+                                <div class="info-card-content">
+                                    Le fer est mobile et s'accumule en profondeur pour former de la cuirasse. Dégagée et durcie au soleil après défrichement.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box" style="margin-top: 2rem;">
+                            <strong>Rôle de la Texture et Structure</strong>
+                            Influencent la porosité et la perméabilité :<br>
+                            • Structure particulaire → circulation de l'eau et aération réduites<br>
+                            • Texture argileuse → rétention d'eau efficace
+                        </div>
+                    </div>
+                `
+            },
+            fdhe: {
+                title: "VI. La Forêt Dense Humide Équatoriale (FDHE)",
+                subtitle: "Équatoriale (FDHE)",
+                icon: "🌴",
+                color: "gradient-2",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌳</div>
+                            <h2 class="section-title">Introduction</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Couvre près de <strong>1400 millions d'ha</strong> (10-15% des terres émergées)</p>
+                            <p>S'étale sur une bande de <strong>400 à 4000 km</strong> autour de l'équateur</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 1.5rem 0 1rem;">Différentes appellations :</h3>
+                        <div class="tags-container">
+                            <span class="tag">FDHE</span>
+                            <span class="tag">Forêt ombrophile</span>
+                            <span class="tag">Forêt pluvieuse</span>
+                            <span class="tag">Rain Forest</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🗺️</div>
+                            <h2 class="section-title">Extension Géographique</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>La FDH se répartit sur <strong>4 grands domaines</strong> :</p>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🌎 Amérique Centrale</div>
+                                <div class="info-card-content">Panama, Costa Rica, Guyane, Ouest de Colombie</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🌎 Amérique du Sud</div>
+                                <div class="info-card-content">Bassin amazonien</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🌍 Afrique</div>
+                                <div class="info-card-content">Afrique occidentale (golfe de Guinée, Libéria, Côte d'Ivoire), Afrique centrale (Cuvette congolaise, RDC)</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🌏 Asie</div>
+                                <div class="info-card-content">Asie du Sud-Est (Indonésie, Malaisie)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌡️</div>
+                            <h2 class="section-title">Conditions Écologiques</h2>
+                        </div>
+                        <div class="content-text">
+                            <p><strong>Caractéristique générale :</strong> Les 4 domaines = régions les + arrosées de la zone chaude avec des pluies régulièrement distribuées au cours de l'année. La forêt se développe dans un milieu sans contrainte climatique et la rareté de sécheresse est compensée par une grande humidité de l'air (proche du point de saturation) !</p>
+                            
+                            <div class="highlight-box">
+                                <strong>Condition écologique</strong>
+                                Condition climatique + Condition pédologique
+                            </div>
+                        </div>
+
+                        <h3 style="color: var(--accent-light); margin: 2rem 0 1rem;">Condition Climatique</h3>
+                        
+                        <h4 style="color: var(--gold); margin: 1rem 0;">Simplicité du régime pluviométrique :</h4>
+                        <ul class="list-custom">
+                            <li>Précipitations abondantes</li>
+                            <li>Pluie moyenne annuelle <strong>> 1800 mm</strong></li>
+                            <li>Nombre de jours de pluie : <strong>150 à 200 j</strong></li>
+                            <li>Saison sèche imparfaite : ne dépasse pas <strong>3 mois</strong></li>
+                        </ul>
+
+                        <h4 style="color: var(--gold); margin: 1.5rem 0 1rem;">Régime thermique peu contrasté :</h4>
+                        <ul class="list-custom">
+                            <li>T° moyenne : <strong>26-27°C</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🦋</div>
+                            <h2 class="section-title">La Diversité Biologique</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>La forêt la <strong>+ riche en diversité spécifique</strong> (faune/flore) :</p>
+                            
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <span class="stat-card-number">70%</span>
+                                    <div class="stat-card-label">d'espèces végétales<br>(vs 6% forêts tempérées)</div>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="stat-card-number">80-200</span>
+                                    <div class="stat-card-label">espèces d'arbres/ha</div>
+                                </div>
+                            </div>
+
+                            <ul class="list-custom" style="margin-top: 1.5rem;">
+                                <li>Espèces, genres, familles <strong>endémiques très nombreux</strong></li>
+                                <li>La végétation est dominée par les <strong>espèces florissantes</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🏗️</div>
+                            <h2 class="section-title">Stratification Verticale</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>La F.E → une <strong>forêt stratifiée en 4 strates</strong> :</p>
+                        </div>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-title">Strate des arbres émergeants</div>
+                                <div style="color: var(--text-muted);">
+                                    H = 50m (jusqu'à 70-80m), > 2m de diamètre<br>
+                                    <span style="color: var(--accent-light);">→ Formés par des arbres + dispersés</span><br>
+                                    → Tronc sans branches (apparaissent au 1/3 ou 1/4 supérieur)<br>
+                                    → Écorce mince et lisse (qq mm à 1,5 cm) → favorise évapotranspiration<br>
+                                    → Base élargie par des contreforts (racines échasses)
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">Strate moyenne (Canopée)</div>
+                                <div style="color: var(--text-muted);">
+                                    H = 30m, arbres denses<br>
+                                    <span style="color: var(--accent-light);">→ Reçoit beaucoup de lumière</span><br>
+                                    → Arbres denses → empêche la lumière d'arriver au sol<br>
+                                    → Protège la strate inférieure du soleil, du vent et de la pluie comme un parasol
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">Strate inférieure</div>
+                                <div style="color: var(--text-muted);">
+                                    Arbustes < 15m, plantes qui fleurissent (orchidées, palmiers)<br>
+                                    → Feuilles + larges et grandes pour capter + de lumière
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">Strate herbacée</div>
+                                <div style="color: var(--text-muted);">
+                                    → Sol couvert de mousses et lichens<br>
+                                    → Abondance des saprophytes (bactéries et champignons)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box" style="margin-top: 2rem;">
+                            <strong>Rôle des contreforts :</strong><br>
+                            → absorbent les substances pour nourrir les arbres<br>
+                            → aident les arbres à supporter leur poids et résister aux vents
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🍃</div>
+                            <h2 class="section-title">Phénomènes et Fonctionnement</h2>
+                        </div>
+                        
+                        <h3 style="color: var(--accent-light); margin: 1rem 0;">Adaptations des Feuilles</h3>
+                        <ul class="list-custom">
+                            <li>Feuilles larges + pointues → accélèrent l'évacuation d'eau</li>
+                            <li>Favorisent l'égouttement d'eau en surface</li>
+                            <li>Assèchement du limbe + accès libre du CO₂ aux stomates pour la photosynthèse</li>
+                            <li>Eau stagnante gêne la fonction respiratoire et assimilatrice</li>
+                        </ul>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Absence de Saisonnalité</h3>
+                        <ul class="list-custom">
+                            <li>Aucune saison n'est défavorable</li>
+                            <li>Processus vitaux (germination, feuillaison, floraison, fructification) s'accomplissent à n'importe quel moment</li>
+                            <li>Durée de vie d'une feuille : <strong>13 mois</strong></li>
+                            <li>Une partie d'un même individu perd ses feuilles (sénescence)</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌿</div>
+                            <h2 class="section-title">Phénomènes Particuliers</h2>
+                        </div>
+                        
+                        <h3 style="color: var(--accent-light); margin: 1rem 0;">Abondance d'Épiphytes</h3>
+                        <div class="content-text">
+                            <p>Plantes qui utilisent d'autres plantes comme support (orchidées, algues, mousses, lichens). <strong>Autotrophes photosynthétiques</strong> : absorbent l'humidité de l'air et les sels minéraux de l'humus qui se forme à la base des branches.</p>
+                            
+                            <div class="highlight-box" style="border-color: var(--red);">
+                                <strong>⚠️ Ce ne sont PAS des plantes parasites !</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌍</div>
+                            <h2 class="section-title">Rôle de la Forêt Équatoriale</h2>
+                        </div>
+                        
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🌱 Puits de Carbone</div>
+                                <div class="info-card-content">
+                                    La FDHE stocke + de carbone qu'elle n'en libère. Chaque année, les forêts + actives rejettent 82 milliards de tonnes de CO₂. La FDHE absorbent actuellement près d'1/5 des émissions de CO₂.<br><br>
+                                    Quand un arbre pousse, il fabrique son bois en utilisant le CO₂ et le stock de carbone organique (CH₂O). Quand il respire et perd ses feuilles, il renvoie une partie de ce carbone dans l'atmosphère.
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🌡️ Régulation du Climat</div>
+                                <div class="info-card-content">
+                                    Plan local et planétaire. Maintiennent l'équilibre thermique à la surface du globe. Régularisent le cycle de précipitation / eau.
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🛡️ Protection des Sols</div>
+                                <div class="info-card-content">
+                                    Réduisent l'impact destructeur des pluies diluviennes en ralentissant le ruissellement et atténuant l'érosion du sol.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            'foret-seche': {
+                title: "VII. Forêt Sèche et Savane",
+                subtitle: "Écosystèmes contrastés",
+                icon: "🌾",
+                color: "gradient-3",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌳</div>
+                            <h2 class="section-title">VII. LA FORÊT SÈCHE (FS)</h2>
+                        </div>
+                        
+                        <h3 style="color: var(--gold); margin: 1rem 0;">I. Caractéristiques Générales</h3>
+                        <div class="content-text">
+                            <p>Formations végétales des régions tropicales à <strong>2 saisons pluviométriques contrastées</strong> : saison sèche et saison humide</p>
+                            <ul class="list-custom">
+                                <li>Quantité de pluie abondante (<strong>1200 à 2000 mm</strong>) mais répartition temporelle irrégulière</li>
+                                <li>Existence de reliefs orographiques (Himalaya, escarpement d'Angola) obligeant l'ascendance des masses d'air</li>
+                                <li>Foret <strong>caducifoliée</strong> et à grande croissance discontinue à cause d'une saison sèche efficace ± longue</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">📊</div>
+                            <h2 class="section-title">Productivité des Forêts</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Liee à l'abondance des pluies et aux températures :</p>
+                        </div>
+
+                        <div class="comparison-grid">
+                            <div class="comparison-card a">
+                                <div class="comparison-label">Saison sèche</div>
+                                <div style="margin-top: 1rem;">
+                                    Productivité en biomasse médiocre, arrêt de l'activité biologique (perte des feuilles) pour limiter la perte d'eau
+                                </div>
+                            </div>
+                            <div class="comparison-card b">
+                                <div class="comparison-label">Saison humide</div>
+                                <div style="margin-top: 1rem;">
+                                    Infiltration favorisée par la végétation, processus d'altération et pédogenèse, ruissellement et hypodermique
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 style="color: var(--accent-light); margin: 2rem 0 1rem;">Condition Pédologique : Sol Ferrugineux</h3>
+                        <ul class="list-custom">
+                            <li>Marqué par la présence des oxydes de fer profonds, libres et extrêmement mobiles</li>
+                            <li>Profil type ordinaire (ABC), relativement épais</li>
+                            <li>Structure peu développée</li>
+                            <li>Concrétionnement et cuirassement fréquent en profondeur</li>
+                            <li>Horizon d'alluvions peu épais</li>
+                        </ul>
+
+                        <h4 style="color: var(--gold); margin: 1.5rem 0 1rem;">Évolution du Sol Ferrugineux</h4>
+                        
+                        <h5 style="color: var(--accent-light);">Saison Humide</h5>
+                        <ul class="list-custom">
+                            <li>Fer entraîné en solution s'accumule dans HB</li>
+                            <li>Ferruginisation = processus dominant</li>
+                        </ul>
+
+                        <h5 style="color: var(--orange); margin-top: 1rem;">Saison Sèche</h5>
+                        <ul class="list-custom">
+                            <li>Eau s'évapore, soluté bloqué dans HB</li>
+                            <li>Précipitation formant concrétions et cuirasses</li>
+                            <li>T° au sol ~40°C → durcissement</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🗺️</div>
+                            <h2 class="section-title">II. Répartition Géographique</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Les FS s'étendent de <strong>15° latitude N et S</strong> avec une limite vers 30° de latitude. Elles couvrent environ <strong>18,5 millions de km²</strong> soit <strong>30% de la couverture forestière</strong>.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌲</div>
+                            <h2 class="section-title">III. Types de FS</h2>
+                        </div>
+                        
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🍂 Forêt Semi-Caducifoliée</div>
+                                <div class="info-card-content">
+                                    Composée à la fois d'arbres qui perdent leurs feuilles et d'arbres à feuilles persistantes bien adaptés à la sécheresse (sémipervirentes)
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🍁 Forêt Caducifoliée (Tropophyte)</div>
+                                <div class="info-card-content">
+                                    Pendant la saison sèche, les arbres sont nus et les plantes sont toutes desséchées<br><br>
+                                    Autres appellations : F. mésophylles, F. dense sèche, F. de mousson (en Asie). Localisée dans les régions à saison sèche bien marquée (3 à 6 mois)<br><br>
+                                    Phytoceenose fermée d'arbres distribuée en 3 strates :
+                                    <ul style="margin-top: 0.5rem; padding-left: 1rem;">
+                                        <li>Strate supérieure : H = 30m, arbres caducifoliés</li>
+                                        <li>Strate inférieure : H = 15m, essences sémipervirentes, riche en lianes</li>
+                                        <li>Sous-bois clair sans graminées savanicoles</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🏝️</div>
+                            <h2 class="section-title">IV. La Forêt Sèche de Madagascar</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Occupe la <strong>côte Ouest de Madagascar</strong> : du fleuve Mangoky jusqu'au Cap d'Ambre</p>
+                            <p>Superficie : <strong>31 970 km²</strong> dont 17,1% sont protégés</p>
+                        </div>
+
+                        <h4 style="color: var(--gold); margin: 1.5rem 0 1rem;">Caractéristiques :</h4>
+                        <ul class="list-custom">
+                            <li>Grande variété biologique et bois précieux (palissandre)</li>
+                            <li>Remarquable adaptation au milieu mais équilibre fragile</li>
+                            <li>Productivité faible (croissance lente)</li>
+                            <li>Faible nombre de tiges/ha</li>
+                        </ul>
+
+                        <h4 style="color: var(--accent-light); margin: 2rem 0 1rem;">Climats de la FS de Madagascar</h4>
+                        <div class="content-text">
+                            <p>Types de climat variant de <strong>Sub-humide (Nord-Ouest)</strong> à <strong>sec (Sud-Ouest)</strong>. Pluviométrie : 600-1500 mm sur 40-50 jours de pluie/an.</p>
+                        </div>
+
+                        <div class="comparison-grid">
+                            <div class="comparison-card a">
+                                <div class="comparison-label">Saison Pluvieuse</div>
+                                <div style="margin-top: 1rem;">
+                                    Mi-octobre - début mars<br>
+                                    <strong>Végétation en pleine croissance</strong>
+                                </div>
+                            </div>
+                            <div class="comparison-card b">
+                                <div class="comparison-label">Saison Sèche</div>
+                                <div style="margin-top: 1rem;">
+                                    6 mois : Avril - Octobre<br>
+                                    • Avril : arbres perdent leurs feuilles<br>
+                                    • Septembre : grands arbres dénudés
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌾</div>
+                            <h2 class="section-title">LA SAVANE</h2>
+                        </div>
+                        
+                        <h3 style="color: var(--gold); margin: 1rem 0;">Définition</h3>
+                        <div class="content-text">
+                            <p>Les Savanes sont des <strong>écosystèmes de formation herbacée</strong> qui se rencontrent dans les régions intertropicales. Les communautés végétales sont caractérisées par la présence d'une <strong>structure herbeuse continue</strong>, constituée par un tapis graminéen dominant.</p>
+                        </div>
+
+                        <h3 style="color: var(--accent-light); margin: 2rem 0 1rem;">I. Répartition Géographique</h3>
+                        <div class="content-text">
+                            <p>La Savane couvre environ <strong>15-16 millions de km²</strong>, une superficie <strong>10 fois les forêts</strong>.</p>
+                            <p>Très étendue en :</p>
+                            <ul class="list-custom">
+                                <li>Amérique Centrale et Tropicale (Brésil)</li>
+                                <li>Afrique tropicale</li>
+                                <li>Asie Tropicale</li>
+                            </ul>
+                            <p>Les Savanes se succèdent aux forêts ombrophiles après des stades de transition : F. dense sèche → F. sèche caducifoliée → Boisements ouverts épineux</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">2 Types de Formations Savanières</h3>
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🌱 Savane Herbeuse</div>
+                                <div class="info-card-content">
+                                    Afrique : Campo limpo (Brésil)
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🌳 Savane Arborée/Arbustive</div>
+                                <div class="info-card-content">
+                                    Afrique : Campo cerrado (Brésil)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong>Biomasse :</strong><br>
+                            La biomasse végétale de la savane est moins importante que celle de la forêt mais les savanes africaines se distinguent par l'abondance de biomasse animale.<br><br>
+                            En Afrique, l'abondance des plantes herbacées en saison humide explique la multiplication de nombreuses espèces herbivores (éléphant, girafe, buffle, zèbres, antilopes).
+                        </div>
+
+                        <h3 style="color: var(--accent-light); margin: 2rem 0 1rem;">III. Condition Écologique</h3>
+                        
+                        <h4 style="color: var(--gold);">Climat de la Savane</h4>
+                        <div class="content-text">
+                            <p>Climat tropical caractérisé par une <strong>variabilité extrême de la pluviométrie</strong> et une forte intensité de pluies estivales.</p>
+                            <ul class="list-custom">
+                                <li>Pluviométrie : <strong>600-900 mm/an</strong> concentrée sur 3-4 mois</li>
+                                <li>Biomatique : savane croît là où précipitations insuffisantes pour forêt tropicale</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="color: var(--gold); margin: 1.5rem 0 1rem;">Sol de la Savane</h4>
+                        <div class="content-text">
+                            <p>Sols ferrugineux tropicaux, lessivés, à concretions et cuirasses ferrugineuses en profondeur.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🔄</div>
+                            <h2 class="section-title">II. Types de Savanes</h2>
+                        </div>
+                        
+                        <div class="comparison-grid">
+                            <div class="comparison-card a">
+                                <div class="comparison-label">Savanes Primaires (Originelles)</div>
+                                <div style="margin-top: 1rem;">
+                                    Savanes climatiques ou édaphiques → en équilibre avec conditions climatiques et pédologiques
+                                </div>
+                            </div>
+                            <div class="comparison-card b">
+                                <div class="comparison-label">Savanes Secondaires (Anthropiques)</div>
+                                <div style="margin-top: 1rem;">
+                                    Résultent de l'action de l'homme : mise à feu de la forêt pour nouvelles terres de culture ou pâturage
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">La Zone de Savane en Afrique</h3>
+                        <div class="content-text">
+                            <p>En Afrique occidentale, les savanes se succèdent de façon régulière du Sud vers le Nord suivant un <strong>gradient de pluviométrie décroissante</strong> :</p>
+                        </div>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-title">Savane Guinéenne = Savanes Arborées</div>
+                                <div style="color: var(--text-muted);">
+                                    • Couvert arboré important, parfois "savane parc"<br>
+                                    • Diverses espèces d'arbres dispersées au milieu du tapis herbacé<br>
+                                    • Espèces ligneuses prédominantes à feuilles caduques<br>
+                                    • Précipitations <strong>> 1200 mm</strong> (H = 12m, arbrisseaux 5-6m)
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">Savane Soudanienne</div>
+                                <div style="color: var(--text-muted);">
+                                    • Couverture arborée plus rare<br>
+                                    • Pluies annuelles <strong>< 1200 mm</strong> (peuvent descendre à 600mm)<br>
+                                    • Espèces adaptées à saison sèche + marquée
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🏝️</div>
+                            <h2 class="section-title">Les Savanes de Madagascar</h2>
+                        </div>
+                        
+                        <h4 style="color: var(--accent-light); margin: 1rem 0;">Savane Herbeuse (2 zones)</h4>
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">HTC (Hautes Terres Centrales)</div>
+                                <div class="info-card-content">
+                                    • Andropogon contortus (danga)<br>
+                                    • Aristida multicaulis (bozaka, befafo)<br>
+                                    • Hyparrhenia rufa (vero)<br>
+                                    • Imperata cylindrica (taimina)
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">Ouest</div>
+                                <div class="info-card-content">
+                                    Présence d'Acridocarpus excelsus (fotay, avadika)
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--gold); margin: 2rem 0 1rem;">Savane à Palmiers</h4>
+                        <div class="content-text">
+                            <p><strong>Zone humide de l'Est</strong> (formation secondaire) : Raveneala madagascariensis (Arbre du voyageur)</p>
+                            <p><strong>Zone sèche de l'Ouest</strong> (formation primaire) : Satrana</p>
+                        </div>
+                    </div>
+                `
+            },
+            mangroves: {
+                title: "VIII. Les Mangroves (Zone Tropicale)",
+                subtitle: "Forêts amphibiens",
+                icon: "🌊",
+                color: "gradient-4",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌊</div>
+                            <h2 class="section-title">Définition</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Zone de borne dans l'eau et sous terre</p>
+                            <p>Écosystème constitués par les <strong>forêts amphibiens</strong> qui se développent dans les zones littorales tropicales (estuaires, delta) dans les fonds vaseux.</p>
+                            <ul class="list-custom">
+                                <li><strong>Arbres dominants :</strong> les palétuviers</li>
+                                <li><strong>Forets plutôt basses :</strong> environ 10 à 15m de hauteur</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌍</div>
+                            <h2 class="section-title">1. Facteurs Écologiques Particuliers</h2>
+                        </div>
+                        <div class="content-text">
+                            <ul class="list-custom">
+                                <li>Position géographique à l'<strong>interface entre mer et terre</strong></li>
+                                <li>Submersion permanente ou temporaire par les deux eaux salées, en relation avec les marées</li>
+                                <li>Variété de la salinité des eaux ou des sédiments littoraux</li>
+                                <li>Nature du substrat : vase, sable, corail</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌿</div>
+                            <h2 class="section-title">2. Physionomie de la Mangrove</h2>
+                        </div>
+                        
+                        <h3 style="color: var(--accent-light); margin: 1rem 0;">2-1. Homogénéité floristique</h3>
+                        <div class="content-text">
+                            <p>Formation végétale à <strong>2 espèces principales</strong> :</p>
+                        </div>
+
+                        <div class="comparison-grid">
+                            <div class="comparison-card a">
+                                <div class="comparison-label">Rhizophora</div>
+                                <div style="margin-top: 1rem;">
+                                    Racines à échasses (aériennes)<br><br>
+                                    <strong>Rôles des racines aériennes :</strong><br>
+                                    • Fixation dans la vase peu consolidée<br>
+                                    • Meilleure aération dans milieu asphyxiant
+                                </div>
+                            </div>
+                            <div class="comparison-card b">
+                                <div class="comparison-label">Avicennia</div>
+                                <div style="margin-top: 1rem;">
+                                    Arbres à pneumatophores (respiratoires)<br><br>
+                                    <strong>2-2. Viviparité des plantes</strong><br>
+                                    Les graines se développent sur l'arbre mère, les feuilles et racines apparaissent avant de tomber dans la vase. La graine peut flotter et s'enraciner.
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">2-3. Forme d'adaptation</h3>
+                        <div class="content-text">
+                            <p><strong>Plante halophyte</strong> (capable de s'adapter aux fortes salinités et pressions osmotiques) :</p>
+                            <ul class="list-custom">
+                                <li>Pression osmotique permet de prélever de l'eau malgré l'exsudat (Avicennia)</li>
+                                <li>Sel en excès par exocrétion</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">📍</div>
+                            <h2 class="section-title">3. Zonation de la Mangrove</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Se fait selon la position par rapport à la mer et la variété du niveau de la mer :</p>
+                        </div>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-title">Avicennia</div>
+                                <div style="color: var(--text-muted);">
+                                    Se localisent dans des eaux plus profondes, une zone plus ou moins submergée
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">Rhizophora</div>
+                                <div style="color: var(--text-muted);">
+                                    Occupent une zone particulièrement submergée (durant la marée des vives eaux)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">⚡</div>
+                            <h2 class="section-title">4. Mangrove : Écosystème Très Productif</h2>
+                        </div>
+                        <div class="content-text">
+                            <p><strong>Productivité de biomasse morte :</strong> 2,5 kg/m²/an</p>
+                            <p>Zone de productivité des pêcheries côtières des régions tropicales</p>
+                        </div>
+
+                        <h4 style="color: var(--gold); margin: 1.5rem 0 1rem;">Production de la biomasse morte :</h4>
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🔄 Décomposition</div>
+                                <div class="info-card-content">
+                                    En substances organiques et minérales = base de la chaîne alimentaire
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🦠 Bactéries et algues</div>
+                                <div class="info-card-content">
+                                    Assurent la décomposition
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🦀 Consommateurs</div>
+                                <div class="info-card-content">
+                                    Crabes, crevettes et poissons déchiqueteurs se nourrissent des fragments
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🐟 Nutrition</div>
+                                <div class="info-card-content">
+                                    Matières organiques et minéraux alimentent les crustacés
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🛡️</div>
+                            <h2 class="section-title">5. Rôle Écologique</h2>
+                        </div>
+                        
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🌊 Barrière contre les tempêtes</div>
+                                <div class="info-card-content">
+                                    L'énergie des vagues est réduite à <strong>75%</strong> lorsqu'elles traversent 200m de mangrove. Elles brisent la force des vagues et protègent la zone littorale.
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🏖️ Protection contre l'érosion</div>
+                                <div class="info-card-content">
+                                    Protège l'écosystème marin de l'érosion terrestre apportée par les cours d'eau grâce à leur système racinaire.
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">💧 Régulation hydrique</div>
+                                <div class="info-card-content">
+                                    Régularisent le niveau de la nappe phréatique des zones environnantes. Protègent de la montée des marées.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quote-block" style="margin-top: 2rem;">
+                            Avant, les mangroves étaient délaissées, objets de conquêtes agricoles et...
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // State management
+        let favorites = JSON.parse(localStorage.getItem('biogeo_favorites') || '[]');
+        let currentChapter = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderChapters();
+            updateFavoritesView();
+            
+            // Hide loader
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1500);
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+
+        // Render chapter cards
+        function renderChapters() {
+            const grid = document.getElementById('chaptersGrid');
+            const chapters = [
+                { id: 'intro', num: 'I', title: 'Introduction Générale', desc: 'Définition de la biogéographie', preview: 'La biogéographie étudie la distribution des organismes vivants sur la Terre...' },
+                { id: 'delimitation', num: 'II', title: 'Délimitation et Spécificité', desc: 'Zone tropicale et originalité', preview: 'Zone tropicale = espace entre les 2 tropiques : Cancer au Nord et Capricorne au Sud...' },
+                { id: 'formations', num: 'III', title: 'Formations Végétales', desc: 'Diversité des écosystèmes', preview: '7 Types de Formations Végétales étagées en latitude selon la diminution des précipitations...' },
+                { id: 'climat', num: 'IV', title: 'Conditions Climatiques', desc: 'Climats tropicaux', preview: "L'Homogénéité Thermique - Chaleur ± forte pendant la majeure partie de l'année..." },
+                { id: 'sols', num: 'V', title: 'Les Sols Spécifiques', desc: 'Pédologie tropicale', preview: 'Formation du sol, Pédogenèse, Altération de la roche mère, Horizons...' },
+                { id: 'fdhe', num: 'VI', title: 'Forêt Dense Humide Équatoriale', desc: 'FDHE - Écosystème majeur', preview: 'Couvre près de 1400 millions dha (10-15% des terres émergées). Forêt la + riche en diversité...' },
+                { id: 'foret-seche', num: 'VII', title: 'Forêt Sèche et Savane', desc: 'Écosystèmes contrastés', preview: 'Formations végétales des régions tropicales à 2 saisons pluviométriques contrastées...' },
+                { id: 'mangroves', num: 'VIII', title: 'Les Mangroves', desc: 'Forêts amphibiens', preview: 'Écosystème constitués par les forêts amphibiens qui se développent dans les zones littorales...' }
+            ];
+
+            grid.innerHTML = chapters.map((ch, idx) => `
+                <div class="chapter-card" onclick="showChapter('${ch.id}')" style="animation: fadeInUp 0.6s ease ${idx * 0.1}s both;">
+                    <div class="chapter-header">
+                        <div class="chapter-number">${ch.num}</div>
+                        <div class="chapter-meta">
+                            <div class="chapter-title">${ch.title}</div>
+                            <div class="chapter-subtitle">${ch.desc}</div>
+                        </div>
+                    </div>
+                    <div class="chapter-preview">${ch.preview}</div>
+                    <div class="chapter-arrow">→</div>
+                </div>
+            `).join('');
+        }
+
+        // Navigation
+        function toggleNav() {
+            const overlay = document.getElementById('navOverlay');
+            const drawer = document.getElementById('navDrawer');
+            overlay.classList.toggle('active');
+            drawer.classList.toggle('active');
+        }
+
+        // Show chapter
+        function showChapter(chapterId) {
+            const chapter = courseData[chapterId];
+            if (!chapter) return;
+
+            currentChapter = chapterId;
+            const viewer = document.getElementById('contentViewer');
+            const title = document.getElementById('viewerTitle');
+            const content = document.getElementById('viewerContent');
+            const favBtn = document.getElementById('favBtn');
+
+            title.textContent = chapter.title;
+            content.innerHTML = chapter.content;
+            
+            // Update favorite button
+            favBtn.textContent = favorites.includes(chapterId) ? '★' : '☆';
+            favBtn.style.color = favorites.includes(chapterId) ? '#fbbf24' : '';
+
+            viewer.classList.add('active');
+            toggleNav();
+            
+            // Reset scroll
+            viewer.scrollTop = 0;
+            
+            // Update progress bar
+            updateProgress();
+        }
+
+        // Close viewer
+        function closeViewer() {
+            document.getElementById('contentViewer').classList.remove('active');
+            currentChapter = null;
+        }
+
+        // Search functionality
+        function toggleSearch() {
+            const modal = document.getElementById('searchModal');
+            const input = document.getElementById('searchInput');
+            modal.classList.toggle('active');
+            if (modal.classList.contains('active')) {
+                input.focus();
+            }
+        }
+
+        function performSearch(query) {
+            const resultsDiv = document.getElementById('searchResults');
+            if (!query.trim()) {
+                resultsDiv.innerHTML = '';
+                return;
+            }
+
+            const results = [];
+            const lowerQuery = query.toLowerCase();
+
+            Object.entries(courseData).forEach(([id, chapter]) => {
+                const text = chapter.content.toLowerCase();
+                if (text.includes(lowerQuery)) {
+                    // Find context
+                    const regex = new RegExp(`(.{0,50}${lowerQuery}.{0,50})`, 'gi');
+                    const matches = chapter.content.match(regex) || [];
+                    results.push({
+                        id,
+                        title: chapter.title,
+                        context: matches[0] || '...'
+                    });
+                }
+            });
+
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 2rem;">Aucun résultat trouvé</div>';
+            } else {
+                resultsDiv.innerHTML = results.map(r => `
+                    <div class="search-result-item" onclick="showChapter('${r.id}'); toggleSearch();">
+                        <div class="search-result-title">${r.title}</div>
+                        <div class="search-result-context">${r.context.replace(new RegExp(query, 'gi'), match => `<mark style="background: var(--accent); color: var(--primary); padding: 0 2px; border-radius: 2px;">${match}</mark>`)}...</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Favorites
+        function toggleFavorites() {
+            const viewer = document.getElementById('favoritesViewer');
+            viewer.classList.toggle('active');
+            updateFavoritesView();
+        }
+
+        function toggleCurrentFavorite() {
+            if (!currentChapter) return;
+            
+            const idx = favorites.indexOf(currentChapter);
+            if (idx > -1) {
+                favorites.splice(idx, 1);
+            } else {
+                favorites.push(currentChapter);
+            }
+            
+            localStorage.setItem('biogeo_favorites', JSON.stringify(favorites));
+            
+            const favBtn = document.getElementById('favBtn');
+            favBtn.textContent = favorites.includes(currentChapter) ? '★' : '☆';
+            favBtn.style.color = favorites.includes(currentChapter) ? '#fbbf24' : '';
+            
+            updateFavoritesView();
+        }
+
+        function updateFavoritesView() {
+            const content = document.getElementById('favoritesContent');
+            
+            if (favorites.length === 0) {
+                content.innerHTML = `
+                    <div class="favorites-empty">
+                        <div class="favorites-empty-icon">⭐</div>
+                        <h3>Aucun favori</h3>
+                        <p>Marquez des chapitres pour les retrouver ici</p>
+                    </div>
+                `;
+            } else {
+                content.innerHTML = favorites.map(id => {
+                    const chapter = courseData[id];
+                    return `
+                        <div class="search-result-item" onclick="showChapter('${id}'); toggleFavorites();">
+                            <div class="search-result-title">${chapter.title}</div>
+                            <div class="search-result-context">${chapter.subtitle}</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Progress bar
+        function updateProgress() {
+            const viewer = document.getElementById('contentViewer');
+            const container = document.getElementById('progressContainer');
+            const bar = document.getElementById('progressBar');
+            
+            if (!viewer.classList.contains('active')) {
+                container.classList.remove('visible');
+                return;
+            }
+            
+            container.classList.add('visible');
+            
+            viewer.addEventListener('scroll', () => {
+                const scrolled = viewer.scrollTop;
+                const maxScroll = viewer.scrollHeight - viewer.clientHeight;
+                const progress = (scrolled / maxScroll) * 100;
+                bar.style.width = progress + '%';
+            });
+        }
+
+        // Share functionality
+        function shareContent() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Biogéographie Tropicale',
+                    text: courseData[currentChapter].title,
+                    url: window.location.href
+                });
+            } else {
+                alert('Partage copié dans le presse-papier !');
+            }
+        }
+
+        // Bottom navigation
+        function showTab(tab) {
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            if (tab === 'home') {
+                closeViewer();
+                document.getElementById('favoritesViewer').classList.remove('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (tab === 'chapters') {
+                document.getElementById('mainContent').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeViewer();
+                document.getElementById('searchModal').classList.remove('active');
+                document.getElementById('favoritesViewer').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
