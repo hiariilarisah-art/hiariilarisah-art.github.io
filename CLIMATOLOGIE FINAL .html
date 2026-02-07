@@ -1,0 +1,2886 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta SEO -->
+    <title>CLIMATOLOGIE - Cours complet | Géographie et Climatologie Tropicale</title>
+    <meta name="description" content="Cours complet de climatologie : géographie, climatologie tropicale, zones climatiques, Madagascar, dynamique atmosphérique, mousson, alizés, ZCIT">
+    <meta name="keywords" content="climatologie, géographie, tropical, météorologie, Madagascar, climat, mousson, alizés, zone tropicale">
+    <meta name="author" content="Randriamanantsoa Manambina Jasiela">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variables de couleur modernisées */
+        :root {
+            --primary-color: #1e3a5f;
+            --secondary-color: #2d5a87;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --info-color: #3498db;
+            --light-color: #f8fafc;
+            --dark-color: #0f172a;
+            --text-color: #334155;
+            --text-muted: #64748b;
+            --page-color: #ffffff;
+            --border-color: #e2e8f0;
+            --sidebar-width: 320px;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Mode sombre amélioré */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #60a5fa;
+                --secondary-color: #3b82f6;
+                --accent-color: #f87171;
+                --light-color: #1e293b;
+                --dark-color: #0f172a;
+                --text-color: #e2e8f0;
+                --text-muted: #94a3b8;
+                --page-color: #1e293b;
+                --border-color: #334155;
+            }
+        }
+        
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 2rem;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Hiérarchie typographique améliorée */
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.25rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        
+        h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            text-align: center;
+            margin: 0;
+            padding: 1.5rem;
+            color: white;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+        
+        h2 {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            margin-top: 2.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--secondary-color);
+            position: relative;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-top: 2rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3::before {
+            content: '▸';
+            color: var(--secondary-color);
+            font-size: 0.8em;
+        }
+        
+        h4 {
+            font-size: 1.15rem;
+            margin-top: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1.25rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        /* Liens améliorés */
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+        
+        /* Styles du header amélioré */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 0;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Footer amélioré */
+        footer {
+            margin-top: auto;
+            padding: 2rem;
+            text-align: center;
+            background-color: var(--dark-color);
+            color: #94a3b8;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer p {
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+        
+        /* Skip link pour accessibilité */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 10px;
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: var(--radius-sm);
+            z-index: 10001;
+            text-decoration: none;
+            font-weight: 600;
+            transition: top 0.3s;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .skip-link:focus {
+            top: 10px;
+        }
+        
+        /* Conteneur principal */
+        .main-container {
+            display: flex;
+            flex: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            gap: 2rem;
+            padding: 2rem;
+        }
+        
+        /* Sidebar modernisée */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--page-color);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            position: sticky;
+            top: 2rem;
+            height: calc(100vh - 4rem);
+            overflow-y: auto;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            border-left: none;
+            padding-left: 0;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar h2::before {
+            display: none;
+        }
+
+        .sidebar h2::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 0.75rem auto 0;
+            border-radius: 2px;
+        }
+        
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: 0.7rem 1rem;
+            background-color: var(--light-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            color: var(--text-color);
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-nav a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--secondary-color);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+        
+        .sidebar-nav a:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateX(4px);
+            border-color: var(--secondary-color);
+        }
+
+        .sidebar-nav a:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .sidebar-nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .sidebar-nav a.active::before {
+            background: var(--accent-color);
+            transform: scaleY(1);
+        }
+        
+        /* Contenu principal */
+        .content {
+            flex: 1;
+            min-width: 0; /* Empêche le débordement */
+        }
+        
+        /* Wrapper pour le contenu */
+        .content-wrapper {
+            background-color: var(--page-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Grille pour les pages */
+        .pages-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+        
+        /* Styles des sections/page améliorés */
+        .page {
+            background-color: var(--light-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .page:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .page-marker {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .page-marker::before,
+        .page-marker::after {
+            content: '◆';
+            color: var(--secondary-color);
+            font-size: 0.6em;
+        }
+        
+        /* Tableaux stylisés */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            box-shadow: var(--shadow-sm);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .data-table thead {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .data-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--page-color);
+        }
+
+        .data-table tr:hover td {
+            background-color: var(--light-color);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Formules mathématiques */
+        .math-formula {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+            text-align: center;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: var(--light-color);
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--secondary-color);
+            font-size: 1.1rem;
+            overflow-x: auto;
+        }
+        
+        /* Listes améliorées */
+        ul, ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        ul li::marker {
+            color: var(--secondary-color);
+        }
+        
+        /* Mise en page à deux colonnes */
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .column {
+            background-color: var(--page-color);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Espacements cohérents */
+        .section-spacing { margin: 3rem 0; }
+        .subsection-spacing { margin: 2rem 0; }
+        .element-spacing { margin: 1rem 0; }
+        
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mb-3 { margin-bottom: 3rem; }
+        
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mt-3 { margin-top: 3rem; }
+        
+        /* Watermark */
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0.15;
+            font-size: 11px;
+            color: var(--text-muted);
+            font-family: monospace;
+            transform: rotate(-3deg);
+            z-index: 10000;
+            pointer-events: none;
+            user-select: none;
+            background: var(--page-color);
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Composants interactifs modernisés */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:focus-visible {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            filter: brightness(1.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Cartes modernisées */
+        .card {
+            background-color: var(--page-color);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .card-header {
+            padding: 1.25rem 1.5rem;
+            background: linear-gradient(135deg, var(--light-color), var(--page-color));
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        /* Alertes améliorées */
+        .alert {
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid transparent;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            animation: slideUp 0.5s ease-out;
+            background-color: var(--page-color);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .alert-info {
+            background-color: rgba(52, 152, 219, 0.08);
+            border-left-color: var(--info-color);
+            color: var(--info-color);
+        }
+        
+        .alert-success {
+            background-color: rgba(39, 174, 96, 0.08);
+            border-left-color: var(--success-color);
+            color: var(--success-color);
+        }
+        
+        .alert-warning {
+            background-color: rgba(243, 156, 18, 0.08);
+            border-left-color: var(--warning-color);
+            color: var(--warning-color);
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 20px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            background-color: var(--light-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .badge:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .badge-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .badge-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .badge-accent {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Barre de progression de lecture */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            z-index: 10002;
+            transition: width 0.1s;
+        }
+        
+        /* Responsive amélioré */
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 1.25rem;
+            }
+            
+            .sidebar-nav {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 0.5rem;
+                max-height: 200px;
+                overflow-y: auto;
+            }
+            
+            .sidebar h2 {
+                margin-bottom: 1rem;
+            }
+            
+            .content-wrapper {
+                padding: 1.5rem;
+            }
+            
+            .page {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            body {
+                font-size: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                padding: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+            }
+            
+            .content-wrapper {
+                padding: 1rem;
+                border-radius: var(--radius-md);
+            }
+            
+            .page {
+                padding: 1.25rem;
+            }
+            
+            .page-marker {
+                font-size: 1rem;
+            }
+            
+            .data-table {
+                font-size: 0.85rem;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 0.75rem;
+            }
+            
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .watermark {
+                font-size: 9px;
+                bottom: 10px;
+                right: 10px;
+                padding: 6px 8px;
+            }
+        }
+        
+        /* Impression */
+        @media print {
+            .sidebar, .watermark, .btn, .reading-progress {
+                display: none !important;
+            }
+            
+            .main-container {
+                display: block;
+                padding: 0;
+            }
+            
+            .content-wrapper {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+            }
+            
+            .page {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            
+            body {
+                font-size: 11pt;
+                line-height: 1.5;
+                background: white;
+            }
+            
+            h1, h2, h3 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+            
+            .page-marker {
+                color: #000;
+                border-bottom-color: #ccc;
+            }
+        }
+        
+        /* Sélection de texte améliorée */
+        ::selection {
+            background-color: rgba(52, 152, 219, 0.2);
+            color: var(--primary-color);
+        }
+        
+        /* Scrollbar stylisée */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--light-color);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* Utility classes */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .font-bold { font-weight: 700; }
+        .text-muted { color: var(--text-muted); }
+        .text-sm { font-size: 0.875rem; }
+        .text-lg { font-size: 1.125rem; }
+        
+        /* Highlight pour termes importants */
+        .term {
+            background: linear-gradient(120deg, rgba(52, 152, 219, 0.2) 0%, rgba(52, 152, 219, 0.2) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
+            padding: 0 4px;
+            font-weight: 600;
+            color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Code et préformaté */
+        code {
+            font-family: 'Fira Code', Consolas, Monaco, monospace;
+            font-size: 0.9em;
+            background-color: var(--light-color);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            color: var(--accent-color);
+            border: 1px solid var(--border-color);
+        }
+
+        pre {
+            background-color: var(--dark-color);
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+            border: none;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barre de progression -->
+    <div class="reading-progress" id="reading-progress"></div>
+    
+    <!-- Skip link pour l'accessibilité -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    
+    <header>
+        <div class="header-container">
+            <h1>CLIMATOLOGIE - Cours complet</h1>
+        </div>
+    </header>
+    
+    <div class="main-container">
+        <aside class="sidebar" role="navigation" aria-label="Navigation du cours">
+            <h2>Navigation</h2>
+            <nav class="sidebar-nav">
+                <a href="#page-1">Page 1</a>
+                <a href="#page-2">Page 2</a>
+                <a href="#page-3">Page 3</a>
+                <a href="#page-4">Page 4</a>
+                <a href="#page-5">Page 5</a>
+                <a href="#page-6">Page 6</a>
+                <a href="#page-7">Page 7</a>
+                <a href="#page-8">Page 8</a>
+                <a href="#page-9">Page 9</a>
+                <a href="#page-10">Page 10</a>
+                <a href="#page-11">Page 11</a>
+                <a href="#page-12">Page 12</a>
+                <a href="#page-13">Page 13</a>
+                <a href="#page-14">Page 14</a>
+                <a href="#page-15">Page 15</a>
+                <a href="#page-16">Page 16</a>
+                <a href="#page-17">Page 17</a>
+                <a href="#page-18">Page 18</a>
+                <a href="#page-19">Page 19</a>
+                <a href="#page-20">Page 20</a>
+                <a href="#page-21">Page 21</a>
+                <a href="#page-22">Page 22</a>
+                <a href="#page-23">Page 23</a>
+                <a href="#page-24">Page 24</a>
+                <a href="#page-25">Page 25</a>
+                <a href="#page-26">Page 26</a>
+                <a href="#page-27">Page 27</a>
+                <a href="#page-28">Page 28</a>
+                <a href="#page-29">Page 29</a>
+                <a href="#page-30">Page 30</a>
+                <a href="#page-31">Page 31</a>
+                <a href="#page-32">Page 32</a>
+                <a href="#page-33">Page 33</a>
+                <a href="#page-34">Page 34</a>
+                <a href="#page-35">Page 35</a>
+                <a href="#page-36">Page 36</a>
+                <a href="#page-37">Page 37</a>
+                <a href="#page-38">Page 38</a>
+                <a href="#page-39">Page 39</a>
+                <a href="#page-40">Page 40</a>
+                <a href="#page-41">Page 41</a>
+                <a href="#page-42">Page 42</a>
+                <a href="#page-43">Page 43</a>
+                <a href="#page-44">Page 44</a>
+                <a href="#page-45">Page 45</a>
+            </nav>
+        </aside>
+        
+        <main class="content" id="main-content" role="main">
+            <div class="content-wrapper">
+                <div class="pages-grid">
+                    <!-- Page 1 -->
+                    <article id="page-1" class="page" aria-labelledby="marker-1">
+                        <div class="page-marker" id="marker-1">Page 1</div>
+                        
+                        <h2>1. La géographie</h2>
+                        <p><strong>Définition :</strong> La géographie est une science qui étudie l'aménagement de l'espace par les sociétés humaines.</p>
+                        
+                        <h3>Composantes du milieu géographique</h3>
+                        <ul>
+                            <li><span class="term">Habitat</span> : maisons</li>
+                            <li><span class="term">Activité</span> : culture, élevage, industrie, commerce</li>
+                            <li><span class="term">Circulation</span> : routes, voies de communication</li>
+                        </ul>
+                        
+                        <h3>Trois impératifs de l'homme</h3>
+                        <ol>
+                            <li>Être social (vivre en société)</li>
+                            <li>Être spatial (vivre sur un territoire)</li>
+                            <li>Avoir un projet (vivre et survivre)</li>
+                        </ol>
+                        
+                        <h3>Premier groupe : Les trois instances</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Instance</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Économique</strong></td>
+                                    <td>Circuit production-consommation</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Politique</strong></td>
+                                    <td>Rapport de force (qui dirige)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Culturelle</strong></td>
+                                    <td>Art, littérature, architecture...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Deuxième groupe : Le milieu naturel</h3>
+                        <p>Éléments : <span class="term">relief</span>, <span class="term">climat</span>, <span class="term">hydrographie</span>, <span class="term">végétation</span>, <span class="term">faune</span>, <span class="term">sol</span></p>
+                        
+                        <h2>2. La climatologie</h2>
+                    </article>
+
+                    <!-- Page 2 -->
+                    <article id="page-2" class="page" aria-labelledby="marker-2">
+                        <div class="page-marker" id="marker-2">Page 2</div>
+                        
+                        <p><strong>Définition :</strong> Science qui étudie les phénomènes atmosphériques (température, pluie, pression, vent, humidité).</p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Élément</th>
+                                    <th>Nom</th>
+                                    <th>Composition</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Non vivant</td>
+                                    <td>Biotope</td>
+                                    <td>Lithosphère, hydrosphère, atmosphère</td>
+                                </tr>
+                                <tr>
+                                    <td>Vivant</td>
+                                    <td>Biocénose</td>
+                                    <td>Phytocéénose, zoocéénose, pédécénose</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>B. Relation géographie-climatologie</h3>
+                        <p>Le climat influence :</p>
+                        <ul>
+                            <li><strong>Organisation de l'espace</strong> : construction, agriculture, routes</li>
+                            <li><strong>Existence de l'homme</strong> : habillement, alimentation, emploi du temps</li>
+                        </ul>
+                        
+                        <h2>II. LA CLIMATOLOGIE TROPICALE</h2>
+                        
+                        <h3>1. Définition</h3>
+                        <p>Caractérisée par :</p>
+                        <ul>
+                            <li>Alternance de périodes sèches et humides</li>
+                            <li>Absence d'hiver thermique</li>
+                        </ul>
+                        
+                        <h3>2. Délimitation de la zone tropicale</h3>
+                        <h4>a) Concept classique (Zonalité)</h4>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Zone</th>
+                                    <th>Localisation</th>
+                                    <th>Bilan de radiation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Zone chaude</td>
+                                    <td>Entre les 2 tropiques</td>
+                                    <td><span class="badge badge-success">Excédentaire</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Zone tempérée</td>
+                                    <td>Tropiques-Polaires</td>
+                                    <td><span class="badge badge-secondary">Négatif</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Zone polaire</td>
+                                    <td>Au-delà des cercles</td>
+                                    <td><span class="badge badge-secondary">Négatif</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <strong>Bilan de radiation (BR) :</strong> Différence entre chaleur absorbée et évacuée.
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 3 -->
+                    <article id="page-3" class="page" aria-labelledby="marker-3">
+                        <div class="page-marker" id="marker-3">Page 3</div>
+                        
+                        <ol>
+                            <li>Rotation terrestre (23h56min)</li>
+                            <li>Translation autour du soleil (365,25 jours)</li>
+                            <li>Inclinaison de l'axe (23°27')</li>
+                        </ol>
+                        
+                        <h2>PARTIE 1 : LA MARCHE APPARENTE DU SOLEIL</h2>
+                        
+                        <h3>Positions clés de l'année</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Date</th>
+                                    <th>Caractéristiques</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Équinoxe mars</td>
+                                    <td>21 mars</td>
+                                    <td>RS ↓ Équateur, jour = nuit</td>
+                                </tr>
+                                <tr>
+                                    <td>Solstice juin</td>
+                                    <td>21 juin</td>
+                                    <td>RS ↓ Cancer (23°27'N)</td>
+                                </tr>
+                                <tr>
+                                    <td>Équinoxe sept</td>
+                                    <td>21 sept</td>
+                                    <td>RS ↓ Équateur</td>
+                                </tr>
+                                <tr>
+                                    <td>Solstice déc</td>
+                                    <td>21 déc</td>
+                                    <td>RS ↓ Capricorne (23°27'S)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Les trois zones thermiques</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Zone</th>
+                                    <th>Latitude</th>
+                                    <th>Température</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Zone chaude</td>
+                                    <td>23°27'N - 23°27'S</td>
+                                    <td><span class="badge badge-accent">Maximale</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Zone tempérée</td>
+                                    <td>23°27' - 66°33'</td>
+                                    <td>Moyenne</td>
+                                </tr>
+                                <tr>
+                                    <td>Zone polaire</td>
+                                    <td>&gt; 66°33'</td>
+                                    <td><span class="badge badge-secondary">Minimale</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Conclusion :</strong> La zone tropicale est limitée par les deux tropiques, avec un rythme régulier jour/nuit et alternance humide/sèche.
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 4 -->
+                    <article id="page-4" class="page" aria-labelledby="marker-4">
+                        <div class="page-marker" id="marker-4">Page 4</div>
+                        
+                        <h2>Climatologie Tropicale</h2>
+                        <p class="text-center text-muted">Caractéristiques et facteurs climatiques de la zone chaude</p>
+                        <p class="text-center text-sm mb-3">Pages 11 à 30</p>
+                        
+                        <h3>PARTIE 3 : L'ORIGINALITÉ CLIMATIQUE DE LA ZONE CHAUDE</h3>
+                        
+                        <h4>A. Caractéristiques climatiques de la zone chaude par rapport à la zone tempérée</h4>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Critère</th>
+                                    <th>Zone chaude</th>
+                                    <th>Zone tempérée</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bilan de radiation</td>
+                                    <td><span class="badge badge-success">Excédentaire</span></td>
+                                    <td><span class="badge badge-secondary">Déficitaire</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Température</td>
+                                    <td>Stable et très élevée</td>
+                                    <td>Faible et variable selon les saisons</td>
+                                </tr>
+                                <tr>
+                                    <td>Amplitude annuelle (Aa)</td>
+                                    <td>Faible</td>
+                                    <td>Élevée</td>
+                                </tr>
+                                <tr>
+                                    <td>Amplitude diurne (Ad)<br><small>(T° midi - T° minuit)</small></td>
+                                    <td><span class="badge badge-accent">Élevée</span></td>
+                                    <td>Faible</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </article>
+
+                    <!-- Page 5 -->
+                    <article id="page-5" class="page" aria-labelledby="marker-5">
+                        <div class="page-marker" id="marker-5">Page 5</div>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Critère</th>
+                                    <th>Zone chaude</th>
+                                    <th>Zone tempérée</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Rapport Aa/Ad</td>
+                                    <td>Aa &lt; Ad</td>
+                                    <td>Aa &gt; Ad</td>
+                                </tr>
+                                <tr>
+                                    <td>Vent dominant</td>
+                                    <td>Secteur Est, Alizés, vent permanent<br>Apporte le beau temps en hiver sauf influence orographique<br>Facteur de pluie en été (attraction ZCIT)</td>
+                                    <td>Westerlies, vent permanent de secteur Ouest<br>Facteur de faible pluie</td>
+                                </tr>
+                                <tr>
+                                    <td>Les pluies</td>
+                                    <td>Abondantes mais très variables dans l'espace et dans le temps<br>Crée les saisons</td>
+                                    <td>Plus faibles avec une bonne répartition</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h2>B. Les types de climat dans la zone chaude (Typologie climatique)</h2>
+                        
+                        <h3>Classification de DEMANGEOT</h3>
+                        <p>Synthèse des travaux de GAUSSEN et TROLL. L'originalité climatique de la zone chaude réside dans la <span class="term">diversité des types climatiques</span> qui est fonction de :</p>
+                        <ul>
+                            <li>La quantité annuelle des pluies</li>
+                            <li>La durée des saisons sèches cumulées</li>
+                        </ul>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Typologie climatique</th>
+                                    <th>Pluie annuelle (mm)</th>
+                                    <th>Saison sèche cumulée</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Équatoriale</td>
+                                    <td>&gt; 2000 mm</td>
+                                    <td>0 à 3 mois</td>
+                                </tr>
+                                <tr>
+                                    <td>Tropicale humide</td>
+                                    <td>1500 à 2000 mm</td>
+                                    <td>3 à 5 mois</td>
+                                </tr>
+                                <tr>
+                                    <td>Tropicale contrastée</td>
+                                    <td>1000 à 1500 mm</td>
+                                    <td>5 à 7 mois</td>
+                                </tr>
+                                <tr>
+                                    <td>Tropicale sèche</td>
+                                    <td>400 à 1000 mm</td>
+                                    <td>7 à 9 mois</td>
+                                </tr>
+                                <tr>
+                                    <td>Désertique</td>
+                                    <td>≤ 400 mm</td>
+                                    <td>9 à 12 mois</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </article>
+
+                    <!-- Page 6 -->
+                    <article id="page-6" class="page" aria-labelledby="marker-6">
+                        <div class="page-marker" id="marker-6">Page 6</div>
+                        
+                        <h2>PARTIE 4 : FACTEURS ET ÉLÉMENTS DU CLIMAT DANS LA ZONE TROPICALE</h2>
+                        
+                        <h3>A. LA RADIATION SOLAIRE</h3>
+                        
+                        <p><strong>Définition :</strong> Le soleil donne de la chaleur par des ondes électromagnétiques et fournit de l'énergie sous forme de <span class="term">constante solaire</span> (2 cal/cm²/min) à la limite de l'atmosphère.</p>
+                        
+                        <h4>Unités de mesure</h4>
+                        <ul>
+                            <li>1 <span class="term">Langley (Ly)</span> = 1 cal/cm²</li>
+                            <li>Constante solaire = 2 Ly par minute</li>
+                            <li>Conversion : 1 cal = 0,14 W/cm² ou 1360 W/m²</li>
+                        </ul>
+                        
+                        <h3>B. Variation de l'intensité de l'énergie solaire</h3>
+                        
+                        <div class="alert alert-warning">
+                            <i class="fas fa-question-circle"></i>
+                            <div>
+                                <strong>Question :</strong> Pourquoi l'énergie solaire est-elle maximale dans la zone équatoriale et minimale de l'équateur vers les pôles ?
+                            </div>
+                        </div>
+                        
+                        <p><strong>Réponse :</strong> 3 facteurs interviennent.</p>
+                        
+                        <h4>1. Inclinaison des rayons solaires</h4>
+                        <p><span class="term">Angle d'incidence</span> : Angle formé par les rayons solaires (RS) avec la perpendiculaire du lieu.</p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Latitude</th>
+                                    <th>Angle d'incidence</th>
+                                    <th>Cosinus</th>
+                                    <th>Intensité</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Équateur</td>
+                                    <td>0°</td>
+                                    <td>cos 0° = 1</td>
+                                    <td><span class="badge badge-success">Maximum</span></td>
+                                </tr>
+                                <tr>
+                                    <td>45° de latitude</td>
+                                    <td>45°</td>
+                                    <td>cos 45° = √2/2 ≈ 0,7</td>
+                                    <td>Moyenne</td>
+                                </tr>
+                                <tr>
+                                    <td>90° de latitude (Pôles)</td>
+                                    <td>90°</td>
+                                    <td>cos 90° = 0</td>
+                                    <td><span class="badge badge-secondary">Minimum</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h4>Interprétation</h4>
+                        <ul>
+                            <li>Valeur 1 (cos 0°) → intensité tend vers le maximum</li>
+                            <li>Valeur 0 (cos 90°) → intensité tend vers le minimum</li>
+                        </ul>
+                    </article>
+
+                    <!-- Page 7 -->
+                    <article id="page-7" class="page" aria-labelledby="marker-7">
+                        <div class="page-marker" id="marker-7">Page 7</div>
+                        
+                        <h4>Conclusion</h4>
+                        <p>Dans la zone chaude, la valeur tend vers 1, donc il y a maximum de chaleur et cette valeur diminue vers le pôle où elle tend vers le minimum.</p>
+                        
+                        <h2>PARTIE 5 : LES PHÉNOMÈNES DE RÉFRACTION ET RÉFLEXION</h2>
+                        
+                        <h3>A. Phénomène de Réfraction</h3>
+                        <p><strong>Définition :</strong> Lorsque les rayons solaires (RS) font un angle compris entre 45° et 90° (donc proche de la perpendiculaire), une grande partie de l'énergie solaire pénètre dans le sol et une petite partie est réfléchie par le sol.</p>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                On appelle <span class="term">phénomène de réfraction</span> ce processus où l'énergie solaire pénètre dans le sol.
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted text-sm">Page 14-15</p>
+                        
+                        <h3>B. Phénomène de Réflexion</h3>
+                        <p><strong>Définition :</strong> Lorsque les RS font un angle compris entre 0° et 45° par rapport au sol (donc oblique), une grande partie est réfléchie par le sol et une petite partie pénètre dans le sol.</p>
+                    </article>
+
+                    <!-- Page 8 -->
+                    <article id="page-8" class="page" aria-labelledby="marker-8">
+                        <div class="page-marker" id="marker-8">Page 8</div>
+                        
+                        <h3>C. Répartition par zone</h3>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Zone</th>
+                                    <th>Phénomène dominant</th>
+                                    <th>Conséquence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Zone chaude</td>
+                                    <td><span class="badge badge-success">Réfraction</span></td>
+                                    <td>Fort réchauffement du sol (l'énergie est concentrée sur une surface restreinte)</td>
+                                </tr>
+                                <tr>
+                                    <td>Zones tempérées et polaires</td>
+                                    <td><span class="badge badge-secondary">Réflexion</span></td>
+                                    <td>Faible réchauffement du sol (l'énergie est dispersée sur une vaste surface)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>D. Relation entre surface éclairée et échauffement</h3>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Configuration</th>
+                                    <th>Surface éclairée</th>
+                                    <th>Énergie solaire</th>
+                                    <th>Échauffement</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>RS perpendiculaires<br><small>(Zone chaude)</small></td>
+                                    <td>S1 = restreinte</td>
+                                    <td>Concentrée</td>
+                                    <td><span class="badge badge-accent">Fort</span></td>
+                                </tr>
+                                <tr>
+                                    <td>RS obliques<br><small>(Zones tempérées/polaires)</small></td>
+                                    <td>S2 = étendue</td>
+                                    <td>Dispersée</td>
+                                    <td>Faible</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="math-formula">
+                            x<sub>1</sub> = x<sub>2</sub> (même quantité de RS)
+                        </div>
+                        
+                        <ul>
+                            <li>x<sub>1</sub>/S<sub>1</sub> → Fort échauffement (Zone chaude)</li>
+                            <li>x<sub>2</sub>/S<sub>2</sub> → Faible échauffement (Zones tempérée et froide)</li>
+                        </ul>
+                    </article>
+
+                    <!-- Page 9 -->
+                    <article id="page-9" class="page" aria-labelledby="marker-9">
+                        <div class="page-marker" id="marker-9">Page 9</div>
+                        
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Conclusion :</strong> La zone chaude connaît un maximum de chaleur car le cosinus de l'angle d'incidence est proche de 1. Elle est régie par le phénomène de réfraction et le sol connaît un fort échauffement car l'énergie est concentrée sur une surface restreinte.
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted text-sm">Page 15-16</p>
+                        
+                        <h2>PARTIE 6 : LE MODE D'ILLUMINATION (Photopériodisme)</h2>
+                        
+                        <p><strong>Définition :</strong> Le mode d'illumination étudie le <span class="term">photopériodisme</span>, c'est-à-dire :</p>
+                        <ul>
+                            <li>La durée du jour</li>
+                            <li>L'intensité lumineuse</li>
+                            <li>La qualité de la lumière</li>
+                        </ul>
+                    </article>
+
+                    <!-- Page 10 -->
+                    <article id="page-10" class="page" aria-labelledby="marker-10">
+                        <div class="page-marker" id="marker-10">Page 10</div>
+                        
+                        <h2>Climatologie Tropicale</h2>
+                        <p class="text-center text-muted">Cours avancé - Éléments du climat tropical</p>
+                        <p class="text-center text-sm mb-3">Pages 31 à 40</p>
+                        
+                        <h2>PARTIE 11 : LES PLUIES</h2>
+                        
+                        <h3>A. Conditions pluviométriques favorables</h3>
+                        <p>Trois conditions sont nécessaires pour qu'il y ait des pluies :</p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Condition</th>
+                                    <th>Explication</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1. Humidité de l'air</td>
+                                    <td>L'air doit être humide et saturé</td>
+                                </tr>
+                                <tr>
+                                    <td>2. Saturation et condensation</td>
+                                    <td>L'air doit être saturé (U = 100%) et condensé</td>
+                                </tr>
+                                <tr>
+                                    <td>3. Précipitation effective</td>
+                                    <td>Les nuages doivent atteindre leur condition de précipitation par phénomène de coalescence des gouttelettes d'eau autour des noyaux</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>B. Humidité de l'air</h3>
+                        <p>L'humidité de l'air se mesure à partir de trois données :</p>
+                    </article>
+
+                    <!-- Page 11 -->
+                    <article id="page-11" class="page" aria-labelledby="marker-11">
+                        <div class="page-marker" id="marker-11">Page 11</div>
+                        
+                        <h4>1. Rw (Capacité hygrométrique maximale)</h4>
+                        <p><strong>Définition :</strong> Quantité limite de H<sub>2</sub>O que peut contenir l'air à une température donnée.</p>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                Quand l'air est froid → il peut contenir moins de H<sub>2</sub>O → air sec
+                            </div>
+                        </div>
+                        
+                        <h4>2. U (Humidité relative)</h4>
+                        <p><strong>Définition :</strong> Rapport entre la quantité de H<sub>2</sub>O réellement contenue et la capacité hygrométrique.</p>
+                        
+                        <h4>3. Sources d'humidité</h4>
+                        <p>Dans la zone chaude, les sources d'humidité sont nombreuses et énormes :</p>
+                        <ul>
+                            <li>Océans, forêts, lacs</li>
+                            <li>Action de la chaleur (humidité saturante) car l'air chaud peut contenir beaucoup de H<sub>2</sub>O</li>
+                        </ul>
+                        
+                        <h3>C. Saturation et condensation de l'air</h3>
+                        <p>L'air est <span class="term">saturé</span> lorsque son <strong>U = 100%</strong>, c'est-à-dire <strong>r = Rw</strong>.</p>
+                        
+                        <p>L'air est <span class="term">condensé</span> lorsqu'il atteint par refroidissement sa température de condensation ou sa température de rosée → passage de l'état gazeux à l'état liquide de l'H<sub>2</sub>O.</p>
+                        
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                <strong>Condition nécessaire :</strong> Pour qu'il soit saturé et condensé, il faut que l'air se refroidisse.
+                            </div>
+                        </div>
+                        
+                        <p>Le refroidissement de l'air se fait soit :</p>
+                        <ol>
+                            <li>Par ascendance</li>
+                            <li>Soit par advection des froids</li>
+                        </ol>
+                    </article>
+
+                    <!-- Page 12 -->
+                    <article id="page-12" class="page" aria-labelledby="marker-12">
+                        <div class="page-marker" id="marker-12">Page 12</div>
+                        
+                        <h3>D. Condition de précipitation</h3>
+                        <p>Il faut que les nuages atteignent leur condition de précipitation par phénomène de <span class="term">coalescence</span> des gouttelettes d'eau (phénomène électrique).</p>
+                        
+                        <p class="text-muted text-sm">Page 31</p>
+                        
+                        <h2>PARTIE 12 : RÉPARTITION DES PLUIES</h2>
+                        
+                        <h3>A. Inégale répartition dans l'espace (Schéma zonal)</h3>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Localisation</th>
+                                    <th>Caractéristiques</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Maximum</td>
+                                    <td>À l'équateur et au niveau de la zone tempérée</td>
+                                </tr>
+                                <tr>
+                                    <td>Minimum</td>
+                                    <td>Au niveau des tropiques et des pôles</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <strong>Note :</strong> Les pluies diminuent de l'équateur vers les tropiques, mais cette image zonale est perturbée par plusieurs influences.
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 13 -->
+                    <article id="page-13" class="page" aria-labelledby="marker-13">
+                        <div class="page-marker" id="marker-13">Page 13</div>
+                        
+                        <h4>1. Dissymétrie thermique Est-Ouest</h4>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Zone</th>
+                                    <th>Température</th>
+                                    <th>Mécanisme</th>
+                                    <th>Conséquence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>À l'Est</td>
+                                    <td>Élevée</td>
+                                    <td>Forte évaporation → humidification → ascendance → détente → refroidissement → condensation → nuages → pluie</td>
+                                    <td><span class="badge badge-success">Zone humide</span></td>
+                                </tr>
+                                <tr>
+                                    <td>À l'Ouest</td>
+                                    <td>Plus faible</td>
+                                    <td>Faible évaporation → sécheresse → affaissement → compression → assèchement</td>
+                                    <td><span class="badge badge-secondary">Zone désertique</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h4>2. Influence orographique</h4>
+                        <p>Lorsque le relief est perpendiculaire par rapport à la direction du vent, créant des <span class="term">versants au vent</span> et des <span class="term">versants sous le vent</span>.</p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Versant</th>
+                                    <th>Phénomène</th>
+                                    <th>Conséquence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Au vent</td>
+                                    <td>Ascendance forcée → détente → refroidissement → condensation → saturation → nuages → pluies</td>
+                                    <td><span class="badge badge-success">Zone humide</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Sous le vent</td>
+                                    <td>Subsidence de l'air ayant perdu son humidité → compression → échauffement et assèchement</td>
+                                    <td><span class="badge badge-secondary">Zone sèche (effet de foehn)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </article>
+
+                    <!-- Page 14 -->
+                    <article id="page-14" class="page" aria-labelledby="marker-14">
+                        <div class="page-marker" id="marker-14">Page 14</div>
+                        
+                        <p class="text-muted text-sm">Page 32-33</p>
+                        
+                        <h3>A. Caractéristiques</h3>
+                        
+                        <h4>1. Zone superficielle</h4>
+                        <ul>
+                            <li>S'étend jusqu'à 5 000 m d'altitude</li>
+                            <li>Au-delà, elle est soumise à la fluctuation du jet stream subtropical</li>
+                            <li>En été : surmontée par des crêtes chaudes créant des anticyclones mixtes</li>
+                            <li>En hiver : surmontée par des vallées froides tendant à l'affaiblir</li>
+                        </ul>
+                        
+                        <h4>2. Composition</h4>
+                        <ul>
+                            <li>Composée de 4 à 5 cellules discontinues dans l'espace suivant les saisons</li>
+                            <li>Sur les océans : les centres d'action sont permanents</li>
+                            <li>Sur les continents : les centres d'action sont saisonniers</li>
+                        </ul>
+                        
+                        <p>Centres d'action permanents sur les océans :</p>
+                        <ul>
+                            <li>California (+), Humboldt (+)</li>
+                            <li>Açores (+), Sainte-Hélène (+)</li>
+                            <li>Océan Indien Austral (+)</li>
+                        </ul>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-eye"></i>
+                            <div>
+                                <strong>Observation :</strong> L'axe des anticyclones en altitude est incliné vers l'équateur à l'Ouest.
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 15 -->
+                    <article id="page-15" class="page" aria-labelledby="marker-15">
+                        <div class="page-marker" id="marker-15">Page 15</div>
+                        
+                        <h3>B. Dissymétrie Est-Ouest</h3>
+                        <p>L'axe est décentré vers l'Est, encadrant des isobares serrées à l'Est qui se traduisent par :</p>
+                        <ul>
+                            <li>Une accélération dans la vitesse du vent</li>
+                            <li>Une subsidence d'air favorisant la sécheresse</li>
+                        </ul>
+                        
+                        <p>À l'Ouest, des isobares espacées se traduisent par un freinage dans la masse du vent, occasionnant une ascendance d'air favorisant la pluie.</p>
+                        
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Résultat :</strong> Une dissymétrie entre Est et Ouest des océans et continents.
+                            </div>
+                        </div>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Zone</th>
+                                    <th>Phénomène</th>
+                                    <th>Conséquence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Est (isobares serrées)</td>
+                                    <td>Accélération du vent, subsidence</td>
+                                    <td><span class="badge badge-secondary">Sécheresse</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Ouest (isobares espacées)</td>
+                                    <td>Freinage du vent, ascendance</td>
+                                    <td><span class="badge badge-success">Pluie</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>C. Plan dynamique</h3>
+                        <p>L'air est animé par un mouvement de subsidence avec :</p>
+                        
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <p><strong>ALTITUDE</strong> → CONVERGENCE</p>
+                                <p style="font-size: 2rem; color: var(--accent-color);">↓</p>
+                                <p><strong>SOL</strong> → DIVERGENCE (+)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <strong>Conséquence :</strong> Les zones de HP subtropicale créent le beau temps en général par phénomène de compression.
+                            </div>
+                        </div>
+                        
+                        <h3>D. Plan hygrométrique</h3>
+                        <p><strong>Masse d'air hétérogène :</strong></p>
+                        <ul>
+                            <li>À la base : air froid et humide</li>
+                            <li>En altitude : air chaud et sec</li>
+                        </ul>
+                        
+                        <h2>PARTIE 15 : LA ZONE DES ALIZÉS</h2>
+                    </article>
+
+                    <!-- Page 16 -->
+                    <article id="page-16" class="page" aria-labelledby="marker-16">
+                        <div class="page-marker" id="marker-16">Page 16</div>
+                        
+                        <h3>A. Définition</h3>
+                        <p>Zone comprise entre la HP subtropicale et la BP intertropicale. C'est une zone d'écoulement d'air, c'est un <span class="term">vent régulier de secteur Est</span> qui s'écoule le long de la face équatoriale de la HP subtropicale.</p>
+                        
+                        <h3>B. Caractéristiques</h3>
+                        
+                        <h4>1. Direction variable</h4>
+                        <p>La direction varie en fonction de la position par rapport aux anticyclones des deux hémisphères, créant :</p>
+                        <ul>
+                            <li>Zone de convergence des Alizés à l'Est des anticyclones</li>
+                            <li>Zone de divergence à l'Ouest des anticyclones</li>
+                        </ul>
+                        
+                        <h4>2. Vitesse</h4>
+                        <ul>
+                            <li>Vitesse régulière de l'ordre de <span class="term">12 nœuds ou 20 km/h</span></li>
+                            <li>Parfois des coups de vent ou ouragans lorsqu'il y a alimentation en air froid de la HP subtropicale</li>
+                        </ul>
+                        
+                        <h4>3. Structure particulière : Surface d'inversion</h4>
+                        <p>L'Alizé transporte la masse d'air qui se superpose :</p>
+                        <ul>
+                            <li>À la base : air froid et humide</li>
+                            <li>En altitude : air chaud et sec</li>
+                        </ul>
+                        
+                        <p>Séparés par une <span class="term">surface d'inversion</span> (inversion thermique et hygrométrique).</p>
+                    </article>
+
+                    <!-- Page 17 -->
+                    <article id="page-17" class="page" aria-labelledby="marker-17">
+                        <div class="page-marker" id="marker-17">Page 17</div>
+                        
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <div>
+                                <strong>Importance :</strong> La formation des pluies dépend de l'altitude de cette surface d'inversion
+                            </div>
+                        </div>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Altitude de l'inversion</th>
+                                    <th>Conséquence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Faible (500 m)</td>
+                                    <td>Impossibilité de formation nuageuse et de pluies</td>
+                                </tr>
+                                <tr>
+                                    <td>Élevée (1 500 m)</td>
+                                    <td>Possibilité de formation nuageuse et de pluie</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h4>Variation spatiale et temporelle</h4>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Situation</th>
+                                    <th>Altitude de l'inversion</th>
+                                    <th>Zone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Dans l'espace</td>
+                                    <td>Faible (500 m)</td>
+                                    <td>À l'Est des océans ou Ouest des continents</td>
+                                </tr>
+                                <tr>
+                                    <td>Dans l'espace</td>
+                                    <td>Élevée (1 500 m)</td>
+                                    <td>À l'Ouest des océans ou Est des continents</td>
+                                </tr>
+                                <tr>
+                                    <td>Dans le temps (été)</td>
+                                    <td>Tend à s'élever (&gt; 500 m à l'Est, &gt; 1 500 m à l'Ouest)</td>
+                                    <td><span class="badge badge-success">Facteur de fortes pluies</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Dans le temps (hiver)</td>
+                                    <td>Tend à s'abaisser (&lt; 500 m à l'Est, &lt; 1 500 m à l'Ouest)</td>
+                                    <td><span class="badge badge-secondary">Beau temps</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Résultat :</strong> Cette situation crée une dissymétrie entre Est et Ouest des océans et continents.
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 18 -->
+                    <article id="page-18" class="page" aria-labelledby="marker-18">
+                        <div class="page-marker" id="marker-18">Page 18</div>
+                        
+                        <h3>C. Tableau récapitulatif des différences Est-Ouest</h3>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Critère de différenciation</th>
+                                    <th>Ouest des océans /<br>Est des continents</th>
+                                    <th>Est des océans /<br>Ouest des continents</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Thermique</strong></td>
+                                    <td>Courant marin chaud (humidification)</td>
+                                    <td>Courant marin froid (assèchement)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Dynamique</strong></td>
+                                    <td>Isobares espacées, freinage du vent</td>
+                                    <td>Isobares serrées, accélération du vent</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hygrométrique</strong></td>
+                                    <td>Ascendance, pluie</td>
+                                    <td>Subsidence, sécheresse</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </article>
+
+                    <!-- Page 19 -->
+                    <article id="page-19" class="page" aria-labelledby="marker-19">
+                        <div class="page-marker" id="marker-19">Page 19</div>
+                        
+                        <h2>Climatologie Tropicale</h2>
+                        <p class="text-center text-muted">Cours avancé - Dynamique atmosphérique tropicale</p>
+                        <p class="text-center text-sm mb-3">Pages 41 à 50</p>
+                        
+                        <h2>PARTIE 17 : DYNAMISME DES CENTRES D'ACTION</h2>
+                        
+                        <h3>A. Dynamisme zonal</h3>
+                        <p>Ce dynamisme zonal est lié au <span class="term">balancement saisonnier</span> des centres d'action commandé par la marche apparente du soleil.</p>
+                        
+                        <h4>1. Bilan énergétique</h4>
+                        <p>Différence entre les deux hémisphères. Le maximum de chaleur est atteint aux solstices :</p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Solstice</th>
+                                    <th>Hémisphère Nord</th>
+                                    <th>Hémisphère Sud</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Juin</td>
+                                    <td><span class="badge badge-accent">Chaud</span></td>
+                                    <td><span class="badge badge-secondary">Froid</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Décembre</td>
+                                    <td><span class="badge badge-secondary">Froid</span></td>
+                                    <td><span class="badge badge-accent">Chaud</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </article>
+
+                    <!-- Page 20 -->
+                    <article id="page-20" class="page" aria-labelledby="marker-20">
+                        <div class="page-marker" id="marker-20">Page 20</div>
+                        
+                        <h4>2. Force des centres d'action (CA)</h4>
+                        <p>Différence entre les deux hémisphères :</p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Solstice</th>
+                                    <th>Migration des CA</th>
+                                    <th>Configuration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Juin</td>
+                                    <td>Vers le Nord</td>
+                                    <td>BP intertropicale dans HN, HP subtropicale dans HS</td>
+                                </tr>
+                                <tr>
+                                    <td>Décembre</td>
+                                    <td>Vers le Sud</td>
+                                    <td>HP subtropicale dans HN, BP intertropicale dans HS</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <strong>Conséquence :</strong> On assiste à la fluctuation de la ZCIT et à l'apparition des Moussons.
+                            </div>
+                        </div>
+                        
+                        <h3>B. Fluctuation de la ZCIT</h3>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Aspect</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Au niveau de la ZCIT</td>
+                                    <td>Ascendance forcée où la masse d'air est très instable, formation nuageuse très épaisse et pluies battantes</td>
+                                </tr>
+                                <tr>
+                                    <td>Déplacement</td>
+                                    <td>Se calque sur le déplacement de l'Équateur thermique, entre 30°N et 23°S</td>
+                                </tr>
+                                <tr>
+                                    <td>Structure nuageuse</td>
+                                    <td>Varie en fonction de la localisation</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h4>Structure nuageuse selon la localisation</h4>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Localisation</th>
+                                    <th>Structure</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sur les océans</td>
+                                    <td>Symétrique et simple</td>
+                                </tr>
+                                <tr>
+                                    <td>Sur les continents</td>
+                                    <td>Complexe et se dispose en bandes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <p><strong>Étude de Barelle sur l'Océan Atlantique :</strong></p>
+                        <ul>
+                            <li>Océan Atlantique : CIT bicellulaire</li>
+                            <li>Océan Pacifique : CIT quadricellulaire</li>
+                        </ul>
+                    </article>
+
+                    <!-- Page 21 -->
+                    <article id="page-21" class="page" aria-labelledby="marker-21">
+                        <div class="page-marker" id="marker-21">Page 21</div>
+                        
+                        <h4>Sur les continents (ex : Afrique occidentale)</h4>
+                        <p>La structure nuageuse se dispose en bandes ABCD de l'Amont vers l'Aval :</p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Zone</th>
+                                    <th>Caractéristiques</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Zone A</td>
+                                    <td>Dominée par l'Alizé Boréal, air chaud et sec d'origine continentale</td>
+                                </tr>
+                                <tr>
+                                    <td>Zone B</td>
+                                    <td>S'étend sur 200 km, dominée en aval par de l'air équatorial, pluie discontinue, bref d'orage</td>
+                                </tr>
+                                <tr>
+                                    <td>Zone C</td>
+                                    <td>400 à 900 km, partie essentielle de la ZCIT, constitue le corps de la mousson, pluies de mousson</td>
+                                </tr>
+                                <tr>
+                                    <td>Zone D</td>
+                                    <td>Dominée par l'Alizé australe d'origine maritime</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-eye"></i>
+                            <div>
+                                <strong>Observation :</strong> La ZCIT ondule à cause de la différence de vitesse des deux vents qui se rencontrent (mousson et Alizé) et l'ondulation évolue.
+                            </div>
+                        </div>
+                        
+                        <h3>C. Phases d'évolution de l'ondulation de la ZCIT</h3>
+                        
+                        <h4>Phase I - Ondulation de la ZCIT</h4>
+                        <p>Début de la perturbation avec formation d'une onde dans la Zone de Convergence Intertropicale.</p>
+                        
+                        <h4>Phase II - Tourbillon cyclonique</h4>
+                        <p>L'ondulation s'amplifie et se transforme en tourbillon cyclonique avec une circulation fermée.</p>
+                        
+                        <h4>Phase III - Détachement</h4>
+                        <p>Le tourbillon cyclonique se détache de la ZCIT, formation d'une dépression indépendante.</p>
+                    </article>
+
+                    <!-- Page 22 -->
+                    <article id="page-22" class="page" aria-labelledby="marker-22">
+                        <div class="page-marker" id="marker-22">Page 22</div>
+                        
+                        <h2>PARTIE 18 : LA MOUSSON</h2>
+                        
+                        <h3>A. Définition</h3>
+                        <p>Le mot <span class="term">"Mousson"</span> vient de l'arabe "Mawsim" qui veut dire saison.</p>
+                        
+                        <p>Il y a 2 définitions possibles selon les références :</p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Référence</th>
+                                    <th>Définition</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Dynamique</td>
+                                    <td>La mousson c'est l'Alizé dévié après son passage à l'Équateur</td>
+                                </tr>
+                                <tr>
+                                    <td>Hygrométrique</td>
+                                    <td>La mousson est un flux océanique transéquatorial qui apporte une forte pluie à l'intérieur des continents</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>B. Genèse et formation</h3>
+                        <p>La mousson est due à la différence de pression et de température entre les deux hémisphères, créant une <span class="term">pente barométrique transéquatoriale</span> liée à la marche apparente du soleil.</p>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-chart-line"></i> Schéma : Pente barométrique transéquatoriale
+                            </div>
+                            <div class="card-body text-center">
+                                <p><strong>Solstice de juin</strong> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Solstice de décembre</strong></p>
+                                <p>(+) (+) &nbsp;&nbsp;&nbsp;&nbsp; (+) (+)</p>
+                                <p>↓ ↓ &nbsp;&nbsp;&nbsp;&nbsp; ↓ ↓</p>
+                                <p>(G) (G) &nbsp;&nbsp;&nbsp;&nbsp; (G) (G)</p>
+                                <p style="margin-top: 1rem; color: var(--secondary-color);">
+                                    ← Pente barométrique →
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 23 -->
+                    <article id="page-23" class="page" aria-labelledby="marker-23">
+                        <div class="page-marker" id="marker-23">Page 23</div>
+                        
+                        <h3>C. Mécanisme de la mousson</h3>
+                        <p>Varie d'une région à l'autre. Exemples :</p>
+                        <ul>
+                            <li>Asie et Océan Indien</li>
+                            <li>Afrique occidentale et Océan Atlantique Sud</li>
+                        </ul>
+                        
+                        <h4>Mécanisme général</h4>
+                        <p><strong>Cycle saisonnier de la mousson :</strong></p>
+                        
+                        <ol>
+                            <li>Il fait chaud dans l'HN → Formation sur les continents (Asie et Afrique) d'une zone de BP ou creux barométrique qui se traduit par un appel d'air puissant : <span class="term">l'Asie aspire</span></li>
+                            <li>Il fait froid dans l'HS → Formation sur les continents des zones de HP : renforcement de la zone de HP Subtropicale australe qui se traduit par une poussée de l'Alizé Australe aspiré par la BP de l'HN</li>
+                            <li>L'Alizé traverse l'Équateur et va être dévié (vers l'Ouest) comme au vent d'Ouest. Il est froid au départ et en traversant un océan chaud, il devient instable</li>
+                            <li>Ce vent dévié et instable s'appelle <span class="term">mousson</span> qui apporte une forte pluie sur le continent de l'Hémisphère Nord</li>
+                        </ol>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Région</th>
+                                    <th>Nom de la mousson</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Asie</td>
+                                    <td>Mousson d'été</td>
+                                </tr>
+                                <tr>
+                                    <td>Afrique occidentale</td>
+                                    <td>DRIFT (où la surface d'inversion a complètement disparu)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </article>
+
+                    <!-- Page 24 -->
+                    <article id="page-24" class="page" aria-labelledby="marker-24">
+                        <div class="page-marker" id="marker-24">Page 24</div>
+                        
+                        <h2>TRANSCRIPTION ET EXPLICATIONS</h2>
+                        
+                        <h3>Page 47 : Circulation atmosphérique générale</h3>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <strong>En-tête :</strong> CMF = Courant Marin Froid | Date : 04-03-2015 | "Été austral" (contexte saisonnier)
+                            </div>
+                        </div>
+                        
+                        <p><strong>Schéma :</strong> Représentation des cellules de Hadley avec les zones de haute (⊕) et basse pression (⊗)</p>
+                        
+                        <h4>Notes principales</h4>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <p><em>"Il fait froid dans l'HN : formation de AB sur les continents Asie et Afrique"</em></p>
+                                <p class="text-muted text-sm mt-2">
+                                    <strong>Explication :</strong> En hiver nordique (HN), le refroidissement des continents asiatiques et africains crée des anticyclones thermiques (AB = Anticyclone).
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <p><em>"renforcement de la zone de HP Sub" - "poussée de l'air boréal"</em></p>
+                                <p class="text-muted text-sm mt-2">
+                                    <strong>Explication :</strong> La zone de haute pression subtropicale se renforce, et l'air froid des latitudes boréales descend vers le sud.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <p><em>"Il fait chaud dans l'HS"</em></p>
+                                <p class="text-muted text-sm mt-2">
+                                    <strong>Explication :</strong> En hiver nordique, l'hémisphère sud (HS) est en été.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 25 -->
+                    <article id="page-25" class="page" aria-labelledby="marker-25">
+                        <div class="page-marker" id="marker-25">Page 25</div>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <p><em>"Dans OI et canal de Mozambique : existence de courant marin chaud. Formation de BP qui crée un appel d'air, on dit que l'Asie aspire"</em></p>
+                                <p class="text-muted text-sm mt-2">
+                                    <strong>Explication :</strong> Dans l'Océan Indien (OI) et le canal de Mozambique, les courants marins chauds créent des basses pressions qui attirent l'air (appel d'air).
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <h2>Climatologie Tropicale</h2>
+                        <p class="text-center text-muted">Cours avancé - Dynamique atmosphérique tropicale</p>
+                        <p class="text-center text-sm mb-3">Pages 50 à 60</p>
+                        
+                        <h3>Page 51 : LIGNES DE DISCONTINUITÉ</h3>
+                        
+                        <h4>2. Ligne de superposition (ou Surgelignes)</h4>
+                        <p><em>"Il y a variation dans la vitesse du vent"</em></p>
+                        
+                        <p><strong>Schéma :</strong> Amont → Aval avec changement de vitesse</p>
+                        <ul>
+                            <li>Zone de pluie côté amont (convergence/ascendance)</li>
+                        </ul>
+                    </article>
+
+                    <!-- Page 26 -->
+                    <article id="page-26" class="page" aria-labelledby="marker-26">
+                        <div class="page-marker" id="marker-26">Page 26</div>
+                        
+                        <h4>3. Ligne de cisaillement (ou shear lines)</h4>
+                        <p><em>"Il y a à la fois changement dans la vitesse et direction du vent et c'est la direction qui prédomine sur la vitesse"</em></p>
+                        
+                        <p><strong>Schémas : Effets de cisaillement</strong></p>
+                        
+                        <div class="two-columns">
+                            <div class="column">
+                                <h5>Freinage</h5>
+                                <p>Effet de convergence renforcée (décélération)</p>
+                            </div>
+                            <div class="column">
+                                <h5>Accélération</h5>
+                                <p>Effet de convergence atténuée</p>
+                            </div>
+                        </div>
+                        
+                        <h2>RÉSUMÉ DES CONCEPTS CLÉS</h2>
+                        
+                        <div class="card">
+                            <div class="card-header">Mousson</div>
+                            <div class="card-body">
+                                Vent saisonnier réversible, dû au contraste thermique mer/continent
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">DRIFT</div>
+                            <div class="card-body">
+                                Mousson d'été, puissante, sans influence sud
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">DUCT</div>
+                            <div class="card-body">
+                                Mousson d'hiver, faible, avec influence sud
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">FAL</div>
+                            <div class="card-body">
+                                Front de l'Alizé, zone de rencontre entre masses d'air
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">Brise</div>
+                            <div class="card-body">
+                                Vent local thermique (mer/terre)
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 27 -->
+                    <article id="page-27" class="page" aria-labelledby="marker-27">
+                        <div class="page-marker" id="marker-27">Page 27</div>
+                        
+                        <h2>1. Conditions générales</h2>
+                        
+                        <h3>a) La position de Madagascar</h3>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                "Elle s'étale en latitude entre 12° Sud et 25° de latitude Sud. En conséquence il y a variation de la température moyenne annuelle : diminue du N → S"
+                            </div>
+                        </div>
+                        
+                        <p><strong>Explication :</strong> Madagascar s'étend sur environ 13 degrés de latitude. Plus on va vers le sud, plus la température diminue (gradient thermique nord-sud).</p>
+                        
+                        <div class="card">
+                            <div class="card-header">Variation de l'amplitude annuelle (Aa)</div>
+                            <div class="card-body">
+                                <p>Elle augmente du N → S</p>
+                                <p class="text-muted text-sm">Explication : L'amplitude thermique augmente vers le sud (climat plus continental)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">Variation des courbes thermiques</div>
+                            <div class="card-body">
+                                <ul>
+                                    <li><strong>Au Nord :</strong> courbe à 2 maxima et 2 minima</li>
+                                    <li><strong>Au Sud :</strong> courbe à 1 maximum et 1 minimum</li>
+                                </ul>
+                                <p class="text-muted text-sm mt-2">Explication : Nord équatorial (deux saisons humides) ; Sud subtropical (saison unique)</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 28 -->
+                    <article id="page-28" class="page" aria-labelledby="marker-28">
+                        <div class="page-marker" id="marker-28">Page 28</div>
+                        
+                        <h4>Variation dans les caractéristiques de masse d'air</h4>
+                        <ul>
+                            <li>N → S : masse d'air d'origine équatoriale à masse d'origine polaire</li>
+                            <li>On peut rencontrer dans le S l'invasion d'air froid</li>
+                        </ul>
+                        
+                        <p><strong>Exemples de baisse de température (S → N) :</strong></p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Localité</th>
+                                    <th>Baisse de température</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tuléar</td>
+                                    <td>2,5°C</td>
+                                </tr>
+                                <tr>
+                                    <td>Farafangana</td>
+                                    <td>1,5°C</td>
+                                </tr>
+                                <tr>
+                                    <td>Antalaha</td>
+                                    <td>0,5°C</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <p class="text-muted text-sm">Page 53-54</p>
+                        
+                        <h3>b) Continentalité</h3>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                "Mada est une île très massive dont la superficie est de 590 000 km² d'où elle présente des effets de continentalité"
+                            </div>
+                        </div>
+                        
+                        <p><strong>Explication :</strong> Malgré son statut d'île, la grande taille de Madagascar crée un effet de continentalité (amplitude thermique importante à l'intérieur des terres).</p>
+                        
+                        <ul>
+                            <li><strong>Sur le plan thermique :</strong> maximum de températures dans le N-O entre Bongolava et Maevatanana</li>
+                            <li><strong>Sur le plan hygrométrique :</strong> zones sèches dans le S-O de Madagascar</li>
+                            <li><strong>Sur le plan isobarique :</strong> variation de champ de pression</li>
+                        </ul>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <p><em>"Pendant le jour formation de BP et la nuit formation de HP"</em></p>
+                                <p class="text-muted text-sm mt-2">
+                                    <strong>Explication :</strong> Effet thermique diurne classique : chauffage diurne → basse pression ; refroidissement nocturne → haute pression.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 29 -->
+                    <article id="page-29" class="page" aria-labelledby="marker-29">
+                        <div class="page-marker" id="marker-29">Page 29</div>
+                        
+                        <h4>Sujet exposé (plan détaillé)</h4>
+                        <ol>
+                            <li>Domaine climatique du Nord - caractéristique</li>
+                            <li>Domaine Nord - conséquence sur le plan naturel et humain</li>
+                            <li>Domaine climatique du N-O - caractéristique</li>
+                            <li>Domaine N-O - conséquence sur le plan naturel et humain</li>
+                            <li>Domaine des Hautes Terres - caractéristique</li>
+                            <li>Domaine des Hautes Terres - conséquence</li>
+                            <li>Domaine de l'Est - caractéristique</li>
+                            <li>Domaine de l'Est - conséquence</li>
+                            <li>Domaine du Sud - caractéristique</li>
+                            <li>Domaine du Sud - conséquence</li>
+                            <li>Les cyclones tropicaux - DF, caractéristique et conditions de formation</li>
+                            <li>Les cyclones - manifestation et effet</li>
+                            <li>Pluviométrie annuelle à Morondava</li>
+                        </ol>
+                        
+                        <h3>c) La position de Madagascar sur la marge Ouest de l'anticyclone indien subtropical</h3>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                "Mada se trouve à l'Ouest de l'anticyclone de l'OI en conséquence l'Alizé apporte une masse d'air + épaisse avec une grande instabilité"
+                            </div>
+                        </div>
+                        
+                        <p><strong>Explication :</strong> Madagascar est située à l'ouest de l'anticyclone de l'Océan Indien. L'alizé (vent de l'est) qui en provient est chargé d'humidité et instable.</p>
+                        
+                        <p>La position de la surface d'inversion varie en fonction des saisons :</p>
+                        <ul>
+                            <li>Plus basse pendant la saison sèche et fraîche</li>
+                            <li>Plus haute pendant la saison chaude et pluvieuse</li>
+                        </ul>
+                        
+                        <p class="text-muted text-sm">Explication : La couche d'inversion (qui freine la convection) change d'altitude selon les saisons.</p>
+                    </article>
+
+                    <!-- Page 30 -->
+                    <article id="page-30" class="page" aria-labelledby="marker-30">
+                        <div class="page-marker" id="marker-30">Page 30</div>
+                        
+                        <h2>Climatologie de Madagascar</h2>
+                        <p class="text-center text-muted">Dynamique climatique et types de temps</p>
+                        <p class="text-center text-sm mb-3">Pages 60 à la fin</p>
+                        
+                        <h3>SUITE DU COURS : CLIMAT DE MADAGASCAR</h3>
+                        
+                        <h4>Influence de l'Alizé (suite)</h4>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-wind"></i>
+                            <div>
+                                <strong>LES INFLUENCES SAISONNIÈRES :</strong> La Mousson et la ZCIT. Le climat de Madagascar est profondément influencé par les interactions entre l'alizé, la mousson et la Zone de Convergence Intertropicale (ZCIT).
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <strong>Rappel :</strong> Madagascar est située à l'ouest de l'anticyclone de l'Océan Indien, ce qui expose la côte est aux alizés humides et instables.
+                            </div>
+                        </div>
+                        
+                        <h3>4 TYPES DE TEMPS À MADAGASCAR</h3>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-cloud-sun-rain"></i> Schéma : Représentation des 4 configurations atmosphériques
+                            </div>
+                            <div class="card-body">
+                                <p>Configuration des régimes de précipitations selon les zones</p>
+                            </div>
+                        </div>
+                        
+                        <h4>Régime pluviométrique en été</h4>
+                        
+                        <div class="two-columns">
+                            <div class="column">
+                                <h5>(1) Partie Nord</h5>
+                                <p><span class="badge badge-success">Pluie de Mousson</span></p>
+                                <p>Influence directe de la mousson d'été venant d'Asie</p>
+                            </div>
+                            <div class="column">
+                                <h5>(2) Partie Sud du Nord</h5>
+                                <p><span class="badge badge-success">Pluie intensifiée par la convergence</span></p>
+                                <p>Zone de rencontre des masses d'air</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 31 -->
+                    <article id="page-31" class="page" aria-labelledby="marker-31">
+                        <div class="page-marker" id="marker-31">Page 31</div>
+                        
+                        <div class="two-columns">
+                            <div class="column">
+                                <h5>(3) Partie Est</h5>
+                                <p><span class="badge badge-success">Pluie de l'Alizé pendant toute l'année</span></p>
+                                <p>Exposition permanente aux alizés humides</p>
+                            </div>
+                            <div class="column">
+                                <h5>(4) Partie Sud</h5>
+                                <p><span class="badge badge-secondary">Zone sèche</span></p>
+                                <p>Subsidence de l'Alizé créant des conditions arides</p>
+                            </div>
+                        </div>
+                        
+                        <h4>Observations particulières</h4>
+                        
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                "Quand le Nord de Mada est affecté par l'anticyclone d'Arabie, il n'y a pas de pluie"
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                "Le Sud de Mada est affecté par un couloir dépressionnaire car la dépression post-frontale du Sud attire la dépression du canal de Mozambique"
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted text-sm">Page 63</p>
+                        
+                        <h3>C. LES AUTRES CENTRES D'ACTION SECONDAIRES</h3>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                "Ils ont une importance locale" - Ces centres d'action secondaires modulent le climat régional de Madagascar.
+                            </div>
+                        </div>
+                        
+                        <h4>1. Le continent Sud-africain</h4>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <p><em>"En hiver, il y a formation de HP thermique (anticyclone du Kalahari) qui se gorge avec la HP de l'OI, d'où formation de centre anticyclonique avec un col sur le Canal de Mozambique"</em></p>
+                                <p class="text-muted text-sm mt-2">
+                                    <strong>Explication :</strong> En hiver, l'anticyclone du Kalahari (Afrique australe) s'intensifie et se connecte avec l'anticyclone de l'Océan Indien, créant une dorsale anticyclonique qui influence le Canal de Mozambique.
+                                </p>
+                                <p class="mt-2"><strong>Conséquence :</strong> "Sur Mada : un régime anticyclonique accentué"</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 32 -->
+                    <article id="page-32" class="page" aria-labelledby="marker-32">
+                        <div class="page-marker" id="marker-32">Page 32</div>
+                        
+                        <h4>2. Centre d'action du Canal de Mozambique</h4>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-water"></i>
+                            <div>
+                                "Dépression du CMoz est d'origine mixte :"
+                            </div>
+                        </div>
+                        
+                        <ul>
+                            <li><strong>Origine thermique :</strong> c'est une mer chaude</li>
+                            <li><strong>Origine dynamique :</strong> ondulation de l'Alizé après le passage sur Madagascar</li>
+                        </ul>
+                        
+                        <p class="text-muted text-sm">Explication : La dépression du Canal de Mozambique a deux causes : thermique (mer chaude) et dynamique (ondulation de l'alizé).</p>
+                        
+                        <h3>HIVER</h3>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <p><em>"Les couloirs dépressionnaires constitués par la BP du CMoz et la dépression post-frontale tendent à se renforcer."</em></p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <p><em>"Elle attire la BP équatoriale et apporte sur la côte Ouest de Mada un vent chaud et humide donc formation de pluie."</em></p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <p><em>"Lorsque la brise de mer est renforcée, la zone pluvieuse peut s'étendre très loin sur les Hautes Terres (HT)"</em></p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted text-sm">Page 64</p>
+                        
+                        <h3>Mécanisme des pluies en été</h3>
+                        
+                        <div class="alert alert-success">
+                            <i class="fas fa-cloud-rain"></i>
+                            <div>
+                                En été, les pluies proviennent de la convergence entre :
+                                <ul class="mt-2 mb-0">
+                                    <li>La mousson et l'Alizé</li>
+                                    <li>La brise de mer et l'Alizé</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <h4>Cycle diurne de la brise</h4>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Moment</th>
+                                    <th>Configuration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Le matin</td>
+                                    <td>"La zone de convergence se trouve sur la côte."</td>
+                                </tr>
+                                <tr>
+                                    <td>Le soir</td>
+                                    <td>"La convergence se localise à l'intérieur des terres."</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <p class="text-muted text-sm">Explication : Matin = convergence sur la côte (brise de terre faible) ; Soir = convergence à l'intérieur (brise de mer renforcée).</p>
+                    </article>
+
+                    <!-- Page 33 -->
+                    <article id="page-33" class="page" aria-labelledby="marker-33">
+                        <div class="page-marker" id="marker-33">Page 33</div>
+                        
+                        <h3>B. MÉCANISME CLIMATIQUE SAISONNIER</h3>
+                        
+                        <h4>A - Situation en Hiver</h4>
+                        
+                        <h5>a) Influence de la HP de l'Océan Indien</h5>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-snowflake"></i> Schéma : Configuration hivernale avec anticyclone
+                            </div>
+                            <div class="card-body">
+                                <p>Dominance de l'anticyclone de l'Océan Indien en hiver</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <p><em>"Les dorsales s'étendent sur Mada. Formation de talweg sur le CMoz. Il souffle un flux d'Est généralisé sur Mada, épais de 5000 à 6000 m"</em></p>
+                                <p class="text-muted text-sm mt-2">
+                                    <strong>Explication :</strong> En hiver, l'anticyclone de l'OI domine avec un flux d'est généralisé (alizé) d'une épaisseur de 5-6 km.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-muted text-sm">Page 65</p>
+                        
+                        <h5>Caractéristiques hivernales</h5>
+                        
+                        <div class="alert alert-info">
+                            <ul class="mb-0">
+                                <li>"Formation de talweg (zone de basse pression allongée) sur le CMoz"</li>
+                                <li>"La subsidence de l'Alizé est basse. L'Alizé est stable"</li>
+                                <li>"Les pluies sont uniquement localisées sur le versant oriental"</li>
+                            </ul>
+                        </div>
+                        
+                        <h5>Distribution des précipitations en hiver</h5>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Zone</th>
+                                    <th>Précipitations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Versant oriental</td>
+                                    <td><span class="badge badge-success">Pluies (versant au vent)</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Versant occidental</td>
+                                    <td><span class="badge badge-secondary">Beau temps (effet de foehn)</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Hautes Terres</td>
+                                    <td>Pluies qui s'affaiblissent</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>Conclusion :</strong> "Donc en hiver, on a une zone pluvieuse à l'Est et beau temps à l'Ouest"
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 34 -->
+                    <article id="page-34" class="page" aria-labelledby="marker-34">
+                        <div class="page-marker" id="marker-34">Page 34</div>
+                        
+                        <h5>b) Influence de la dépression post-frontale du Sud</h5>
+                        
+                        <h6>Effets observés</h6>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <ul>
+                                    <li>"Cette influence fait remonter les dorsales vers le nord et il y a baisse de pluviométrie sur le Sud-Est"</li>
+                                    <li>"Dans l'extrême Nord de Mada, il y a possibilité de pluie"</li>
+                                    <li>"Et sur Tuléar, il y a des pluies apportées par l'anticyclone mobile polaire si la masse est assez humide. D'ailleurs, il y a du beau temps"</li>
+                                    <li>"Les dorsales se maintiennent au Nord de Mada, d'où formation de pluies orographiques"</li>
+                                    <li>"L'extrême sud-Est connaît des pluies orographiques post-frontales"</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <p><em>"Lorsque les 2 anticyclones : HP de l'OI et Anticyclone mobile polaire se roulent"</em></p>
+                                <p class="text-muted text-sm mt-2">Cette configuration particulière crée des conditions météorologiques spécifiques.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="two-columns">
+                            <div class="column text-center">
+                                <h6>Alizé au Sud</h6>
+                                <p>L'Alizé au Sud de Madagascar apporte de la pluie</p>
+                            </div>
+                            <div class="column text-center">
+                                <h6>BP du CMoz</h6>
+                                <p>La Basse Pression du Canal de Mozambique apporte la pluie sur le Nord-Ouest</p>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info text-center">
+                            <strong>Convergence</strong>
+                            <p class="mb-0">La convergence apporte des pluies sur différentes régions</p>
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                "Lorsqu'il y a surgeline, le Sud-Ouest peut recevoir des pluies" - La surgeline (ligne de discontinuité) peut apporter des précipitations exceptionnelles au Sud-Ouest.
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Page 35 -->
+                    <article id="page-35" class="page" aria-labelledby="marker-35">
+                        <div class="page-marker" id="marker-35">Page 35</div>
+                        
+                        <h2>RÉSUMÉ</h2>
+                        
+                        <div class="alert alert-success">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <strong>Fin du cours de Climatologie Tropicale</strong>
+                                <p class="mb-0 mt-2">Ce document couvre l'ensemble des concepts fondamentaux de la climatologie tropicale, de la dynamique atmosphérique générale à la climatologie régionale de Madagascar.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">Points clés à retenir</div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>La zone tropicale est caractérisée par un bilan radiatif excédentaire</li>
+                                    <li>Les alizés et la ZCIT structurent la circulation atmosphérique</li>
+                                    <li>La mousson est un phénomène saisonnier lié au contraste thermique mer/continent</li>
+                                    <li>Madagascar présente une grande diversité climatique due à sa position géographique et sa topographie</li>
+                                    <li>Les influences océaniques (courants marins) modulent significativement le climat</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <footer role="contentinfo">
+        <p><strong>CLIMATOLOGIE - Cours complet</strong></p>
+        <p>Document intégral - Conversion HTML optimisée</p>
+        <p class="text-sm">Accessibilité : AA | Contraste optimisé | Navigation au clavier | Responsive</p>
+    </footer>
+
+    <!-- Watermark -->
+    <div class="watermark">Randriamanantsoa Manambina Jasiela JAH KOB</div>
+
+    <script>
+        // Barre de progression de lecture
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("reading-progress").style.width = scrolled + "%";
+        });
+
+        // Navigation active au scroll
+        const sections = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
