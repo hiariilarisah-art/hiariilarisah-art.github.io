@@ -1,0 +1,2752 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0c0e1b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Géologie de Madagascar - Cours Complet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0c15;
+            --secondary: #121628;
+            --tertiary: #1a1e3a;
+            --accent: #ff6b35;
+            --accent-light: #ff8c42;
+            --gold: #ffd700;
+            --amber: #ffaa00;
+            --cyan: #00d4ff;
+            --emerald: #00e676;
+            --purple: #b967ff;
+            --rose: #ff4081;
+            --text: #ffffff;
+            --text-muted: #8b92b4;
+            --text-dark: #4a5070;
+            --gradient-1: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            --gradient-2: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            --gradient-3: linear-gradient(135deg, #00e676 0%, #00c853 100%);
+            --gradient-4: linear-gradient(135deg, #b967ff 0%, #7c4dff 100%);
+            --gradient-5: linear-gradient(135deg, #ff4081 0%, #f50057 100%);
+            --gradient-6: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+            --shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
+            --shadow-glow: 0 0 60px rgba(255, 107, 53, 0.4);
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-universe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(185, 103, 255, 0.1) 0%, transparent 70%),
+                var(--primary);
+            overflow: hidden;
+        }
+
+        .bg-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: twinkle 5s ease-in-out infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Floating Crystals */
+        .crystals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .crystal {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 25px solid rgba(255, 107, 53, 0.2);
+            animation: floatCrystal 20s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.5));
+        }
+
+        @keyframes floatCrystal {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg) scale(0.5);
+            }
+        }
+
+        /* App Container */
+        #app {
+            max-width: 100%;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 90px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 12, 21, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 0.75rem 1.5rem;
+            background: rgba(10, 12, 21, 0.95);
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-glow);
+            animation: crystalPulse 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.4));
+        }
+
+        @keyframes crystalPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(5deg); }
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .icon-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 14px;
+            border: none;
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: rgba(255, 107, 53, 0.2);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .icon-btn:hover::before {
+            opacity: 1;
+        }
+
+        /* Navigation Drawer */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 85%;
+            max-width: 420px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--tertiary) 100%);
+            z-index: 2001;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-drawer.active {
+            transform: translateX(0);
+        }
+
+        .nav-header {
+            padding: 3rem 2rem;
+            background: var(--gradient-1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+            animation: rotate 25s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .nav-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-content {
+            padding: 2rem 1.25rem;
+        }
+
+        .nav-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .nav-section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            padding: 0 1rem;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            margin: 0.5rem 0;
+            border-radius: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text);
+            background: var(--glass);
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 107, 53, 0.15);
+            border-color: rgba(255, 107, 53, 0.3);
+            transform: translateX(8px);
+        }
+
+        .nav-item-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            font-family: 'Playfair Display', serif;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-item:nth-child(1) .nav-item-icon { background: var(--gradient-1); }
+        .nav-item:nth-child(2) .nav-item-icon { background: var(--gradient-2); }
+        .nav-item:nth-child(3) .nav-item-icon { background: var(--gradient-3); }
+        .nav-item:nth-child(4) .nav-item-icon { background: var(--gradient-4); }
+        .nav-item:nth-child(5) .nav-item-icon { background: var(--gradient-5); }
+        .nav-item:nth-child(6) .nav-item-icon { background: var(--gradient-6); }
+
+        .nav-item-content {
+            flex: 1;
+        }
+
+        .nav-item-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .nav-item-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 107, 53, 0.15);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--accent-light);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-light) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s ease 0.1s both;
+            text-shadow: 0 0 100px rgba(255, 107, 53, 0.4);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            line-height: 1.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3.5rem;
+            margin-top: 3.5rem;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .stat {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat::after {
+            content: '';
+            position: absolute;
+            right: -1.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(180deg, transparent, rgba(255,255,255,0.2), transparent);
+        }
+
+        .stat:last-child::after {
+            display: none;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 0.75rem;
+            font-weight: 500;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Rock Types Preview */
+        .rocks-preview {
+            padding: 2rem 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .rocks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .rock-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .rock-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow);
+        }
+
+        .rock-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .rock-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .rock-example {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Chapters Section */
+        .chapters-section {
+            padding: 3rem 1.5rem 5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            color: var(--text);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .chapters-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .chapter-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            padding: 2.25rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .chapter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+        }
+
+        .chapter-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .chapter-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .chapter-number {
+            width: 70px;
+            height: 70px;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .chapter-number::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 100%);
+        }
+
+        .chapter-card:nth-child(1) .chapter-number { background: var(--gradient-1); }
+        .chapter-card:nth-child(2) .chapter-number { background: var(--gradient-2); }
+        .chapter-card:nth-child(3) .chapter-number { background: var(--gradient-3); }
+        .chapter-card:nth-child(4) .chapter-number { background: var(--gradient-4); }
+        .chapter-card:nth-child(5) .chapter-number { background: var(--gradient-5); }
+        .chapter-card:nth-child(6) .chapter-number { background: var(--gradient-6); }
+
+        .chapter-meta {
+            flex: 1;
+        }
+
+        .chapter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .chapter-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .chapter-preview {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            padding-left: 85px;
+        }
+
+        .chapter-arrow {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .chapter-card:hover .chapter-arrow {
+            opacity: 1;
+            right: 1.5rem;
+            background: var(--accent);
+        }
+
+        /* Content Viewer */
+        .content-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary);
+            z-index: 3000;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .content-viewer.active {
+            transform: translateY(0);
+        }
+
+        .viewer-header {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 12, 21, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+        }
+
+        .back-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            border: none;
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.4rem;
+        }
+
+        .back-btn:hover {
+            background: var(--accent);
+            transform: translateX(-3px);
+        }
+
+        .viewer-title {
+            flex: 1;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .viewer-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .viewer-content {
+            padding: 3rem 1.5rem;
+            max-width: 850px;
+            margin: 0 auto;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+            opacity: 0.3;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .content-text {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        .content-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .content-text strong {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(185, 103, 255, 0.15) 100%);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            border-radius: 0 24px 24px 0;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            opacity: 0.08;
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .highlight-box strong {
+            color: var(--accent-light);
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+            margin: 2.5rem 0;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow);
+        }
+
+        .info-card:hover::before {
+            opacity: 1;
+        }
+
+        .info-card-title {
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.15rem;
+        }
+
+        .info-card-content {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .list-custom {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .list-custom li {
+            padding: 1.25rem 0 1.25rem 3rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        .list-custom li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .list-custom li:last-child {
+            border-bottom: none;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.6rem 1.2rem;
+            background: rgba(0, 212, 255, 0.15);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--cyan);
+            margin: 0.4rem;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: rgba(0, 212, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .tags-container {
+            margin: 1.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 3001;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .progress-container.visible {
+            opacity: 1;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-1);
+            width: 0%;
+            transition: width 0.1s;
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        /* Search Modal */
+        .search-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 12, 21, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 4000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.25rem 1.25rem 1.25rem 3.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: var(--text);
+            font-size: 1.2rem;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.3rem;
+        }
+
+        .search-results {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .search-result-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .search-result-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--accent);
+            transform: translateX(10px);
+        }
+
+        .search-result-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+            color: var(--text);
+        }
+
+        .search-result-context {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Favorites */
+        .favorites-empty {
+            text-align: center;
+            padding: 6rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .favorites-empty-icon {
+            font-size: 6rem;
+            margin-bottom: 2rem;
+            opacity: 0.3;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 12, 21, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.5rem calc(0.75rem + env(safe-area-inset-bottom));
+            display: flex;
+            justify-content: space-around;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 16px;
+        }
+
+        .nav-btn.active {
+            color: var(--accent-light);
+            background: rgba(255, 107, 53, 0.15);
+        }
+
+        .nav-btn-icon {
+            font-size: 1.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-btn.active .nav-btn-icon {
+            transform: translateY(-3px);
+        }
+
+        /* Table styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table th {
+            background: rgba(255, 107, 53, 0.2);
+            font-weight: 700;
+            color: var(--accent-light);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Quote block */
+        .quote-block {
+            border-left: 4px solid var(--gold);
+            padding: 2rem 2rem 2rem 2.5rem;
+            margin: 2.5rem 0;
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
+            border-radius: 0 24px 24px 0;
+            font-style: italic;
+            font-size: 1.25rem;
+            position: relative;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.8;
+        }
+
+        .quote-block::before {
+            content: '"';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 6rem;
+            color: var(--gold);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        /* Comparison cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin: 2.5rem 0;
+        }
+
+        .comparison-card {
+            padding: 2rem;
+            border-radius: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+        }
+
+        .comparison-card.a {
+            background: rgba(0, 230, 118, 0.15);
+            border: 2px solid var(--emerald);
+        }
+
+        .comparison-card.b {
+            background: rgba(255, 159, 28, 0.15);
+            border: 2px solid var(--amber);
+        }
+
+        .comparison-label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .comparison-card.a .comparison-label { color: var(--emerald); }
+        .comparison-card.b .comparison-label { color: var(--amber); }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2.5rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-1);
+            border-radius: 4px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 0.5rem;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translateX(-8px);
+            box-shadow: 0 0 0 6px rgba(255, 107, 53, 0.3);
+            border: 3px solid var(--primary);
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .timeline-content {
+            color: var(--text-muted);
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin: 2.5rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            padding: 2rem;
+            border-radius: 24px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-card-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            display: block;
+            text-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .stat-card-label {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary);
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s, visibility 0.8s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-crystal {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            margin: 0 auto 2rem;
+            animation: crystalFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes crystalFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .loader-crystal::before {
+            content: '💎';
+            font-size: 5rem;
+            filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.6));
+        }
+
+        .loader-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .loader-subtext {
+            color: var(--text-muted);
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Definition box */
+        .definition-box {
+            background: linear-gradient(135deg, rgba(185, 103, 255, 0.15) 0%, rgba(255, 107, 53, 0.15) 100%);
+            border: 2px solid rgba(185, 103, 255, 0.3);
+            border-radius: 28px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            position: relative;
+        }
+
+        .definition-box::before {
+            content: 'DÉFINITION';
+            position: absolute;
+            top: -14px;
+            left: 2rem;
+            background: var(--primary);
+            padding: 0 1.25rem;
+            color: var(--purple);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+        }
+
+        .definition-term {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .definition-text {
+            color: var(--text-muted);
+            line-height: 1.9;
+            font-size: 1.1rem;
+        }
+
+        /* Alert box */
+        .alert-box {
+            background: rgba(255, 159, 28, 0.15);
+            border-left: 4px solid var(--amber);
+            padding: 1.75rem;
+            border-radius: 0 20px 20px 0;
+            margin: 2rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+
+        .alert-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .alert-content {
+            flex: 1;
+        }
+
+        .alert-title {
+            font-weight: 700;
+            color: var(--amber);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .alert-text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* Rock type cards in content */
+        .rock-types-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin: 2.5rem 0;
+        }
+
+        .rock-type-card {
+            background: var(--glass);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .rock-type-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .rock-type-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .rock-type-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .rock-type-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+
+        .rock-type-example {
+            font-size: 0.9rem;
+            color: var(--accent-light);
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 5rem;
+            }
+            
+            .chapters-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .viewer-content {
+                padding: 4rem;
+            }
+
+            .rocks-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-in {
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        /* Chapter specific colors */
+        .content-section:nth-child(4n+1)::before { background: var(--gradient-1); }
+        .content-section:nth-child(4n+2)::before { background: var(--gradient-2); }
+        .content-section:nth-child(4n+3)::before { background: var(--gradient-3); }
+        .content-section:nth-child(4n+4)::before { background: var(--gradient-4); }
+
+        .content-section:nth-child(4n+1) .section-icon { background: var(--gradient-1); }
+        .content-section:nth-child(4n+2) .section-icon { background: var(--gradient-2); }
+        .content-section:nth-child(4n+3) .section-icon { background: var(--gradient-3); }
+        .content-section:nth-child(4n+4) .section-icon { background: var(--gradient-4); }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-crystal"></div>
+            <div class="loader-text">Géologie de Madagascar</div>
+            <div class="loader-subtext">Exploration du socle précambrien</div>
+        </div>
+    </div>
+
+    <!-- Background -->
+    <div class="bg-universe"></div>
+    <div class="bg-stars"></div>
+    <div class="crystals" id="crystals"></div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container" id="progressContainer">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- App Container -->
+    <div id="app">
+        <!-- Header -->
+        <header class="header" id="header">
+            <button class="icon-btn" onclick="toggleNav()">☰</button>
+            <div class="logo">
+                <div class="logo-icon">🪨</div>
+                <span>GéoMad</span>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn" onclick="toggleSearch()">🔍</button>
+                <button class="icon-btn" onclick="toggleFavorites()">⭐</button>
+            </div>
+        </header>
+
+        <!-- Navigation Drawer -->
+        <div class="nav-overlay" id="navOverlay" onclick="toggleNav()"></div>
+        <nav class="nav-drawer" id="navDrawer">
+            <div class="nav-header">
+                <div class="nav-title">Plan du Cours</div>
+                <div class="nav-subtitle">6 Chapitres Essentiels</div>
+            </div>
+            <div class="nav-content">
+                <div class="nav-section">
+                    <div class="nav-section-title">Navigation</div>
+                    <a class="nav-item" onclick="showChapter('notions')">
+                        <div class="nav-item-icon">I</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Notions de Base</div>
+                            <div class="nav-item-desc">Définition de la géologie et types de roches</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('madagascar')">
+                        <div class="nav-item-icon">II</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Cas de Madagascar</div>
+                            <div class="nav-item-desc">Socle cristallin et bassins sédimentaires</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('gondwana')">
+                        <div class="nav-item-icon">III</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Madagascar et Gondwana</div>
+                            <div class="nav-item-desc">Le rifting Afro-malgache</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('besairie')">
+                        <div class="nav-item-icon">IV</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Hypothèse de Besairie</div>
+                            <div class="nav-item-desc">3 systèmes orogéniques et nouvelles interprétations</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('aplanissement')">
+                        <div class="nav-item-icon">V</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Surfaces d'Aplanissement</div>
+                            <div class="nav-item-desc">S1, S2, S3 et historique des recherches</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('sedimentaire')">
+                        <div class="nav-item-icon">VI</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Formations Sédimentaires</div>
+                            <div class="nav-item-desc">Du Carbonifère au Quaternaire</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-badge">
+                    <span>🌍</span>
+                    <span>Science de la Terre</span>
+                </div>
+                <h1 class="hero-title">Géologie de<br>Madagascar</h1>
+                <p class="hero-subtitle">Explorez la formation et l'évolution géologique de la Grande Île, du socle précambrien aux bassins sédimentaires post-précambriens.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">6</span>
+                        <span class="stat-label">Chapitres</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">19</span>
+                        <span class="stat-label">Pages</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">300M</span>
+                        <span class="stat-label">Années</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rock Types Preview -->
+            <div class="rocks-preview">
+                <div class="rocks-grid">
+                    <div class="rock-card" onclick="showChapter('notions')">
+                        <div class="rock-icon">🌋</div>
+                        <div class="rock-name">Magmatique</div>
+                        <div class="rock-example">Granite</div>
+                    </div>
+                    <div class="rock-card" onclick="showChapter('notions')">
+                        <div class="rock-icon">🗻</div>
+                        <div class="rock-name">Volcanique</div>
+                        <div class="rock-example">Basalte</div>
+                    </div>
+                    <div class="rock-card" onclick="showChapter('notions')">
+                        <div class="rock-icon">⚡</div>
+                        <div class="rock-name">Métamorphique</div>
+                        <div class="rock-example">Gneiss</div>
+                    </div>
+                    <div class="rock-card" onclick="showChapter('notions')">
+                        <div class="rock-icon">💧</div>
+                        <div class="rock-name">Sédimentaire</div>
+                        <div class="rock-example">Calcaire</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapters Section -->
+            <div class="chapters-section">
+                <div class="section-heading">Explorer les chapitres</div>
+                <div class="chapters-grid" id="chaptersGrid">
+                    <!-- Generated by JS -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Content Viewer -->
+        <div class="content-viewer" id="contentViewer">
+            <div class="viewer-header">
+                <button class="back-btn" onclick="closeViewer()">←</button>
+                <div class="viewer-title" id="viewerTitle">Titre du chapitre</div>
+                <div class="viewer-actions">
+                    <button class="icon-btn" onclick="toggleCurrentFavorite()" id="favBtn">☆</button>
+                    <button class="icon-btn" onclick="shareContent()">↗</button>
+                </div>
+            </div>
+            <div class="viewer-content" id="viewerContent">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+
+        <!-- Search Modal -->
+        <div class="search-modal" id="searchModal">
+            <div class="search-header">
+                <div class="search-input-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Rechercher dans le cours..." oninput="performSearch(this.value)">
+                </div>
+                <button class="icon-btn" onclick="toggleSearch()" style="margin-left: 1rem;">✕</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <!-- Results injected by JS -->
+            </div>
+        </div>
+
+        <!-- Favorites View -->
+        <div class="content-viewer" id="favoritesViewer">
+            <div class="viewer-header">
+                <button class="back-btn" onclick="toggleFavorites()">←</button>
+                <div class="viewer-title">Mes Favoris</div>
+            </div>
+            <div class="viewer-content" id="favoritesContent">
+                <div class="favorites-empty">
+                    <div class="favorites-empty-icon">⭐</div>
+                    <h3>Aucun favori</h3>
+                    <p>Marquez des chapitres pour les retrouver ici</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" onclick="showTab('home')">
+                <span class="nav-btn-icon">🏠</span>
+                <span>Accueil</span>
+            </button>
+            <button class="nav-btn" onclick="showTab('chapters')">
+                <span class="nav-btn-icon">📖</span>
+                <span>Chapitres</span>
+            </button>
+            <button class="nav-btn" onclick="toggleSearch()">
+                <span class="nav-btn-icon">🔍</span>
+                <span>Recherche</span>
+            </button>
+            <button class="nav-btn" onclick="toggleFavorites()">
+                <span class="nav-btn-icon">⭐</span>
+                <span>Favoris</span>
+            </button>
+        </nav>
+    </div>
+
+    <script>
+        // Course Data - Complete content from PDF
+        const courseData = {
+            notions: {
+                title: "I. Notions de Base sur la Géologie",
+                subtitle: "Définition et types de roches",
+                icon: "📚",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">📖</div>
+                            <h2 class="section-title">Définition</h2>
+                        </div>
+                        <div class="definition-box">
+                            <div class="definition-term">La Géologie</div>
+                            <div class="definition-text">
+                                La géologie est une science qui étudie les matériaux composant le globe terrestre et de l'ordre suivant lequel ces matériaux ont été disposés dans le temps et dans l'espace.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🎯</div>
+                            <h2 class="section-title">Intérêt</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Les géographes ont intérêt à connaître les caractéristiques de chaque couche géologique pour comprendre le processus de formation et l'évolution d'un relief. Par exemple :</p>
+                        </div>
+                        
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🪨 La Lithologie</div>
+                                <div class="info-card-content">
+                                    Nature de la roche, sa dureté, épaisseur
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">📐 La Stratigraphie</div>
+                                <div class="info-card-content">
+                                    Superposition permettant d'identifier les séquences sédimentaires à un endroit donné
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong>À l'échelle planétaire</strong>
+                            Le socle cristallin constitue le substrat (base) général des couches géologiques. Ce dernier a connu plusieurs phénomèmes comme l'aplanissement, les cassures (failles), le métamorphisme, le volcanisme...
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">💎</div>
+                            <h2 class="section-title">Les 4 Types de Roches</h2>
+                        </div>
+                        
+                        <div class="rock-types-grid">
+                            <div class="rock-type-card">
+                                <span class="rock-type-icon">🌋</span>
+                                <div class="rock-type-name">ROCHE MAGMATIQUE OU PLUTONIQUE</div>
+                                <div class="rock-type-desc">Roche issue de la solidification du magma en profondeur = roche endogène</div>
+                                <div class="rock-type-example">Ex: Granite</div>
+                            </div>
+                            <div class="rock-type-card">
+                                <span class="rock-type-icon">🗻</span>
+                                <div class="rock-type-name">ROCHE VOLCANIQUE</div>
+                                <div class="rock-type-desc">Roche issue de la solidification du magma en surface après éruption = roche exogène</div>
+                                <div class="rock-type-example">Ex: Basalte</div>
+                            </div>
+                            <div class="rock-type-card">
+                                <span class="rock-type-icon">⚡</span>
+                                <div class="rock-type-name">ROCHE MÉTAMORPHIQUE</div>
+                                <div class="rock-type-desc">Roche résultant de la transformation d'une roche en d'autre roche sous l'action de la chaleur et/ou de la pression</div>
+                                <div class="rock-type-example">Ex: Gneiss, migmatite</div>
+                            </div>
+                            <div class="rock-type-card">
+                                <span class="rock-type-icon">💧</span>
+                                <div class="rock-type-name">ROCHE SÉDIMENTAIRE</div>
+                                <div class="rock-type-desc">Roche issue des dépôts successifs de sédiments</div>
+                                <div class="rock-type-example">Ex: L'argile, calcaire</div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            madagascar: {
+                title: "II. Cas de Madagascar",
+                subtitle: "Socle cristallin et bassins sédimentaires",
+                icon: "🏝️",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🗺️</div>
+                            <h2 class="section-title">Répartition Géologique</h2>
+                        </div>
+                        
+                        <div class="comparison-grid">
+                            <div class="comparison-card a">
+                                <div class="comparison-label">🟤 2/3 de l'île (Est)</div>
+                                <div style="margin-top: 1rem; text-align: left;">
+                                    <strong>Socle cristallin</strong> (HTC et Est) d'âge Précambrien<br><br>
+                                    Le socle malgache est généralement constitué des <strong>migmatites</strong> et fortement marqué par des <strong>failles</strong>
+                                </div>
+                            </div>
+                            <div class="comparison-card b">
+                                <div class="comparison-label">🟡 1/3 de l'île (Ouest)</div>
+                                <div style="margin-top: 1rem; text-align: left;">
+                                    <strong>Bassins sédimentaires</strong> comme le Boma et le Karroo<br><br>
+                                    Constitué d'assises sédimentaires non plissées
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">⛰️</div>
+                            <h2 class="section-title">Influence sur le Relief</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Bref, ces différentes couches géologiques conditionnent les formes superficielles ainsi résulte le relief :</p>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🏔️ Relief Primitif</div>
+                                <div class="info-card-content">
+                                    Un relief qui n'est pas touché par l'érosion, comme le Massif de l'Ankaratra
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🗻 Relief Dérivé</div>
+                                <div class="info-card-content">
+                                    Résulte de l'action de l'érosion sur le relief primitif, comme les buttes témoin et avant-butte. Ex: Le grès de l'Isalo
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🏕️ Relief Arasé</div>
+                                <div class="info-card-content">
+                                    Relief totalement détruit par l'érosion mais peut rajeunir par l'acte tectonique comme les surfaces d'aplanissement. Ex: Plateau de Tampoketsa, plateau de l'Ihorombe
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            gondwana: {
+                title: "III. Madagascar et Gondwana : Le Rifting Afro-malgache",
+                subtitle: "Formation et séparation du supercontinent",
+                icon: "🌍",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌎</div>
+                            <h2 class="section-title">Appartenance à la Zone Mobile Mozambicaine</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Avant sa séparation de l'Afrique, l'île scar (Madagascar) appartenait en grande partie à la <strong>zone mobile mozambicaine</strong> ou ceinture géologique. Elle a subi divers phénomènes géologiques dont les plus marquants sont :</p>
+                        </div>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-title">Orogenèse Ubéienne</div>
+                                <div class="timeline-content">
+                                    1370-1310 Ma (Millions d'années)
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">Orogenèse Panafricaine</div>
+                                <div class="timeline-content">
+                                    900-500 Ma<br>
+                                    Ces événements tectono-métamorphiques ont affecté tout le continent Africain et ont entraîné des changements de la nature pétrographique des roches.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong>Manifestation géologique</strong>
+                            L'appartenance de Madagascar à la ceinture Mozambicaine se manifeste entre autres par l'<strong>orientation sub-méridiènne des formations</strong>.
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">⚡</div>
+                            <h2 class="section-title">Le Rifting Afro-malgache</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Madagascar s'était formé à la suite de la <strong>dislocation du supercontinent Gondwana</strong> auquel il appartenait jusqu'à la fin du Mésozoïque.</p>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="definition-term">Définition</div>
+                            <div class="definition-text">
+                                L'appartenance et la situation de Madagascar par rapport à l'Afrique ne souffre plus actuellement de contestation. Des arguments (stratigraphiques, paléontologiques, structuraux, géophysiques, morphologiques) militent en faveur de cette hypothèse :
+                            </div>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🪨 Similitude Stratigraphique</div>
+                                <div class="info-card-content">
+                                    Similitude entre les séries sédimentaires du Karroo en Afrique du Sud et Tanzanie d'une part et les séries sédimentaires continentales des bassins de Morondava et de Majunga d'autre part
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🧲 Concordance Paléomagnétique</div>
+                                <div class="info-card-content">
+                                    Concordance entre les pôles magnétiques mesurés sur roches d'âge Karroo de Madagascar et de l'Afrique australe
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">📐 Concordance Structurale</div>
+                                <div class="info-card-content">
+                                    Concordance entre les déformations des roches du socle ancien de Madagascar et celles de la ceinture Mozambicaine
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🗺️ Concordance des Côtes</div>
+                                <div class="info-card-content">
+                                    Concordance des lignes de côtes Est Africaine et Malgache
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            besairie: {
+                title: "IV. Formation et Évolution des Roches Métamorphiques",
+                subtitle: "Hypothèse de Besairie et nouvelles interprétations",
+                icon: "⚗️",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">👨‍🔬</div>
+                            <h2 class="section-title">I. Hypothèse de Besairie</h2>
+                        </div>
+                        <div class="content-text">
+                            <p><strong>Besairie</strong> était le pionnier de la géologie malgache. Il a reconnu et défini <strong>3 grands systèmes orogéniques et métamorphiques</strong> dans le socle, du plus ancien au plus récent.</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1.5rem;">Les 3 Systèmes de Besairie</h3>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-title">Système d'Andriamena (à la base)</div>
+                                <div class="timeline-content">
+                                    <strong>Système ultra-métamorphique</strong>, c'est-à-dire que son degré de métamorphisme est très élevé.
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">Système de Graphite (en position médiane)</div>
+                                <div class="timeline-content">
+                                    Système ± métamorphique.
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">Système de Vohibory (au sommet)</div>
+                                <div class="timeline-content">
+                                    Système - métamorphique.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong>Âge de l'Orogenèse</strong>
+                            Ces 3 systèmes sont plissés et métamorphisés lors d'une orogenèse majeure autour de <strong>2600 Ma</strong> (millions d'années).
+                        </div>
+
+                        <div class="alert-box">
+                            <div class="alert-icon">📍</div>
+                            <div class="alert-content">
+                                <div class="alert-title">Série SQC (Shisto-Quartzo-Calcaire)</div>
+                                <div class="alert-text">Au-dessus de ces 3 systèmes, on trouve la série SQC localisée surtout dans le Centre-Sud, notamment dans le calcaire de l'Itermo et d'Ambatofinandrahana, c'est-à-dire dans la région de Fianarantsoa.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🔬</div>
+                            <h2 class="section-title">II. Nouvelles Interprétations</h2>
+                        </div>
+                        <div class="content-text">
+                            <p><strong>Selon Collins et al. (2001)</strong></p>
+                            <p>Depuis un peu plus d'une vingtaine d'années, un regain d'intérêt sur la géologie de Madagascar est apparu, surtout chez les universitaires nationaux. La perception de la géologie de Madagascar est en train d'évoluer.</p>
+                            <p>De nouvelles mesures de datation de roches ont été faites. Ainsi, d'après les études effectuées par Collins, <strong>le socle cristallin malgache est globalement subdivisé en 7 blocs tectoniques</strong> :</p>
+                        </div>
+
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>Bloc Tectonique</th>
+                                    <th>Caractéristiques Principales</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Bloc d'Antongil</td>
+                                    <td>Constitué des formations + anciennes de Madagascar. On y trouve une similitude du craton de Dharwar en Inde. Cette partie de l'île est considérée comme une relique de ce dernier.</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Bloc d'Antananarivo</td>
+                                    <td>Formé d'orthogneiss avec intrusion de ceinture granitique datée entre 830 et 720 Ma. Ce bloc est associé à un métamorphisme de haute intensité.</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>La structure Bongolava</td>
+                                    <td>C'est une formation qui se trouve le long du contact entre l'Antongil et le bloc d'Antananarivo. Ce sont des formations encaissantes de Marampoty et Beforona.</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>La formation de Tsaratanana</td>
+                                    <td>Elle est composée de gneiss et des roches métasédimentaires qui se superposent avec le bloc d'Antananarivo. D'Ouest en Est, on trouve la formation d'Andavakatanamana (série de Vohibory).</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Le bloc de l'Ihorombe</td>
+                                    <td>C'est une formation qui se localise au Sud-Ouest du bloc d'Antananarivo. Il s'agit de l'ancienne série SQC de Besairie. Ces formations sont directement au-dessus des formations du bloc d'Antananarivo.</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>La formation de Bernarivo</td>
+                                    <td>Elle est la moins connue. Cette formation se situe à l'extrême Nord de Madagascar. Elle se place au-dessus des formations du bloc Antongil.</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Le bloc Sud</td>
+                                    <td>Il regroupe toutes les formations au Sud de la faille de Ranotsara. D'Est en Ouest, on a: la série d'Androy, la série de Graphite et la série de Vohibory.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                `
+            },
+            aplanissement: {
+                title: "V. Les Surfaces d'Aplanissement",
+                subtitle: "S1, S2, S3 et historique des recherches",
+                icon: "🏔️",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🏔️</div>
+                            <h2 class="section-title">Introduction</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>À Madagascar, il existe des <strong>surfaces d'aplanissement</strong> qui ont été construites à partir des grands cycles morphogénétiques, et ces cycles ont modelé une topographie.</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong>Historique des Recherches</strong>
+                            Vers la fin des années 60, <strong>Michel PETIT</strong> a amélioré les explications sur les surfaces d'aplanissement à Madagascar, qu'il a subdivisées en 4 niveaux.
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">1️⃣</div>
+                            <h2 class="section-title">Surface S1 (ou niveau fondamental)</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>C'est la <strong>surface fondamentale</strong> qui s'est formée vers la fin du Crétacé et début Tertiaire. Cette aplanissement général résulte d'une crise morphogénétique + l'action de...</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 1.5rem 0 1rem;">Caractéristiques de la Surface S1</h3>
+                        <ul class="list-custom">
+                            <li><strong>Altitude générale : 2200m</strong></li>
+                            <li>Caractérisée par des aversants abrupts</li>
+                            <li>Fort encaissement du système hydrographique</li>
+                            <li>C'est-à-dire que les cours d'eau se trouvent en profondeur</li>
+                            <li><strong>Exemples :</strong> Tsampobetsa de l'Ambazabe, d'Anjozorobe, plateau de Sahamiaty</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">2️⃣</div>
+                            <h2 class="section-title">Surface S2 (ou niveau intermédiaire)</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>(Mi-tertiaire) Elle est formée à la suite d'une nouvelle crise morphologique, c'est-à-dire qu'une <strong>érosion différentielle</strong> a provoqué un aplanissement.</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 1.5rem 0 1rem;">Caractéristiques de la Surface S2</h3>
+                        <ul class="list-custom">
+                            <li>Présence des interfluves se reliant avec des bas-fonds peu développés</li>
+                            <li><strong>Altitude entre 1150 et 1600m</strong></li>
+                            <li>Encaissement du système hydrographique moyen</li>
+                            <li>Existence de dômes de granite</li>
+                            <li><strong>Exemples :</strong> Miarinariaso, Fianarantsoa, Ambositra</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">3️⃣</div>
+                            <h2 class="section-title">Surface S3 (ou niveau supérieur)</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Formée au fin tertiaire, il s'agit d'une <strong>surface d'aplanissement à évolution lente</strong>, œuvre de l'érosion superficielle sur les...</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 1.5rem 0 1rem;">Caractéristiques de la Surface S3</h3>
+                        <ul class="list-custom">
+                            <li>Affleurement des roches tendres comme le gneiss ou migmatite</li>
+                            <li>Si la formation se trouve sur une roche dure, cette roche dure est fragilisée par le manteau latéritique</li>
+                            <li><strong>Altitude entre 820 et 1200m</strong></li>
+                            <li>C'est dans cette S3 que la S2 évolue, c'est-à-dire que S2 est associée à S3</li>
+                            <li>En effet, c'est le versant de la S3 qui a été hérité pour former la S2 et qui s'est généralisé au quaternaire</li>
+                            <li><strong>Exemple :</strong> Le Sud d'Ihorombe</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">📝</div>
+                            <h2 class="section-title">Synthèse</h2>
+                        </div>
+                        <div class="quote-block">
+                            La S1 et ses reliefs forment les bases de la HTC. La S2 a connu une évolution inachevée. La S3 a connu une reprise tardive de l'érosion. La S4 est une formation très...
+                        </div>
+                    </div>
+                `
+            },
+            sedimentaire: {
+                title: "VI. Formations Sédimentaires Post-précambriennes",
+                subtitle: "Du Carbonifère au Quaternaire",
+                icon: "🗻",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">📖</div>
+                            <h2 class="section-title">Introduction Générale</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>La partie occidentale de Madagascar est constituée d'<strong>assises sédimentaires non plissées</strong> s'étageant du <strong>Carbonifère au Quaternaire</strong>.</p>
+                            <p>Il existe <strong>2 bassins principaux</strong> : le bassin de Majunga (ou du Boina) et le bassin de Morondava-Tuléar (ou du Menabe).</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Caractéristiques Générales</h3>
+                        <ul class="list-custom">
+                            <li>Les séries sédimentaires sont <strong>± concordantes</strong> avec un léger pendage vers l'Ouest</li>
+                            <li>Elles présentent des <strong>faciès marins</strong> (peu ou moyennement profonds)</li>
+                            <li>Des <strong>faciès continentaux ou mixtes</strong> suivant les retraits et avancées successives de la mer</li>
+                            <li>On commence à avoir quelques <strong>sédiments marins significatifs au Trias</strong>, date avant laquelle Madagascar était soudée à l'Afrique</li>
+                            <li>Une <strong>importante phase basaltique</strong> s'intercale dans le sédimentaire entre le Crétacé moyen et le Crétacé supérieur. On observe alors un dépôt sableux appelé <strong>carapace sableuse</strong> par les géologues malgaches. Sur cette carapace sableuse se sont formés des <strong>sables mieux</strong> qui sont omniprésents dans le Nord-Ouest et Sud-Ouest du pays.</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌋</div>
+                            <h2 class="section-title">I. Les Formations Continentales du Karroo</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Le <strong>Karroo</strong> est une formation continentale à dominante gréseuse qui a été définie et nommée en Afrique Australe et dont on trouve des équivalents à Madagascar.</p>
+                            <p>Cette série commence au <strong>Carbonifère</strong> (ère secondaire) et se termine au <strong>Jurassique moyen</strong>. L'accumulation continentale s'est produite dans les bassins d'effondrement, ce qui explique la grande épaisseur des sédiments surtout au Sud.</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Subdivision du Karroo à Madagascar</h3>
+                        <div class="content-text">
+                            <p>Le Karroo à Madagascar est divisé classiquement en <strong>3 groupes</strong> :</p>
+                        </div>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-title">1. Le Groupe de la Sakoa</div>
+                                <div class="timeline-content">
+                                    <strong>(Carbonifère au début Permien)</strong><br>
+                                    À la base, il est composé d'une série glaciaire (Permo-triasique), puis de couches de charbon et enfin d'argilite schisteuse rougeâtre. Ces formations très élevées (bad land) sont localisées surtout dans le Sud du bassin de Morondava.
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">2. Le Groupe de la Sakamena</div>
+                                <div class="timeline-content">
+                                    <strong>(Permo-Trias)</strong><br>
+                                    Composé de grès, schistes et argilites, il forme un bande assez régulière de 5 à 30 km de large, localement appuyé contre le socle dans tout le bassin de Morondava-Tuléar. Ces roches tendres sont soumises à une érosion...
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">3. Le Groupe de l'Isalo</div>
+                                <div class="timeline-content">
+                                    <strong>(Trias au Jurassique moyen)</strong><br>
+                                    Constitué essentiellement de grès et schistes à stratification entrecroisée, associé à des grès argileux et des argiles. On l'a subdivisé en 3 étages :
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 style="color: var(--accent-light); margin: 2rem 0 1rem;">Isalo I (Trias)</h4>
+                        <div class="content-text">
+                            <p>C'est le plus gréseux et tendre. Ces grès forment des massifs comme celui du <strong>Makay</strong> (centre Ouest).</p>
+                        </div>
+
+                        <h4 style="color: var(--accent-light); margin: 2rem 0 1rem;">Isalo II (Lias)</h4>
+                        <div class="content-text">
+                            <p>Composé de grès fins, de grès argileux et d'argiles. Les massifs de l'Isalo dans le Sud sont constitués par ces grès. En général, ils sont peu consolidés et d'une importante érosion les...</p>
+                        </div>
+
+                        <h4 style="color: var(--accent-light); margin: 2rem 0 1rem;">Isalo III (Lias supérieur au Jurassique moyen)</h4>
+                        <div class="content-text">
+                            <p>Cette étage possède dans son ensemble un <strong>faciès mixte</strong>, c'est-à-dire une alternance de formation continentale (grès siliceux à stratification entrecroisée, grès argileux) et marine (marne, gypse, grès).</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌊</div>
+                            <h2 class="section-title">II. Les Jurassiques Marin</h2>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 1rem 0;">Jurassique Moyen</h3>
+                        <div class="content-text">
+                            <p>S'observent sur toute la façade occidentale de Madagascar. Ils se remarquent dans le paysage par un <strong>cuesta regardant vers l'Est au Sud-Est</strong>, dans lequel domine les formations gréseuses de...</p>
+                            <p>Le Jurassique moyen est composé de <strong>calcaire marneux ou de calcaire cristallin</strong> et ces derniers donnent des reliefs karstiques tels que <strong>"Tsingy"</strong> (l'Ankarana au Nord et Bemaraha à...).</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Jurassique Supérieur (Kimmeridgien, Tithonien, Oxfordien)</h3>
+                        <div class="content-text">
+                            <p>Ne s'observe qu'au Sud de la Tsiribihina et formé essentiellement de <strong>marnes, gypse, calcaires</strong>. Il est à l'origine des formations des Horst et...</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🦕</div>
+                            <h2 class="section-title">III. Les Formations du Crétacé</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Le Crétacé malgache a vu une <strong>alternance de régression et l'avancée marine assez profonde</strong>. Entre le Crétacé moyen et le Crétacé supérieur s'intercale une importante épisode volcanique à épanchement de...</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">1. Le Crétacé Inférieur et Moyen (anté-basaltique)</h3>
+                        <div class="content-text">
+                            <p><strong>(Hauterivien à Cénomanien)</strong></p>
+                            <p>Il est composé essentiellement de <strong>grès siliceux à stratification entrecroisée</strong>, mais on trouve aussi des marnes ainsi que de l'argile (ex.: le grès d'Ambarafantsika dans le bassin de Majunga, le calcaire d'Amalavelona dans le bassin de...).</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">2. Le Crétacé Supérieur (post-basaltique)</h3>
+                        <div class="content-text">
+                            <p><strong>(Maestrichtien à Danien)</strong></p>
+                            <p>Qui commence après les <strong>basaltes fissuraux</strong> de la fin du Crétacé moyen, à dominante gréseuse et...</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🐚</div>
+                            <h2 class="section-title">IV. Les Formations Tertiaires</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Ce sont des <strong>calcaires</strong> qui peuvent être purs, marneux, ou gréseux. Les affleurements les plus vastes sont situés au Sud et à l'intérieur des...</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 1.5rem 0 1rem;">Exemples de Plateaux Tertiaires</h3>
+                        <ul class="list-custom">
+                            <li>Plateau de Mahafaly</li>
+                            <li>Plateau de Befandriana</li>
+                        </ul>
+                        <p style="color: var(--text-muted); margin-top: 1rem;">Ils sont bien représentés dans le bassin de...</p>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🏜️</div>
+                            <h2 class="section-title">V. Les Formations Continentales Plioquaternaires</h2>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 1rem 0;">1. Les Sables Roux</h3>
+                        <div class="content-text">
+                            <p>Toutes les parties occidentales où elle est marquée par l'existence d'une <strong>couverture continentale désertique gréseuse mal consolidée</strong> que les géologues ont appelée <strong>carapace sableuse</strong>.</p>
+                            <p>Cette formation qui peut atteindre <strong>100 à 200m d'épaisseur</strong> date de la fin Tertiaire probablement au <strong>Pléistocène</strong>. Ces matériaux proviennent d'une phase d'érosion majeure du socle Précambrien qui pourrait résulter d'un <strong>soulèvement isostatique important</strong> au cours du...</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">2. Les Alluvions et Dépôts d'Effondrement</h3>
+                        <div class="content-text">
+                            <p>La fracturation en extension vers la fin Tertiaire des Hautes Terres a provoqué des <strong>effondrements en fossé tectonique</strong> dont les 3 principaux exemples d'alluvions lacustres et fluviales :</p>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🌊 Alaotra-Mangoro</div>
+                                <div class="info-card-content">(Amkay)</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🏞️ Antsirabe</div>
+                                <div class="info-card-content">(Est et Sud d'Antsirabe)</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">💧 Ranotsara</div>
+                                <div class="info-card-content">Bassin d'effondrement majeur</div>
+                            </div>
+                        </div>
+
+                        <div class="content-text">
+                            <p>Dans ces 3 grands bassins mais aussi d'autres bassins d'effondrement locaux plus petits (Antanety, Sambava, Anjozoro) se sont accumulés des <strong>alluvions argileuses</strong> qui sont actuellement en...</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🆕</div>
+                            <h2 class="section-title">VI. Les Formations Actuelles Quaternaires</h2>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 1rem 0;">1. Les Alluvions Fluvio-marines</h3>
+                        <div class="content-text">
+                            <p>Ce sont les <strong>dépôts terminaux argileux des fleuves</strong> sur la façade occidentale et gagnant la mer. Elles sont occupées par une végétation de <strong>mangrove (palétuviers)</strong> ou constituées de zone sursalée...</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">2. Les Formations Littorales</h3>
+                        <div class="content-text">
+                            <p>Dans la côte Est, la mer a subi des phases de <strong>transgression et de régression</strong> avec une part de dépôts de plages dominé par les grès et calcaire de dune au dessus de ces...</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Terrasses Alluviales sur les HT</h3>
+                        <div class="content-text">
+                            <p>Sur les Hautes Terres, au dessus des niveaux de basalts actuels (plaine, bas fonds, rizières en inondables matérialisés), se trouve généralement des <strong>terrasses attribuées à des périodes + sèches et érosive du quaternaire</strong> :</p>
+                        </div>
+                        <ul class="list-custom">
+                            <li>Le Mahamasinjen</li>
+                            <li>Le Sambanin</li>
+                        </ul>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Caractéristiques des Niveaux Colluviaux Actuels</h3>
+                        <ul class="list-custom">
+                            <li>La riziculture est de + souvent argileuse dans les plaines et petits bas fonds</li>
+                            <li>Au contact sol sédimentaire dans la dépression périphérique, les grands fleuves des HT déchargent leur sable limono-micas et inondent les grands plaines alluviales (Betsiboka)</li>
+                            <li>Dans la partie Est, les rivières déposent des galets, sables, argiles. Les estuaires des rivières sur les littorales forment de longues langues et des plaines argileuses</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">📝</div>
+                            <h2 class="section-title">Résumé Chronostratigraphique</h2>
+                        </div>
+                        <div class="quote-block">
+                            La couverture sédimentaire de Madagascar s'étage sur plus de <strong>300 millions d'années</strong>, du Carbonifère au Quaternaire, avec une alternance complexe de phases continentales (Karroo, Isalo) et marines (Jurassique, Crétacé, Tertiaire), ponctuée par des épisodes volcaniques majeurs (basaltes du Crétacé) et structurée par les mouvements tectoniques.
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // State management
+        let favorites = JSON.parse(localStorage.getItem('geo_mad_favorites') || '[]');
+        let currentChapter = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderChapters();
+            createCrystals();
+            updateFavoritesView();
+            
+            // Hide loader
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 2500);
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+
+        // Create floating crystals
+        function createCrystals() {
+            const container = document.getElementById('crystals');
+            for (let i = 0; i < 15; i++) {
+                const crystal = document.createElement('div');
+                crystal.className = 'crystal';
+                crystal.style.left = Math.random() * 100 + '%';
+                crystal.style.animationDelay = Math.random() * 20 + 's';
+                crystal.style.animationDuration = (15 + Math.random() * 10) + 's';
+                container.appendChild(crystal);
+            }
+        }
+
+        // Render chapter cards
+        function renderChapters() {
+            const grid = document.getElementById('chaptersGrid');
+            const chapters = [
+                { id: 'notions', num: 'I', title: 'Notions de Base', desc: 'Définition et types de roches', preview: 'La géologie étudie les matériaux composant le globe terrestre...' },
+                { id: 'madagascar', num: 'II', title: 'Cas de Madagascar', desc: 'Socle cristallin et bassins sédimentaires', preview: '2/3 de l\'île : socle cristallin, 1/3 : bassins sédimentaires...' },
+                { id: 'gondwana', num: 'III', title: 'Madagascar et Gondwana', desc: 'Le rifting Afro-malgache', preview: 'Dislocation du supercontinent Gondwana et appartenance à la ceinture Mozambicaine...' },
+                { id: 'besairie', num: 'IV', title: 'Hypothèse de Besairie', desc: '3 systèmes orogéniques', preview: 'Les 3 systèmes : Andriamena, Graphite, Vohibory et les 7 blocs tectoniques...' },
+                { id: 'aplanissement', num: 'V', title: 'Surfaces d\'Aplanissement', desc: 'S1, S2, S3', preview: 'Surfaces S1 (2200m), S2 (1150-1600m), S3 (820-1200m)...' },
+                { id: 'sedimentaire', num: 'VI', title: 'Formations Sédimentaires', desc: 'Du Carbonifère au Quaternaire', preview: 'Karroo, Jurassique, Crétacé, Tertiaire, Quaternaire...' }
+            ];
+
+            grid.innerHTML = chapters.map((ch, idx) => `
+                <div class="chapter-card" onclick="showChapter('${ch.id}')" style="animation: fadeInUp 0.6s ease ${idx * 0.1}s both;">
+                    <div class="chapter-header">
+                        <div class="chapter-number">${ch.num}</div>
+                        <div class="chapter-meta">
+                            <div class="chapter-title">${ch.title}</div>
+                            <div class="chapter-subtitle">${ch.desc}</div>
+                        </div>
+                    </div>
+                    <div class="chapter-preview">${ch.preview}</div>
+                    <div class="chapter-arrow">→</div>
+                </div>
+            `).join('');
+        }
+
+        // Navigation
+        function toggleNav() {
+            const overlay = document.getElementById('navOverlay');
+            const drawer = document.getElementById('navDrawer');
+            overlay.classList.toggle('active');
+            drawer.classList.toggle('active');
+        }
+
+        // Show chapter
+        function showChapter(chapterId) {
+            const chapter = courseData[chapterId];
+            if (!chapter) return;
+
+            currentChapter = chapterId;
+            const viewer = document.getElementById('contentViewer');
+            const title = document.getElementById('viewerTitle');
+            const content = document.getElementById('viewerContent');
+            const favBtn = document.getElementById('favBtn');
+
+            title.textContent = chapter.title;
+            content.innerHTML = chapter.content;
+            
+            // Update favorite button
+            favBtn.textContent = favorites.includes(chapterId) ? '★' : '☆';
+            favBtn.style.color = favorites.includes(chapterId) ? '#fbbf24' : '';
+
+            viewer.classList.add('active');
+            toggleNav();
+            
+            // Reset scroll
+            viewer.scrollTop = 0;
+            
+            // Update progress bar
+            updateProgress();
+        }
+
+        // Close viewer
+        function closeViewer() {
+            document.getElementById('contentViewer').classList.remove('active');
+            currentChapter = null;
+        }
+
+        // Search functionality
+        function toggleSearch() {
+            const modal = document.getElementById('searchModal');
+            const input = document.getElementById('searchInput');
+            modal.classList.toggle('active');
+            if (modal.classList.contains('active')) {
+                input.focus();
+            }
+        }
+
+        function performSearch(query) {
+            const resultsDiv = document.getElementById('searchResults');
+            if (!query.trim()) {
+                resultsDiv.innerHTML = '';
+                return;
+            }
+
+            const results = [];
+            const lowerQuery = query.toLowerCase();
+
+            Object.entries(courseData).forEach(([id, chapter]) => {
+                const text = chapter.content.toLowerCase();
+                if (text.includes(lowerQuery)) {
+                    const regex = new RegExp(`(.{0,50}${lowerQuery}.{0,50})`, 'gi');
+                    const matches = chapter.content.match(regex) || [];
+                    results.push({
+                        id,
+                        title: chapter.title,
+                        context: matches[0] || '...'
+                    });
+                }
+            });
+
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 2rem;">Aucun résultat trouvé</div>';
+            } else {
+                resultsDiv.innerHTML = results.map(r => `
+                    <div class="search-result-item" onclick="showChapter('${r.id}'); toggleSearch();">
+                        <div class="search-result-title">${r.title}</div>
+                        <div class="search-result-context">${r.context.replace(new RegExp(query, 'gi'), match => `<mark style="background: var(--accent); color: var(--primary); padding: 0 2px; border-radius: 2px;">${match}</mark>`)}...</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Favorites
+        function toggleFavorites() {
+            const viewer = document.getElementById('favoritesViewer');
+            viewer.classList.toggle('active');
+            updateFavoritesView();
+        }
+
+        function toggleCurrentFavorite() {
+            if (!currentChapter) return;
+            
+            const idx = favorites.indexOf(currentChapter);
+            if (idx > -1) {
+                favorites.splice(idx, 1);
+            } else {
+                favorites.push(currentChapter);
+            }
+            
+            localStorage.setItem('geo_mad_favorites', JSON.stringify(favorites));
+            
+            const favBtn = document.getElementById('favBtn');
+            favBtn.textContent = favorites.includes(currentChapter) ? '★' : '☆';
+            favBtn.style.color = favorites.includes(currentChapter) ? '#fbbf24' : '';
+            
+            updateFavoritesView();
+        }
+
+        function updateFavoritesView() {
+            const content = document.getElementById('favoritesContent');
+            
+            if (favorites.length === 0) {
+                content.innerHTML = `
+                    <div class="favorites-empty">
+                        <div class="favorites-empty-icon">⭐</div>
+                        <h3>Aucun favori</h3>
+                        <p>Marquez des chapitres pour les retrouver ici</p>
+                    </div>
+                `;
+            } else {
+                content.innerHTML = favorites.map(id => {
+                    const chapter = courseData[id];
+                    return `
+                        <div class="search-result-item" onclick="showChapter('${id}'); toggleFavorites();">
+                            <div class="search-result-title">${chapter.title}</div>
+                            <div class="search-result-context">${chapter.subtitle}</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Progress bar
+        function updateProgress() {
+            const viewer = document.getElementById('contentViewer');
+            const container = document.getElementById('progressContainer');
+            const bar = document.getElementById('progressBar');
+            
+            if (!viewer.classList.contains('active')) {
+                container.classList.remove('visible');
+                return;
+            }
+            
+            container.classList.add('visible');
+            
+            viewer.addEventListener('scroll', () => {
+                const scrolled = viewer.scrollTop;
+                const maxScroll = viewer.scrollHeight - viewer.clientHeight;
+                const progress = (scrolled / maxScroll) * 100;
+                bar.style.width = progress + '%';
+            });
+        }
+
+        // Share functionality
+        function shareContent() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Géologie de Madagascar',
+                    text: courseData[currentChapter].title,
+                    url: window.location.href
+                });
+            } else {
+                alert('Partage copié dans le presse-papier !');
+            }
+        }
+
+        // Bottom navigation
+        function showTab(tab) {
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            if (tab === 'home') {
+                closeViewer();
+                document.getElementById('favoritesViewer').classList.remove('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (tab === 'chapters') {
+                document.getElementById('mainContent').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeViewer();
+                document.getElementById('searchModal').classList.remove('active');
+                document.getElementById('favoritesViewer').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
