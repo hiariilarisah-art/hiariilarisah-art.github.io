@@ -1,0 +1,2824 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Morphogenèse et Pédogenèse - Cours Complet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f0f1a;
+            --secondary: #16213e;
+            --tertiary: #1a1a2e;
+            --accent: #e94560;
+            --accent-light: #ff6b6b;
+            --gold: #ffd700;
+            --cyan: #00d9ff;
+            --purple: #9d4edd;
+            --green: #00f5d4;
+            --orange: #ff9f1c;
+            --text: #ffffff;
+            --text-muted: #a0a0a0;
+            --text-dark: #6c757d;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --gradient-6: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            --shadow-glow: 0 0 40px rgba(233, 69, 96, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 15s infinite;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* App Container */
+        #app {
+            max-width: 100%;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 80px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 26, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 0.75rem 1.5rem;
+            background: rgba(15, 15, 26, 0.95);
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: var(--shadow-glow);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .icon-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .icon-btn:hover::before {
+            opacity: 1;
+        }
+
+        /* Navigation Drawer */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 85%;
+            max-width: 400px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--secondary) 0%, var(--tertiary) 100%);
+            z-index: 2001;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-drawer.active {
+            transform: translateX(0);
+        }
+
+        .nav-header {
+            padding: 2.5rem 2rem;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .nav-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-content {
+            padding: 1.5rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            padding: 0 1rem;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .nav-item-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .nav-item:nth-child(1) .nav-item-icon { background: var(--gradient-1); }
+        .nav-item:nth-child(2) .nav-item-icon { background: var(--gradient-2); }
+        .nav-item:nth-child(3) .nav-item-icon { background: var(--gradient-3); }
+        .nav-item:nth-child(4) .nav-item-icon { background: var(--gradient-4); }
+        .nav-item:nth-child(5) .nav-item-icon { background: var(--gradient-5); }
+        .nav-item:nth-child(6) .nav-item-icon { background: var(--gradient-6); }
+
+        .nav-item-content {
+            flex: 1;
+        }
+
+        .nav-item-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 90px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(233, 69, 96, 0.2);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--accent-light);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-light) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s ease 0.1s both;
+            text-shadow: 0 0 80px rgba(233, 69, 96, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .stat {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat::after {
+            content: '';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .stat:last-child::after {
+            display: none;
+        }
+
+        .stat-value {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Chapter Cards */
+        .chapters-section {
+            padding: 2rem 1.5rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .chapters-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .chapter-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chapter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-4);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+        }
+
+        .chapter-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .chapter-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+
+        .chapter-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .chapter-number::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 100%);
+        }
+
+        .chapter-card:nth-child(1) .chapter-number { background: var(--gradient-1); }
+        .chapter-card:nth-child(2) .chapter-number { background: var(--gradient-2); }
+        .chapter-card:nth-child(3) .chapter-number { background: var(--gradient-3); }
+        .chapter-card:nth-child(4) .chapter-number { background: var(--gradient-4); }
+        .chapter-card:nth-child(5) .chapter-number { background: var(--gradient-5); }
+        .chapter-card:nth-child(6) .chapter-number { background: var(--gradient-6); }
+
+        .chapter-meta {
+            flex: 1;
+        }
+
+        .chapter-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .chapter-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .chapter-preview {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            padding-left: 75px;
+        }
+
+        .chapter-arrow {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .chapter-card:hover .chapter-arrow {
+            opacity: 1;
+            right: 1.5rem;
+            background: var(--accent);
+        }
+
+        /* Content Viewer */
+        .content-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary);
+            z-index: 3000;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .content-viewer.active {
+            transform: translateY(0);
+        }
+
+        .viewer-header {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+        }
+
+        .back-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 14px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+        }
+
+        .back-btn:hover {
+            background: var(--accent);
+            transform: translateX(-3px);
+        }
+
+        .viewer-title {
+            flex: 1;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .viewer-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .viewer-content {
+            padding: 2.5rem 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-4);
+            border-radius: 2px;
+            opacity: 0.3;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            background: var(--gradient-4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        .content-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .content-text strong {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.15) 0%, rgba(157, 78, 221, 0.15) 100%);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            border-radius: 0 20px 20px 0;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: var(--accent);
+            opacity: 0.1;
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .highlight-box strong {
+            color: var(--accent-light);
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 2.5rem 0;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-4);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow);
+        }
+
+        .info-card:hover::before {
+            opacity: 1;
+        }
+
+        .info-card-title {
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .info-card-content {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .list-custom {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .list-custom li {
+            padding: 1rem 0 1rem 2.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .list-custom li::before {
+            content: '➤';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .list-custom li:last-child {
+            border-bottom: none;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(157, 78, 221, 0.1) 100%);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-align: center;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .formula-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--cyan);
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .formula-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2), rgba(255, 159, 28, 0.2));
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2.5rem 0;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .image-placeholder span {
+            font-size: 4rem;
+            opacity: 0.6;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 217, 255, 0.15);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--cyan);
+            margin: 0.35rem;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: rgba(0, 217, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .tags-container {
+            margin: 1.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 3001;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .progress-container.visible {
+            opacity: 1;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-4);
+            width: 0%;
+            transition: width 0.1s;
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        /* Search Modal */
+        .search-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 15, 26, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 4000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.25rem 1.25rem 1.25rem 3.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: var(--text);
+            font-size: 1.15rem;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 30px rgba(233, 69, 96, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.3rem;
+        }
+
+        .search-results {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .search-result-item {
+            padding: 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .search-result-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--accent);
+            transform: translateX(8px);
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .search-result-context {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Favorites */
+        .favorites-empty {
+            text-align: center;
+            padding: 5rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .favorites-empty-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.4;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.5rem calc(0.75rem + env(safe-area-inset-bottom));
+            display: flex;
+            justify-content: space-around;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.75rem 1.25rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border-radius: 16px;
+        }
+
+        .nav-btn.active {
+            color: var(--accent-light);
+            background: rgba(233, 69, 96, 0.15);
+        }
+
+        .nav-btn-icon {
+            font-size: 1.6rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-btn.active .nav-btn-icon {
+            transform: translateY(-3px);
+        }
+
+        /* Table styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table th {
+            background: rgba(233, 69, 96, 0.2);
+            font-weight: 600;
+            color: var(--accent-light);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Quote block */
+        .quote-block {
+            border-left: 4px solid var(--gold);
+            padding: 2rem 2rem 2rem 2.5rem;
+            margin: 2.5rem 0;
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
+            border-radius: 0 20px 20px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            position: relative;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .quote-block::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 5rem;
+            color: var(--gold);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        /* Comparison cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin: 2.5rem 0;
+        }
+
+        .comparison-card {
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+        }
+
+        .comparison-card.a {
+            background: rgba(16, 185, 129, 0.15);
+            border: 2px solid var(--green);
+        }
+
+        .comparison-card.b {
+            background: rgba(249, 115, 22, 0.15);
+            border: 2px solid var(--orange);
+        }
+
+        .comparison-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .comparison-card.a .comparison-label { color: var(--green); }
+        .comparison-card.b .comparison-label { color: var(--orange); }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-4);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translateX(-6.5px);
+            box-shadow: 0 0 0 4px rgba(233, 69, 96, 0.3);
+            border: 2px solid var(--primary);
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .timeline-content {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin: 2.5rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-card-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            display: block;
+            text-shadow: 0 0 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .stat-card-label {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Process steps */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2.5rem 0;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 0;
+        }
+
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+            z-index: 1;
+            background: var(--primary);
+            padding: 0 1rem;
+        }
+
+        .process-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            box-shadow: 0 0 20px rgba(67, 233, 123, 0.3);
+        }
+
+        .process-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 100px;
+        }
+
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary);
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s, visibility 0.6s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(233, 69, 96, 0.2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+
+        .loader-spinner::after {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border: 4px solid transparent;
+            border-top-color: var(--purple);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite reverse;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loader-text {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--accent-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .loader-subtext {
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+            
+            .chapters-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .viewer-content {
+                padding: 3rem;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-in {
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        /* Definition box */
+        .definition-box {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.15) 0%, rgba(233, 69, 96, 0.15) 100%);
+            border: 2px solid rgba(157, 78, 221, 0.3);
+            border-radius: 24px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .definition-box::before {
+            content: 'DEFINITION';
+            position: absolute;
+            top: -12px;
+            left: 2rem;
+            background: var(--primary);
+            padding: 0 1rem;
+            color: var(--purple);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .definition-term {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .definition-text {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Alert box */
+        .alert-box {
+            background: rgba(255, 159, 28, 0.15);
+            border-left: 4px solid var(--orange);
+            padding: 1.5rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .alert-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .alert-content {
+            flex: 1;
+        }
+
+        .alert-title {
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .alert-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Grid 2x2 for characteristics */
+        .chars-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .char-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.25rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .char-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-3px);
+        }
+
+        .char-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .char-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Morphogenèse & Pédogenèse</div>
+            <div class="loader-subtext">Géomorphologie et Pédologie</div>
+        </div>
+    </div>
+
+    <!-- Background -->
+    <div class="bg-canvas"></div>
+    <div class="bg-grid"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container" id="progressContainer">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- App Container -->
+    <div id="app">
+        <!-- Header -->
+        <header class="header" id="header">
+            <button class="icon-btn" onclick="toggleNav()">☰</button>
+            <div class="logo">
+                <div class="logo-icon">🌍</div>
+                <span>Morpho&Pedo</span>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn" onclick="toggleSearch()">🔍</button>
+                <button class="icon-btn" onclick="toggleFavorites()">⭐</button>
+            </div>
+        </header>
+
+        <!-- Navigation Drawer -->
+        <div class="nav-overlay" id="navOverlay" onclick="toggleNav()"></div>
+        <nav class="nav-drawer" id="navDrawer">
+            <div class="nav-header">
+                <div class="nav-title">Plan du Cours</div>
+                <div class="nav-subtitle">6 Chapitres Essentiels</div>
+            </div>
+            <div class="nav-content">
+                <div class="nav-section">
+                    <div class="nav-section-title">Navigation</div>
+                    <a class="nav-item" onclick="showChapter('definitions')">
+                        <div class="nav-item-icon">I</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Définitions Fondamentales</div>
+                            <div class="nav-item-desc">Pédogenèse, sol, géomorphologie, relief</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('tropicaux')">
+                        <div class="nav-item-icon">II</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Les Milieux Tropicaux</div>
+                            <div class="nav-item-desc">Définition et critères de tropicalité</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('climat')">
+                        <div class="nav-item-icon">III</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Conditions Climatiques</div>
+                            <div class="nav-item-desc">Particularités du milieu tropical</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('lithologie')">
+                        <div class="nav-item-icon">IV</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Conditions Lithologiques</div>
+                            <div class="nav-item-desc">Désagrégation mécanique</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('chimiques')">
+                        <div class="nav-item-icon">V</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Processus Chimiques</div>
+                            <div class="nav-item-desc">Altération chimique et dissolution</div>
+                        </div>
+                    </a>
+                    <a class="nav-item" onclick="showChapter('consequences')">
+                        <div class="nav-item-icon">VI</div>
+                        <div class="nav-item-content">
+                            <div class="nav-item-title">Conséquences et Profil</div>
+                            <div class="nav-item-desc">Profil d'altération et conclusion</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-badge">
+                    <span>🔬</span>
+                    <span>Sciences de la Terre</span>
+                </div>
+                <h1 class="hero-title">Morphogenèse<br>et Pédogenèse</h1>
+                <p class="hero-subtitle">Facteurs et processus de formation des sols et du relief - Géomorphologie et Pédologie dans les milieux tropicaux</p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">6</span>
+                        <span class="stat-label">Chapitres</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">12</span>
+                        <span class="stat-label">Pages</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Complet</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapters Grid -->
+            <div class="chapters-section">
+                <div class="section-heading">Explorer les chapitres</div>
+                <div class="chapters-grid" id="chaptersGrid">
+                    <!-- Generated by JS -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Content Viewer -->
+        <div class="content-viewer" id="contentViewer">
+            <div class="viewer-header">
+                <button class="back-btn" onclick="closeViewer()">←</button>
+                <div class="viewer-title" id="viewerTitle">Titre du chapitre</div>
+                <div class="viewer-actions">
+                    <button class="icon-btn" onclick="toggleCurrentFavorite()" id="favBtn">☆</button>
+                    <button class="icon-btn" onclick="shareContent()">↗</button>
+                </div>
+            </div>
+            <div class="viewer-content" id="viewerContent">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+
+        <!-- Search Modal -->
+        <div class="search-modal" id="searchModal">
+            <div class="search-header">
+                <div class="search-input-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Rechercher dans le cours..." oninput="performSearch(this.value)">
+                </div>
+                <button class="icon-btn" onclick="toggleSearch()" style="margin-left: 1rem;">✕</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <!-- Results injected by JS -->
+            </div>
+        </div>
+
+        <!-- Favorites View -->
+        <div class="content-viewer" id="favoritesViewer">
+            <div class="viewer-header">
+                <button class="back-btn" onclick="toggleFavorites()">←</button>
+                <div class="viewer-title">Mes Favoris</div>
+            </div>
+            <div class="viewer-content" id="favoritesContent">
+                <div class="favorites-empty">
+                    <div class="favorites-empty-icon">⭐</div>
+                    <h3>Aucun favori</h3>
+                    <p>Marquez des chapitres pour les retrouver ici</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" onclick="showTab('home')">
+                <span class="nav-btn-icon">🏠</span>
+                <span>Accueil</span>
+            </button>
+            <button class="nav-btn" onclick="showTab('chapters')">
+                <span class="nav-btn-icon">📖</span>
+                <span>Chapitres</span>
+            </button>
+            <button class="nav-btn" onclick="toggleSearch()">
+                <span class="nav-btn-icon">🔍</span>
+                <span>Recherche</span>
+            </button>
+            <button class="nav-btn" onclick="toggleFavorites()">
+                <span class="nav-btn-icon">⭐</span>
+                <span>Favoris</span>
+            </button>
+        </nav>
+    </div>
+
+    <script>
+        // Course Data - Complete content from PDF
+        const courseData = {
+            definitions: {
+                title: "I. Définitions Fondamentales",
+                subtitle: "Pédogenèse, sol, géomorphologie, relief, morphogenèse, altération",
+                icon: "📚",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌱</div>
+                            <h2 class="section-title">La Pédogenèse</h2>
+                        </div>
+                        <div class="definition-box">
+                            <div class="definition-term">Pédogenèse</div>
+                            <div class="definition-text">
+                                C'est l'acte qui englobe toutes les étapes de la formation d'un sol, soit altération, humification, soit les facteurs bio-climatiques et les conditions physico-chimiques.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🪨</div>
+                            <h2 class="section-title">Le Sol</h2>
+                        </div>
+                        <div class="definition-box">
+                            <div class="definition-term">Sol</div>
+                            <div class="definition-text">
+                                Formation superficielle meuble qui résulte de la transformation superficielle des roches sous l'action conjointe des agents météoriques et des êtres vivants.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🏔️</div>
+                            <h2 class="section-title">La Géomorphologie</h2>
+                        </div>
+                        <div class="definition-box">
+                            <div class="definition-term">Géomorphologie</div>
+                            <div class="definition-text">
+                                C'est une branche de la géographie qui étudie la genèse et l'évolution du relief terrestre. Autrement dit, c'est une science qui décrit et explique le relief.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">⛰️</div>
+                            <h2 class="section-title">Le Relief</h2>
+                        </div>
+                        <div class="definition-box">
+                            <div class="definition-term">Relief</div>
+                            <div class="definition-text">
+                                Un relief est l'ensemble des inégalités topographiques de la surface terrestre résultant de très nombreux phénomènes.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">⚙️</div>
+                            <h2 class="section-title">La Morphogenèse</h2>
+                        </div>
+                        <div class="definition-box">
+                            <div class="definition-term">Morphogenèse</div>
+                            <div class="definition-text">
+                                C'est l'ensemble des processus et mécanismes qui mettent en place et modifient le relief. Les étapes de mise en place de ces reliefs sont :
+                            </div>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🔄 Altération</div>
+                                <div class="info-card-content">Modification in situ (sur place) des roches</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">💨 Arrachement</div>
+                                <div class="info-card-content">Érosion et détachement des matériaux</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🚚 Transport</div>
+                                <div class="info-card-content">Éolien, fluvial, glaciaire...</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🏖️ Dépôt</div>
+                                <div class="info-card-content">Sédimentation et accumulation</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">⚗️</div>
+                            <h2 class="section-title">L'Altération</h2>
+                        </div>
+                        <div class="definition-box">
+                            <div class="definition-term">Altération</div>
+                            <div class="definition-text">
+                                C'est un mécanisme conduisant à une modification des propriétés chimique et minéralogique des roches, ayant comme conséquence leur destruction partielle ou totale.
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            tropicaux: {
+                title: "II. Les Milieux Tropicaux",
+                subtitle: "Définition des pays tropicaux et critères de tropicalité",
+                icon: "🌴",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🗺️</div>
+                            <h2 class="section-title">Définition des Pays Tropicaux</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>De façon simplifiée, <strong>les pays tropicaux correspondent aux pays situés dans la zone intertropicale</strong>, c'est-à-dire, entre les deux tropiques.</p>
+                            
+                            <div class="highlight-box">
+                                <strong>Les tropiques</strong> constituent les deux points extrêmes des zones tropicales où le soleil est au zénith une fois par an (solstice d'été, solstice d'hiver).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌡️</div>
+                            <h2 class="section-title">Critère Thermique de Tropicalité</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>La notion de tropicalité est définie en premier lieu par un <strong>critère thermique</strong>. D'une manière générale, ce sont les régions dont <strong>la température moyenne mensuelle demeure > 15°C</strong> et qui, en dehors de toute influence d'altitude, <strong>ne connaissent pas les gelées</strong>.</p>
+                        </div>
+
+                        <div class="alert-box">
+                            <div class="alert-icon">💡</div>
+                            <div class="alert-content">
+                                <div class="alert-title">Détermination des saisons</div>
+                                <div class="alert-text">Par conséquent, la zone intertropicale correspond au milieu morphoclimatique des régions chaudes et ce sont les précipitations qui déterminent l'existence des saisons avec alternance de période pluvieuse et période sèche.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">⚠️</div>
+                            <h2 class="section-title">Nuances Importantes</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>En plus, <strong>les milieux tropicaux ne correspondent pas toujours à des zones chaudes</strong> car on distingue des climats régionaux non chauds à l'intérieur de la zone.</p>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🏔️ Exemple 1</div>
+                                <div class="info-card-content">Climat froid dans les zones montagneuses comme la Cordillère des Andes</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🏜️ Exemple 2</div>
+                                <div class="info-card-content">Existence des déserts très froids en Amérique du Sud</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">✅</div>
+                            <h2 class="section-title">Caractéristiques Clés</h2>
+                        </div>
+                        <div class="chars-grid">
+                            <div class="char-item">
+                                <span class="char-number">1</span>
+                                <span class="char-label">Zone intertropicale entre les deux tropiques</span>
+                            </div>
+                            <div class="char-item">
+                                <span class="char-number">2</span>
+                                <span class="char-label">Température moyenne mensuelle > 15°C</span>
+                            </div>
+                            <div class="char-item">
+                                <span class="char-number">3</span>
+                                <span class="char-label">Absence de gelées saisonnières</span>
+                            </div>
+                            <div class="char-item">
+                                <span class="char-number">4</span>
+                                <span class="char-label">Saisons définies par les précipitations</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            climat: {
+                title: "III. Les Conditions Climatiques des Milieux Tropicaux",
+                subtitle: "Particularités climatiques et régime hydrique",
+                icon: "🌦️",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌡️</div>
+                            <h2 class="section-title">Particularités Climatiques du Milieu Tropical</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Les milieux tropicaux sont définis essentiellement par un critère thermique, c'est-à-dire <strong>la régularité des températures avec prédominance de l'amplitude thermique diurne sur l'amplitude annuelle</strong>.</p>
+                            
+                            <div class="highlight-box">
+                                <strong>Conséquence importante</strong>
+                                Le régime thermique intertropical présente donc une originalité très marquée qui affecte la presque totalité de la zone. Cette unité de régime thermique a des conséquences pédogénétiques et morphogénétiques importantes, par exemple la chaleur commande la vitesse des réactions chimiques.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">💧</div>
+                            <h2 class="section-title">L'Humidité et le Régime Hydrique</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Présente des traits communs dans toute la zone chaude mais il y a aussi de grandes différences régionales. <strong>C'est le principal facteur de différenciation régionale.</strong></p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Points Communs</h3>
+                        <ul class="list-custom">
+                            <li>La part importante des <strong>pluies de convection</strong> (cumulonimbus) à base de 2000m</li>
+                            <li>Marquage des pluies orageuses à <strong>forte intensité</strong></li>
+                        </ul>
+
+                        <div class="alert-box">
+                            <div class="alert-icon">⚠️</div>
+                            <div class="alert-content">
+                                <div class="alert-title">Importance Géomorphologique</div>
+                                <div class="alert-text">L'érosion pluviale est très importante car il n'y a aucun obstacle comme la couverture végétale.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌍</div>
+                            <h2 class="section-title">Zone de Convergence au Niveau de l'Équateur</h2>
+                        </div>
+                        
+                        <div class="image-placeholder">
+                            <span>🌐</span>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong>ZCIT - Zone de Convergence Intertropicale</strong>
+                            Zone où les vents alizés de l'hémisphère Nord et de l'hémisphère Sud se rencontrent, créant une zone de basse pression favorable aux précipitations.
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-card-number">15°C+</span>
+                                <div class="stat-card-label">Température moyenne</div>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-card-number">↑</span>
+                                <div class="stat-card-label">Élevée amplitude diurne</div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            lithologie: {
+                title: "IV. Conditions Lithologiques et Désagrégation Mécanique",
+                subtitle: "Formation du sol et actions mécaniques de la météorisation",
+                icon: "🪨",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🏔️</div>
+                            <h2 class="section-title">Formation du Sol</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>La formation d'un sol résulte de <strong>la fragmentation des roches en particules de plus en plus fines</strong> et l'incorporation de celles-ci à de la matière organique au sein de la couche superficielle.</p>
+                            
+                            <div class="highlight-box">
+                                <strong>Agents de fragmentation</strong>
+                                L'eau, les racines et les alternances de gel et de dégel contribuent à la fragmentation des roches.
+                            </div>
+
+                            <p>Dans les régions chaudes et humides, <strong>l'attaque chimique est un phénomène très intense</strong>, c'est-à-dire transformation puis destruction des constituants et des minéraux de ces roches.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">⚡</div>
+                            <h2 class="section-title">Importance de l'Altération</h2>
+                        </div>
+                        
+                        <div class="quote-block">
+                            L'altération a donc une importance fondamentale car elle est à l'origine d'une formation superficielle meuble favorable à :
+                            <br><br>
+                            • Une pédogénèse intense<br>
+                            • Une morphogenèse active liée au processus d'érosion qui façonnent les versants et les modèles
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🔨</div>
+                            <h2 class="section-title">La Désagrégation Mécanique</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>La désagrégation mécanique ou les <strong>actions mécaniques de la météorisation</strong> : ce sont les variations de température subies par les roches qui sont les principales responsables.</p>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="definition-term">🔥 Thermoclastie</div>
+                            <div class="definition-text">
+                                Du grec <em>thermos</em> = chaud, <em>blastos</em> = brisé<br><br>
+                                C'est la fragmentation de la roche provoquée par les changements de température à la suite d'une alternance de dilatation et de contraction qui génèrent des tensions dans les roches.<br><br>
+                                <strong>On l'observe surtout dans les régions à forte amplitude thermique.</strong>
+                            </div>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Mécanismes de la Thermoclastie</h3>
+                        
+                        <div class="process-steps">
+                            <div class="process-step">
+                                <div class="process-number">1</div>
+                                <div class="process-label">Changement de température<br>Alternance jour/nuit</div>
+                            </div>
+                            <div class="process-step">
+                                <div class="process-number">2</div>
+                                <div class="process-label">Dilatation et contraction<br>Mouvements thermiques</div>
+                            </div>
+                            <div class="process-step">
+                                <div class="process-number">3</div>
+                                <div class="process-label">Tensions dans les roches<br>Fissuration et fragmentation</div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            chimiques: {
+                title: "V. Les Actions Mécaniques et Chimiques de la Météorisation",
+                subtitle: "Dissolution, altération chimique, cryoclastie, actions hydriques",
+                icon: "⚗️",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">💧</div>
+                            <h2 class="section-title">La Dissolution</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>C'est une action physique qui correspond à une <strong>dissociation de la molécule en ion par un solvant</strong>. Les eaux qui circulent dans les roches dissolvent les minéraux à leur contact.</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 1.5rem 0 1rem;">Facteurs de la Dissolution</h3>
+                        <ul class="list-custom">
+                            <li>Les roches solubles (évaporites : gypse, sel)</li>
+                            <li>Les roches carbonatées (~20% du substrat)</li>
+                        </ul>
+
+                        <div class="image-placeholder">
+                            <span>⚗️</span>
+                        </div>
+
+                        <div class="formula-box">
+                            <div class="formula">Eau + Roche → Dissolution</div>
+                            <div class="formula-desc">Processus de dissolution simplifié</div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">❄️</div>
+                            <h2 class="section-title">La Cryoclastie (Gélifraction)</h2>
+                        </div>
+                        <div class="definition-box">
+                            <div class="definition-term">❄️ Cryoclastie</div>
+                            <div class="definition-text">
+                                Du grec <em>kruos</em> = froid<br><br>
+                                Fragmentation due à l'alternance du gel et du dégel de l'eau remplissant les vides des roches. Transformer en glace, l'eau s'accompagne d'une augmentation de volume de 10%.<br><br>
+                                <strong>La gélivité des roches dépend de leur porosité et de leur fissuration.</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌊</div>
+                            <h2 class="section-title">Les Actions d'Origine Hydrique</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Résultent de l'action de l'eau à l'état liquide.</p>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">💧 Hydroclastie</div>
+                                <div class="info-card-content">
+                                    Fragmentation provoquée par des variations très importantes de volume de certaines roches suite à de forte variation de leur teneur en eau.<br>
+                                    <strong>Exemple : les argiles</strong>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🧂 Haloclastie</div>
+                                <div class="info-card-content">
+                                    Du grec <em>halos</em> = sel. Résulte d'une croissance (d'un anneau) des minéraux secondaires dans les vides ou microfissures des roches.<br>
+                                    <strong>On l'observe surtout sur le littoral.</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🧪</div>
+                            <h2 class="section-title">Les Processus Chimiques d'Altération</h2>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 1rem 0;">La Teneur en Gaz Carbonique et Autres Gaz</h3>
+                        <div class="content-text">
+                            <p>En traversant l'air, l'eau dissout des gaz d'origine naturelle ou d'origine anthropique qui lui confèrent un caractère acide.</p>
+                        </div>
+
+                        <div class="formula-box">
+                            <div class="formula">H₂O + CO₂ → H₂CO₃</div>
+                            <div class="formula-desc">Formation de l'acide carbonique (acide carbonique)</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong>Émissions de SO₂ (dioxyde de soufre)</strong>
+                            D'origine volcanique ou industrielle, augmentent l'acidité de l'eau.<br><br>
+                            SO₂ + ½O₂ + H₂O → H₂SO₄ + 2H⁺
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Conséquences dans le Sol</h3>
+                        <div class="content-text">
+                            <p>Dans le sol, l'acidification de l'eau provoque des phénomènes comme la dégradation de la matière organique.</p>
+                            <p>Les eaux acides sont <strong>plus agressives envers les minéraux</strong> que l'eau pure. Tous les minéraux sont affectés par la dissolution c'est-à-dire la réaction chimique qui transfère.</p>
+                        </div>
+
+                        <div class="alert-box">
+                            <div class="alert-icon">🏝️</div>
+                            <div class="alert-content">
+                                <div class="alert-title">Exemple : Madagascar</div>
+                                <div class="alert-text">À Madagascar, la présence des carbonates et des roches calcaires a favorisé la formation des reliefs karstiques ou tsingy ou lapies (aiguilles de calcaire).</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🔄</div>
+                            <h2 class="section-title">L'Oxydation</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Provoquée par l'<strong>O₂ de l'air</strong> et s'attaque au fer contenu dans le carbone et au soufre qu'elle transforme en oxyde.</p>
+                            <p>Cette transformation s'exprime souvent par des <strong>changements de couleur de la roche</strong> avec la présence de l'eau.</p>
+                            <p>L'eau cède de l'oxygène et par conséquent on a une <strong>désagrégation chimique</strong> car le minéral devient soluble.</p>
+                        </div>
+
+                        <div class="tags-container">
+                            <span class="tag">🧪 Carbonatation : Eau + CO₂</span>
+                            <span class="tag">⚙️ Calcite</span>
+                            <span class="tag">🟤 Oxydation : Fer + O₂ → Oxydes de fer</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">💦</div>
+                            <h2 class="section-title">L'Hydratation, l'Hydrolyse et les Actions Biologiques</h2>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="definition-term">💧 L'Hydratation</div>
+                            <div class="definition-text">
+                                Ce phénomène marque de l'oxydation. En effet, l'eau absorbe les molécules d'O₂. La réduction s'effectue souvent dans l'eau par l'existence de la nappe phréatique ainsi elle se manifeste pendant la saison humide mais l'oxydation durant la saison sèche.<br><br>
+                                <strong>Cas des sols hydromorphes</strong> (exutoire d'eau). L'hydratation concerne les roches composées d'éléments susceptibles de fixer des molécules d'eau. Par exemple les feldspaths et les argiles.<br><br>
+                                <strong>Caractéristique :</strong> L'hydratation s'accompagne d'une augmentation de volume.
+                            </div>
+                        </div>
+
+                        <div class="image-placeholder">
+                            <span>💧</span>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">L'Hydrolyse</h3>
+                        <div class="content-text">
+                            <p>S'exerce principalement au dépens des <strong>roches silicatées et alumino-silicatées</strong>. L'hydrolyse favorise la dissolution des minéraux qui peut être congruente ou incongruente.</p>
+                        </div>
+
+                        <div class="comparison-grid">
+                            <div class="comparison-card a">
+                                <div class="comparison-label">Dissolution Congruente</div>
+                                <div style="margin-top: 1rem;">
+                                    Quand elle affecte tous les ions de façon sensiblement égale. Le minéral se vide complètement.
+                                </div>
+                            </div>
+                            <div class="comparison-card b">
+                                <div class="comparison-label">Dissolution Incongruente</div>
+                                <div style="margin-top: 1rem;">
+                                    Quand les ions sont extraits de façon inégale.
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Les Actions Biologiques</h3>
+                        <div class="content-text">
+                            <p>Il s'agit ici de l'intervention des organismes vivants.</p>
+                            <p>L'action des animaux consiste souvent en une <strong>attaque mécanique limitée au format</strong> (termites, vers de terre).</p>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🐜</div>
+                            <h2 class="section-title">Le Rôle des Organismes Vivants</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Dans les régions tropical humide, <strong>la biodiversité locale favorise la pédogénèse</strong>. L'activité biologique des organismes vivants comme des vers de terre et des termites.</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 1.5rem 0 1rem;">Rôle des Termitières</h3>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-card-number">0.5-3M</span>
+                                <div class="stat-card-label">Insectes par nid</div>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-card-number">10-70</span>
+                                <div class="stat-card-label">Nids/ha (Côte d'Ivoire)</div>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-card-number">100-400</span>
+                                <div class="stat-card-label">Nids/ha (Madagascar)</div>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-card-number">6km</span>
+                                <div class="stat-card-label">Galerie par nid max</div>
+                            </div>
+                        </div>
+
+                        <div class="content-text" style="margin-top: 1.5rem;">
+                            <p>On les observe surtout dans les régions boisées comme dans les régions de la savane.</p>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">🏔️ Rôle Morphogénétique</div>
+                                <div class="info-card-content">
+                                    Les termitières et la bosse élaborés des micro-reliefs qui modifient les composantes du paysage.
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">🌱 Rôle Pédologique</div>
+                                <div class="info-card-content">
+                                    La bioturbation provoquée par les termites engendrent un mélange de matière dans le sol. Ces galeries facilitent la circulation des fluides surtout de l'eau qui lessive les éléments. Elle facilite la circulation de l'air qui permet l'oxydation du fer.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🎯</div>
+                            <h2 class="section-title">Les Facteurs de l'Altération</h2>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 1rem 0;">La Structure des Roches</h3>
+                        <div class="content-text">
+                            <p>Les actions mécaniques et biologiques sont contrôlées par les caractéristiques physiques des roches.</p>
+                            <p>Les roches ne sont ni homogènes ni continues dans leur gisement. Elles présentent des fissures ou des joints de faille.</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">L'Action de la Température</h3>
+                        <div class="content-text">
+                            <p>L'action de la température dépend de <strong>la couleur des roches</strong> qui conditionnent leur pouvoir d'absorption de la radiation.</p>
+                            <p>Les roches sombres s'échauffent plus vite, or <strong>la chaleur joue un rôle déterminant dans la vitesse des actions</strong>.</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">L'Intervention des Eaux Météoriques</h3>
+                        <div class="content-text">
+                            <p>L'intervention des eaux météoriques dépend de <strong>la perméabilité des roches en fonction de leur porosité</strong>.</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">L'Efficacité de la Météorisation</h3>
+                        <div class="content-text">
+                            <p>L'efficacité de la météorisation dépend aussi de <strong>la composition minéralogique et chimique des roches</strong> qui conditionnent leurs réactions aux attaques physico-chimiques.</p>
+                        </div>
+
+                        <div class="alert-box">
+                            <div class="alert-icon">💎</div>
+                            <div class="alert-content">
+                                <div class="alert-title">Exemple : Stabilité des Minéraux</div>
+                                <div class="alert-text">
+                                    <strong>Le quartz</strong> se place au premier rang des minéraux stables. Parmi les minéraux instables, on a le gypse, le mica noir.<br><br>
+                                    Le quartz et le mica blanc résistent bien à l'agressivité chimique. Les pierres en quartz en milieu tropical sont relativement réduites. Des éléments se décomposent plus facilement comme les feldspaths et le mica noir.
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">Le Rôle de l'Eau</h3>
+                        <div class="content-text">
+                            <p>L'eau de pluie agit à travers les formations meubles et les roches saines selon une vitesse qui dépend de <strong>la porosité de ces formations</strong>.</p>
+                            <p>La circulation de l'eau règle les processus d'altération et d'exportation des éléments.</p>
+                            <p>C'est-à-dire, <strong>l'eau accélère le processus d'altération</strong>.</p>
+                        </div>
+
+                        <h3 style="color: var(--gold); margin: 2rem 0 1rem;">La Topographie</h3>
+                        <div class="content-text">
+                            <p>La topographie favorise ou non <strong>la stabilité des formations superficielles</strong>, ce qui conditionne le drainage à l'échelle du paysage.</p>
+                        </div>
+                    </div>
+                `
+            },
+            consequences: {
+                title: "VI. Conséquences de l'Altération et Profil d'Altération",
+                subtitle: "Zonalité et couches du profil d'altération",
+                icon: "📊",
+                content: `
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌍</div>
+                            <h2 class="section-title">Les Conséquences de l'Altération</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>Dans tout le domaine chaud, <strong>les argiles de néoformation l'emportent sur les argiles héritées ou transformées</strong> mais en fonction de la présence et de la longueur d'une saison sèche apparaît la zonalité suivante :</p>
+                        </div>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-title">Domaine Équatorial</div>
+                                <div class="timeline-content">
+                                    Se manifestent les processus de <strong>fersiallitisation et d'allitisation</strong> (altération maximale) avec la formation d'argiles de type 1/1.
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">Zone Intertropicale à Saison Sèche</div>
+                                <div class="timeline-content">
+                                    Se produit la <strong>ferruginisation</strong>. Les argiles sont à la fois de type 1/1 et de type 2/1 (kaolinitique).
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title">Domaine Subtropical</div>
+                                <div class="timeline-content">
+                                    Les processus d'altération conduisent à la formation des <strong>argiles de type 2/1</strong>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">🏗️</div>
+                            <h2 class="section-title">Profil de l'Altération</h2>
+                        </div>
+                        <div class="content-text">
+                            <p>L'altération météorique des roches donne des faciès divers. Ceci est visible sur un <strong>profil d'altération</strong> avec les couches :</p>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title" style="color: var(--green);">S - Sol</div>
+                                <div class="info-card-content">
+                                    Généralement meuble organisé par des horizons qui dépendent de la nature de l'altération.
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title" style="color: var(--cyan);">ASM</div>
+                                <div class="info-card-content">
+                                    <strong>Altérite à Structure Modifiée</strong>, elle a perdu beaucoup de matière.
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title" style="color: var(--purple);">ASC</div>
+                                <div class="info-card-content">
+                                    <strong>Altérite de structure conservée</strong>, la roche est nettement altérée.
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title" style="color: var(--orange);">RA</div>
+                                <div class="info-card-content">
+                                    <strong>Roche altérée compacte</strong>, elle est très semblable à la roche mère.
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title" style="color: var(--accent-light);">FA</div>
+                                <div class="info-card-content">
+                                    <strong>Front d'Altération</strong> : c'est un passage irrégulier entre la roche saine et les altérites.
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title" style="color: var(--gold);">RS</div>
+                                <div class="info-card-content">
+                                    <strong>Roche saine</strong> sans aucune altération qui peut être difficile à trouver dans les affleurements peu profonds.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="image-placeholder">
+                            <span>📐</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-header">
+                            <div class="section-icon">✅</div>
+                            <h2 class="section-title">Conclusion</h2>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-card-title">1️⃣</div>
+                                <div class="info-card-content">
+                                    <strong>La pédogénèse prolonge l'altération</strong>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">2️⃣</div>
+                                <div class="info-card-content">
+                                    <strong>L'eau intervient fortement dans le processus d'altération</strong>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">3️⃣</div>
+                                <div class="info-card-content">
+                                    <strong>Le maximum d'altération est localisé en milieu équatorial</strong>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">4️⃣</div>
+                                <div class="info-card-content">
+                                    <strong>L'eau et la température élevée en accélérant les réactions chimiques favorisent l'altération des roches et le lessivage des sols</strong>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">5️⃣</div>
+                                <div class="info-card-content">
+                                    <strong>Toutes les roches ne s'altèrent pas de la même façon ni à la même vitesse</strong>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-title">6️⃣</div>
+                                <div class="info-card-content">
+                                    <strong>L'altération dépend de la composition chimique des roches</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quote-block" style="margin-top: 2.5rem; text-align: center; font-size: 1.3rem;">
+                            Pédogenèse et Morphogenèse<br>
+                            <span style="font-size: 1rem; color: var(--text-muted);">Géomorphologie et Pédologie</span>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // State management
+        let favorites = JSON.parse(localStorage.getItem('morpho_favorites') || '[]');
+        let currentChapter = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderChapters();
+            createParticles();
+            updateFavoritesView();
+            
+            // Hide loader
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 2000);
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Render chapter cards
+        function renderChapters() {
+            const grid = document.getElementById('chaptersGrid');
+            const chapters = [
+                { id: 'definitions', num: 'I', title: 'Définitions Fondamentales', desc: 'Pédogenèse, sol, géomorphologie, relief', preview: 'La pédogenèse est l\'acte qui englobe toutes les étapes de la formation d\'un sol...' },
+                { id: 'tropicaux', num: 'II', title: 'Les Milieux Tropicaux', desc: 'Définition et critères de tropicalité', preview: 'Les pays tropicaux correspondent aux pays situés dans la zone intertropicale...' },
+                { id: 'climat', num: 'III', title: 'Conditions Climatiques', desc: 'Particularités du milieu tropical', preview: 'La régularité des températures avec prédominance de l\'amplitude thermique diurne...' },
+                { id: 'lithologie', num: 'IV', title: 'Conditions Lithologiques', desc: 'Désagrégation mécanique', preview: 'La formation d\'un sol résulte de la fragmentation des roches en particules...' },
+                { id: 'chimiques', num: 'V', title: 'Processus Chimiques', desc: 'Altération chimique et dissolution', preview: 'Dissolution, cryoclastie, hydroclastie, oxydation, hydratation, hydrolyse...' },
+                { id: 'consequences', num: 'VI', title: 'Conséquences et Profil', desc: 'Profil d\'altération et conclusion', preview: 'Les argiles de néoformation, zonalité, couches du profil d\'altération...' }
+            ];
+
+            grid.innerHTML = chapters.map((ch, idx) => `
+                <div class="chapter-card" onclick="showChapter('${ch.id}')" style="animation: fadeInUp 0.6s ease ${idx * 0.1}s both;">
+                    <div class="chapter-header">
+                        <div class="chapter-number">${ch.num}</div>
+                        <div class="chapter-meta">
+                            <div class="chapter-title">${ch.title}</div>
+                            <div class="chapter-subtitle">${ch.desc}</div>
+                        </div>
+                    </div>
+                    <div class="chapter-preview">${ch.preview}</div>
+                    <div class="chapter-arrow">→</div>
+                </div>
+            `).join('');
+        }
+
+        // Navigation
+        function toggleNav() {
+            const overlay = document.getElementById('navOverlay');
+            const drawer = document.getElementById('navDrawer');
+            overlay.classList.toggle('active');
+            drawer.classList.toggle('active');
+        }
+
+        // Show chapter
+        function showChapter(chapterId) {
+            const chapter = courseData[chapterId];
+            if (!chapter) return;
+
+            currentChapter = chapterId;
+            const viewer = document.getElementById('contentViewer');
+            const title = document.getElementById('viewerTitle');
+            const content = document.getElementById('viewerContent');
+            const favBtn = document.getElementById('favBtn');
+
+            title.textContent = chapter.title;
+            content.innerHTML = chapter.content;
+            
+            // Update favorite button
+            favBtn.textContent = favorites.includes(chapterId) ? '★' : '☆';
+            favBtn.style.color = favorites.includes(chapterId) ? '#fbbf24' : '';
+
+            viewer.classList.add('active');
+            toggleNav();
+            
+            // Reset scroll
+            viewer.scrollTop = 0;
+            
+            // Update progress bar
+            updateProgress();
+        }
+
+        // Close viewer
+        function closeViewer() {
+            document.getElementById('contentViewer').classList.remove('active');
+            currentChapter = null;
+        }
+
+        // Search functionality
+        function toggleSearch() {
+            const modal = document.getElementById('searchModal');
+            const input = document.getElementById('searchInput');
+            modal.classList.toggle('active');
+            if (modal.classList.contains('active')) {
+                input.focus();
+            }
+        }
+
+        function performSearch(query) {
+            const resultsDiv = document.getElementById('searchResults');
+            if (!query.trim()) {
+                resultsDiv.innerHTML = '';
+                return;
+            }
+
+            const results = [];
+            const lowerQuery = query.toLowerCase();
+
+            Object.entries(courseData).forEach(([id, chapter]) => {
+                const text = chapter.content.toLowerCase();
+                if (text.includes(lowerQuery)) {
+                    const regex = new RegExp(`(.{0,50}${lowerQuery}.{0,50})`, 'gi');
+                    const matches = chapter.content.match(regex) || [];
+                    results.push({
+                        id,
+                        title: chapter.title,
+                        context: matches[0] || '...'
+                    });
+                }
+            });
+
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 2rem;">Aucun résultat trouvé</div>';
+            } else {
+                resultsDiv.innerHTML = results.map(r => `
+                    <div class="search-result-item" onclick="showChapter('${r.id}'); toggleSearch();">
+                        <div class="search-result-title">${r.title}</div>
+                        <div class="search-result-context">${r.context.replace(new RegExp(query, 'gi'), match => `<mark style="background: var(--accent); color: var(--primary); padding: 0 2px; border-radius: 2px;">${match}</mark>`)}...</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Favorites
+        function toggleFavorites() {
+            const viewer = document.getElementById('favoritesViewer');
+            viewer.classList.toggle('active');
+            updateFavoritesView();
+        }
+
+        function toggleCurrentFavorite() {
+            if (!currentChapter) return;
+            
+            const idx = favorites.indexOf(currentChapter);
+            if (idx > -1) {
+                favorites.splice(idx, 1);
+            } else {
+                favorites.push(currentChapter);
+            }
+            
+            localStorage.setItem('morpho_favorites', JSON.stringify(favorites));
+            
+            const favBtn = document.getElementById('favBtn');
+            favBtn.textContent = favorites.includes(currentChapter) ? '★' : '☆';
+            favBtn.style.color = favorites.includes(currentChapter) ? '#fbbf24' : '';
+            
+            updateFavoritesView();
+        }
+
+        function updateFavoritesView() {
+            const content = document.getElementById('favoritesContent');
+            
+            if (favorites.length === 0) {
+                content.innerHTML = `
+                    <div class="favorites-empty">
+                        <div class="favorites-empty-icon">⭐</div>
+                        <h3>Aucun favori</h3>
+                        <p>Marquez des chapitres pour les retrouver ici</p>
+                    </div>
+                `;
+            } else {
+                content.innerHTML = favorites.map(id => {
+                    const chapter = courseData[id];
+                    return `
+                        <div class="search-result-item" onclick="showChapter('${id}'); toggleFavorites();">
+                            <div class="search-result-title">${chapter.title}</div>
+                            <div class="search-result-context">${chapter.subtitle}</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Progress bar
+        function updateProgress() {
+            const viewer = document.getElementById('contentViewer');
+            const container = document.getElementById('progressContainer');
+            const bar = document.getElementById('progressBar');
+            
+            if (!viewer.classList.contains('active')) {
+                container.classList.remove('visible');
+                return;
+            }
+            
+            container.classList.add('visible');
+            
+            viewer.addEventListener('scroll', () => {
+                const scrolled = viewer.scrollTop;
+                const maxScroll = viewer.scrollHeight - viewer.clientHeight;
+                const progress = (scrolled / maxScroll) * 100;
+                bar.style.width = progress + '%';
+            });
+        }
+
+        // Share functionality
+        function shareContent() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Morphogenèse et Pédogenèse',
+                    text: courseData[currentChapter].title,
+                    url: window.location.href
+                });
+            } else {
+                alert('Partage copié dans le presse-papier !');
+            }
+        }
+
+        // Bottom navigation
+        function showTab(tab) {
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            if (tab === 'home') {
+                closeViewer();
+                document.getElementById('favoritesViewer').classList.remove('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (tab === 'chapters') {
+                document.getElementById('mainContent').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeViewer();
+                document.getElementById('searchModal').classList.remove('active');
+                document.getElementById('favoritesViewer').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
